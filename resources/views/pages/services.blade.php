@@ -61,7 +61,7 @@
             </div>
             @endforeach
         </div>
-        <div class="col-12 d-flex justify-content-center">
+        <div class="col-12 d-flex justify-content-center paginationServices">
             {{$services->links()}}
         </div>
     </div>

@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             VideoSeeder::class,
             ServiceSeeder::class,
+            DiscoverSeeder::class,
         ]);
     }
 }

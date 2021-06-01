@@ -1737,3 +1737,8 @@ ul {
 		margin-bottom: 20px;
 	}
 }
+
+.paginationServices {
+	text-align: center;
+	font-size: 18px;
+}
