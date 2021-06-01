@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class MapSeeder extends Seeder
+class LogoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,10 +14,10 @@ class MapSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('maps')->insert([
+        DB::table('logos')->insert([
             [
-                "location" => "50.85546457284759, 4.341214269181744",
-            ]
+                "name" => "big-logo.png",
+            ],
         ]);
     }
 }
