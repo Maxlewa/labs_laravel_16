@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\NewsletterController;
 use Illuminate\Support\Facades\Route;
 
 /* ________________________ FRONT ________________________ */
@@ -11,10 +12,14 @@ Route::get('/blog-post', [FrontController::class, 'blogpost']) -> name('blog-pos
 Route::get('/contact', [FrontController::class, 'contact']) -> name('contact');
 Route::get('/services', [FrontController::class, 'services']) -> name('services');
 
-/* ________ LOGO RESIZE */
+// ___________ LOGO RESIZE *
 
 // Route::get('/', [LogoController::class, 'index']);
 Route::post('/image-resize', [LogoController::class, 'imgResize'])->name('img-resize');
+
+// ___________ NEWSLETTER *
+
+Route::post('/newsletter/store', [NewsletterController::class, 'store'])->name('newsletterStore');
 
 // Route::get('/', function () {
 //     return view('welcome');
