@@ -6,11 +6,11 @@ use Illuminate\Support\Facades\Route;
 
 /* ________________________ FRONT ________________________ */
 
-Route::get('/', [FrontController::class, 'home']) -> name('home');
-Route::get('/blog', [FrontController::class, 'blog']) -> name('blog');
-Route::get('/blog-post', [FrontController::class, 'blogpost']) -> name('blog-post');
-Route::get('/contact', [FrontController::class, 'contact']) -> name('contact');
-Route::get('/services', [FrontController::class, 'services']) -> name('services');
+Route::get('/', [FrontController::class, 'home'])->name('home');
+Route::get('/blog', [FrontController::class, 'blog'])->name('blog');
+Route::get('/blog-post', [FrontController::class, 'blogpost'])->name('blog-post');
+Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
+Route::get('/services', [FrontController::class, 'services'])->name('services');
 
 // ___________ LOGO RESIZE *
 

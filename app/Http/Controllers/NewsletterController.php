@@ -18,7 +18,7 @@ class NewsletterController extends Controller
         $newsletter->save();
 
         Mail::to($request->email)->send(new NewsletterSender($request));
-
+    
         return redirect()->back();
     }
 }

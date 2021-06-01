@@ -42,4 +42,8 @@ class FrontController extends Controller
         $logo = Logo::find(1);
         return view('pages.services', compact('services', 'featuresLeft', 'featuresRight', 'logo'));
     }
+    public function newsletter() {
+        $logo = Logo::find(1);
+        return view('mail.newsletter', compact('logo'));
+    }
 }
