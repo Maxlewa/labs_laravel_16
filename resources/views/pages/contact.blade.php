@@ -38,7 +38,7 @@
 <!-- Page header end -->
 
 <!-- Google map -->
-<div class="map" id="map-area"></div>
+<div class="map" id="map-area" data-field-id="{{$map->location}}"></div>
 
 <!-- Contact section -->
 <div class="contact-section spad fix">

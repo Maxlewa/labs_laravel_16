@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             VideoSeeder::class,
             ServiceSeeder::class,
             DiscoverSeeder::class,
+            FeatureSeeder::class,
+            MapSeeder::class,
         ]);
     }
 }
