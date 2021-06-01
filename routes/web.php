@@ -11,6 +11,11 @@ Route::get('/blog-post', [FrontController::class, 'blogpost']) -> name('blog-pos
 Route::get('/contact', [FrontController::class, 'contact']) -> name('contact');
 Route::get('/services', [FrontController::class, 'services']) -> name('services');
 
+/* ________ LOGO RESIZE */
+
+// Route::get('/', [LogoController::class, 'index']);
+Route::post('/image-resize', [LogoController::class, 'imgResize'])->name('img-resize');
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
