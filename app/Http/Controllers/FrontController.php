@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use App\Models\Discover;
 use App\Models\Feature;
 use App\Models\Image;
@@ -22,7 +23,8 @@ class FrontController extends Controller
         $images = Image::all();
         $logo = Logo::find(1);
         $title = Title::find(1);
-        return view('home', compact('video', 'services9', 'services3', 'discovers', 'images', 'logo', 'title'));
+        $contact = Contact::find(1);
+        return view('home', compact('video', 'services9', 'services3', 'discovers', 'images', 'logo', 'title', 'contact'));
     }
     public function blog() {
         $logo = Logo::find(1);
@@ -35,7 +37,8 @@ class FrontController extends Controller
     public function contact() {
         $map = Map::find(1);
         $logo = Logo::find(1);
-        return view('pages.contact', compact('map', 'logo'));
+        $contact = Contact::find(1);
+        return view('pages.contact', compact('map', 'logo', 'contact'));
     }
     public function services() {
         $services = Service::paginate(9)->fragment('servicePaginate');
