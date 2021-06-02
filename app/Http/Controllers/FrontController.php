@@ -9,6 +9,7 @@ use App\Models\Image;
 use App\Models\Logo;
 use App\Models\Map;
 use App\Models\Service;
+use App\Models\Testimonial;
 use App\Models\Title;
 use App\Models\Video;
 use Illuminate\Http\Request;
@@ -24,7 +25,8 @@ class FrontController extends Controller
         $logo = Logo::find(1);
         $title = Title::find(1);
         $contact = Contact::find(1);
-        return view('home', compact('video', 'services9', 'services3', 'discovers', 'images', 'logo', 'title', 'contact'));
+        $testimonials = Testimonial::all();
+        return view('home', compact('video', 'services9', 'services3', 'discovers', 'images', 'logo', 'title', 'contact', 'testimonials'));
     }
     public function blog() {
         $logo = Logo::find(1);
