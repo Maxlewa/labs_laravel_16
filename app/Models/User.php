@@ -10,6 +10,26 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+    
+    public function genre() {
+        return $this->belongsTo(Genre::class);
+    }
+    
+    public function role() {
+        return $this->belongsTo(Role::class);
+    }
+    
+    public function job() {
+        return $this->belongsTo(Job::class);
+    }
+    
+    public function post() {
+        return $this->belongsTo(Post::class);
+    }
+    
+    public function testimonial() {
+        return $this->belongsTo(Testimonial::class);
+    }
 
     /**
      * The attributes that are mass assignable.
