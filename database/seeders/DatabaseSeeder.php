@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             MapSeeder::class,
             ImageSeeder::class,
             LogoSeeder::class,
+            TitleSeeder::class,
         ]);
     }
 }

@@ -43,7 +43,13 @@
 <div class="services-section spad">
     <div class="container">
         <div class="section-title dark" id="servicePaginate">
-            <h2>Get in <span>the Lab</span> and see the services</h2>
+            <h2>
+                @php
+                    $title1 = str_replace('(', '<span>', $title->titleServices1);
+                    $title2 = str_replace(')', '</span>', $title1);
+                    echo $title2
+                @endphp
+            </h2>
         </div>
         <div class="row">
             <!-- single service -->
@@ -74,7 +80,13 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="section-title">
-            <h2>Get in <span>the Lab</span> and  discover the world</h2>
+            <h2>
+                @php
+                    $title1 = str_replace('(', '<span>', $title->titleServices2);
+                    $title2 = str_replace(')', '</span>', $title1);
+                    echo $title2
+                @endphp
+            </h2>
         </div>
         <div class="row">
             <!-- feature item LEFT -->
