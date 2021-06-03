@@ -22,6 +22,8 @@ use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
+    // HOME
+
     public function home() {
         $video = Video::find(1);
         $services9 = Service::inRandomOrder()->limit(9)->get();
@@ -36,6 +38,9 @@ class FrontController extends Controller
         $footer = Footer::find(1);
         return view('home', compact('video', 'services9', 'services3', 'discovers', 'images', 'logo', 'title', 'contact', 'testimonials', 'subjects', 'footer'));
     }
+
+    // BLOG
+
     public function blog() {
         $logo = Logo::find(1);
         $articles = Post::all();
@@ -46,19 +51,7 @@ class FrontController extends Controller
         return view('pages.blog', compact('logo', 'articles', 'categories', 'tags', 'footer', 'comments'));
     }
 
-    // public function blogpost() {
-    //     $logo = Logo::find(1);
-    //     $posts = Post::all();
-    //     $categories = Category::all();
-    //     $tags = Tag::all();
-    //     $footer = Footer::find(1);
-    //     return view('pages.blog-post', compact('logo', 'posts', 'categories', 'tags', 'footer'));
-    // }
-
-    // public function show(Post $id) {
-    //     $post = $id;
-    //     return view('pages.blog-post', compact('post')); 
-    // }
+    // CONTACT
 
     public function contact() {
         $map = Map::find(1);
@@ -68,6 +61,9 @@ class FrontController extends Controller
         $footer = Footer::find(1);
         return view('pages.contact', compact('map', 'logo', 'contact', 'subjects', 'footer'));
     }
+
+    // SERVICES 
+
     public function services() {
         $services = Service::paginate(9)->fragment('servicePaginate');
         $featuresLeft = Feature::where('id', "<", 4)->get();
@@ -80,21 +76,23 @@ class FrontController extends Controller
         $footer = Footer::find(1);
         return view('pages.services', compact('services', 'featuresLeft', 'featuresRight', 'logo', 'title', 'posts3', 'subjects', 'contact', 'footer'));
     }
+
+    // NEWSLETTER 
+
     public function newsletter() {
         $logo = Logo::find(1);
         return view('mail.newsletter', compact('logo'));
     }
 
-    public function showArticle(Post $id) {
+    // BLOG-POST - ID
 
+    public function showArticle(Post $id) {
         $article = $id;
         $logo = Logo::find(1);
         $categories = Category::all();
         $tags = Tag::all();
         $footer = Footer::find(1);
-        
         $comments = Comment::where('post_id', $article->id)->where('validate', 1)->get();
-
         return view('pages.blog-post', compact('article', 'categories', 'tags', 'footer', 'logo', 'comments'));
     }
 }

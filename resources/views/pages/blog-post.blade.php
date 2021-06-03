@@ -41,7 +41,6 @@
                     <div class="post-content">
                         <h2 class="post-title">{{$article->title}}</h2>
                         <div class="post-meta">
-                            {{-- @dump($article) --}}
                             <a href="">{{$article->user->name}}</a>
                             <a href="">
                                 @foreach ($categories as $category)
@@ -90,14 +89,18 @@
                             <form class="form-class" method="POST" action={{route('commentStore')}}>
                                 @csrf
                                 <div class="row">
+                                    <!-- Name -->
                                     <div class="col-sm-6">
                                         <input type="text" name="name" id="name" placeholder="Your name">
                                     </div>
+                                    <!-- E-mail -->
                                     <div class="col-sm-6">
                                         <input type="text" name="email" id="email" placeholder="Your email">
                                     </div>
+                                    <!-- Message -->
                                     <div class="col-sm-12">
                                         <textarea name="comment" id="comment" placeholder="Message"></textarea>
+                                        <!-- SUBMIT -->
                                         <button class="site-btn" type=submit>send</button>
                                         <!-- Invisible ID -->
                                         <div>
@@ -113,14 +116,14 @@
             </div>
             <!-- Sidebar area -->
             <div class="col-md-4 col-sm-5 sidebar">
-                <!-- Single widget -->
+                <!-- Search -->
                 <div class="widget-item">
                     <form action="#" class="search-form">
                         <input type="text" placeholder="Search">
                         <button class="search-btn"><i class="flaticon-026-search"></i></button>
                     </form>
                 </div>
-                <!-- Single widget -->
+                <!-- Categories -->
                 <div class="widget-item">
                     <h2 class="widget-title">Categories</h2>
                     <ul>
@@ -129,7 +132,7 @@
                         @endforeach
                     </ul>
                 </div>
-                <!-- Single widget -->
+                <!-- Tags -->
                 <div class="widget-item">
                     <h2 class="widget-title">Tags</h2>
                     <ul class="tag">

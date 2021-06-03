@@ -55,7 +55,6 @@ class CommentController extends Controller
         $comment->post_id = $request->post_id;
         
         $comment->save();
-        // return redirect()->route('blog-post/')->with('success', 'Votre commentaire a été envoyé et attend confirmation');
         return back()->with('success', 'Votre commentaire a été envoyé et attend confirmation');
     }
 

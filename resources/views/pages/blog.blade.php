@@ -48,13 +48,12 @@
                                     {{$category->name}}
                                 @endforeach
                             </a>
-                            {{-- @if ($article->comment->count() == 1)
+                            @if ($article->comment->where('validate', 1)->count() == 1)
                                 <a href="">{{$article->comment->count()}} Comment</a>
                             @else
                                 <a href="">{{$article->comment->count()}} Comments</a>
-                            @endif --}}
-                            {{-- comments --}}                
-                            <a href="">{{$article->comment->where('validate', 1)->count()}} comments</a>
+                            @endif      
+                            {{-- <a href="">{{$article->comment->where('validate', 1)->count()}} comments</a> --}}
                         </div>
                         <p>{{$article->text}}</p>
                         <a href="{{route('blog-post', $article->id)}}" class="read-more">Read More</a>
@@ -88,18 +87,6 @@
                     </ul>
                 </div>
                 <!-- Single widget -->
-                {{-- <div class="widget-item">
-                    <h2 class="widget-title">Instagram</h2>
-                    <ul class="instagram">
-                        <li><img src="img/instagram/1.jpg" alt=""></li>
-                        <li><img src="img/instagram/2.jpg" alt=""></li>
-                        <li><img src="img/instagram/3.jpg" alt=""></li>
-                        <li><img src="img/instagram/4.jpg" alt=""></li>
-                        <li><img src="img/instagram/5.jpg" alt=""></li>
-                        <li><img src="img/instagram/6.jpg" alt=""></li>
-                    </ul>
-                </div> --}}
-                <!-- Single widget -->
                 <div class="widget-item">
                     <h2 class="widget-title">Tags</h2>
                     <ul class="tag">
@@ -108,21 +95,6 @@
                         @endforeach
                     </ul>
                 </div>
-                <!-- Single widget -->
-                {{-- <div class="widget-item">
-                    <h2 class="widget-title">Quote</h2>
-                    <div class="quote">
-                        <span class="quotation">‘​‌‘​‌</span>
-                        <p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique. Sed lacinia turpis at ultricies vestibulum.</p>
-                    </div>
-                </div> --}}
-                <!-- Single widget -->
-                {{-- <div class="widget-item">
-                    <h2 class="widget-title">Add</h2>
-                    <div class="add">
-                        <a href=""><img src="img/add.jpg" alt=""></a>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </div>
