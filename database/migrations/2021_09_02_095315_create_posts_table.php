@@ -18,9 +18,9 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('text');
             $table->string('image');
-            $table->integer('dateDay');
+            $table->string('dateDay');
             $table->string('dateMonth', 30);
-            $table->integer('dateYear');
+            $table->string('dateYear');
 
             $table->foreignId('user_id')->constrained();
 

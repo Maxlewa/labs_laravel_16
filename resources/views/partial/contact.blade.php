@@ -15,18 +15,37 @@
             </div>
             <!-- contact form -->
             <div class="col-md-6 col-pull">
-                <form class="form-class" id="con_form">
+                <form class="form-class" id="con_form" method="POST" action="{{route('contact')}}">
+                    @csrf
+
                     <div class="row">
                         <div class="col-sm-6">
-                            <input type="text" name="name" placeholder="Your name">
+                            <!-- Name -->
+                            <input type="text" name="name" id="name" placeholder="Your name">
                         </div>
                         <div class="col-sm-6">
-                            <input type="text" name="email" placeholder="Your email">
+                            <!-- E-mail -->
+                            @guest
+                                <input type="email" name="mail" id="mail" placeholder="Your email">
+                            @endguest
+                            @auth
+                                <input type="email" name="mail" id="mail" placeholder="Your email" value={{Auth::User()->email}}>
+                            @endauth
                         </div>
                         <div class="col-sm-12">
-                            <input type="text" name="subject" placeholder="Subject">
+
+                            <!-- Subject -->
+                            {{-- <input type="text" name="subject" id="subject" placeholder="Subject"> --}}
+                            <select id="subject" name="subject" placeholder="Subject">
+                                @foreach ($subjects as $subject)
+                                    <option value="{{$subject->name}}">{{$subject->name}}</option>
+                                @endforeach
+                            </select>
+
+                            <!-- Message -->
                             <textarea name="message" placeholder="Message"></textarea>
-                            <button class="site-btn">send</button>
+
+                            <button class="site-btn" type="submit">send</button>
                         </div>
                     </div>
                 </form>

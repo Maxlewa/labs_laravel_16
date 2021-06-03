@@ -12,6 +12,7 @@ use App\Models\Logo;
 use App\Models\Map;
 use App\Models\Post;
 use App\Models\Service;
+use App\Models\Subject;
 use App\Models\Tag;
 use App\Models\Testimonial;
 use App\Models\Title;
@@ -47,7 +48,8 @@ class FrontController extends Controller
         $map = Map::find(1);
         $logo = Logo::find(1);
         $contact = Contact::find(1);
-        return view('pages.contact', compact('map', 'logo', 'contact'));
+        $subjects = Subject::all();
+        return view('pages.contact', compact('map', 'logo', 'contact', 'subjects'));
     }
     public function services() {
         $services = Service::paginate(9)->fragment('servicePaginate');
@@ -56,7 +58,9 @@ class FrontController extends Controller
         $logo = Logo::find(1);
         $title = Title::find(1);
         $posts3 = Post::inRandomOrder()->limit(3)->get();
-        return view('pages.services', compact('services', 'featuresLeft', 'featuresRight', 'logo', 'title', 'posts3'));
+        $subjects = Subject::all();
+        $contact = Contact::find(1);
+        return view('pages.services', compact('services', 'featuresLeft', 'featuresRight', 'logo', 'title', 'posts3', 'subjects', 'contact'));
     }
     public function newsletter() {
         $logo = Logo::find(1);

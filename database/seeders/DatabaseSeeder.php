@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             VideoSeeder::class,
             ServiceSeeder::class,
             DiscoverSeeder::class,
+            SubjectSeeder::class,
             FeatureSeeder::class,
             MapSeeder::class,
             ImageSeeder::class,
