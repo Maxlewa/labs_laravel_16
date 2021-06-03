@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -39,7 +40,6 @@ class CommentController extends Controller
             "name" => ["required"],
             "email" => ["required", "email"],
             "comment" => ["required"],
-
         ]);
 
         $comment = new Comment();
@@ -51,9 +51,12 @@ class CommentController extends Controller
         $comment->dateDay = date("d");
         $comment->dateMonth = date("M");
         $comment->dateYear = date("Y");
+        $comment->validate = 1;
+        $comment->post_id = $request->post_id;
         
         $comment->save();
-        return redirect()->route('blog')->with('success', 'Votre commentaire a été envoyé et attend confirmation');
+        // return redirect()->route('blog-post/')->with('success', 'Votre commentaire a été envoyé et attend confirmation');
+        return back()->with('success', 'Votre commentaire a été envoyé et attend confirmation');
     }
 
     /**

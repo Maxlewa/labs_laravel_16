@@ -97,9 +97,12 @@
                                         <input type="text" name="email" id="email" placeholder="Your email">
                                     </div>
                                     <div class="col-sm-12">
-                                        {{-- <input type="text" name="subject" placeholder="Subject"> --}}
                                         <textarea name="comment" id="comment" placeholder="Message"></textarea>
                                         <button class="site-btn" type=submit>send</button>
+                                        <!-- Invisible ID -->
+                                        <div>
+                                            <input class="invisible" type="text" name="post_id" id="post_id" value="{{$article->id}}">
+                                        </div>
                                     </div>
                                 </div>
                             </form>
