@@ -15,7 +15,7 @@
             </div>
             <!-- contact form -->
             <div class="col-md-6 col-pull">
-                <form class="form-class" id="con_form" method="POST" action="{{route('contact')}}">
+                <form class="form-class" id="con_form" method="POST" action="{{route('mail-contact')}}">
                     @csrf
 
                     <div class="row">

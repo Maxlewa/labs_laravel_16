@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             VideoSeeder::class,
             ServiceSeeder::class,
             DiscoverSeeder::class,
+            FooterSeeder::class,
             SubjectSeeder::class,
             FeatureSeeder::class,
             MapSeeder::class,
@@ -30,10 +31,10 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             TestimonialSeeder::class,
             CategorySeeder::class,
-            CommentSeeder::class,
             TagSeeder::class,
             UserSeeder::class,
             PostSeeder::class,
+            CommentSeeder::class,
             TagPostSeeder::class,
         ]);
     }

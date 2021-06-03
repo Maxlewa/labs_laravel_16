@@ -26,7 +26,10 @@ class CreatePostsTable extends Migration
 
             $table->foreignId('category_id')->nullable()->constrained();
             $table->foreignId('tag_id')->nullable()->constrained();
-            $table->foreignId('comment_id')->nullable()->constrained();
+
+            $table->boolean('validate');
+            
+            // $table->foreignId('comment_id')->nullable()->constrained();
 
             $table->timestamps();
         });

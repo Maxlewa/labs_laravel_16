@@ -35,7 +35,25 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            "name" => ["required"],
+            "email" => ["required", "email"],
+            "comment" => ["required"],
+
+        ]);
+
+        $comment = new Comment();
+        
+        $comment->name = $request->name;
+        $comment->email = $request->email;
+        $comment->comment = $request->comment;
+
+        $comment->dateDay = date("d");
+        $comment->dateMonth = date("M");
+        $comment->dateYear = date("Y");
+        
+        $comment->save();
+        return redirect()->route('blog')->with('success', 'Votre commentaire a été envoyé et attend confirmation');
     }
 
     /**

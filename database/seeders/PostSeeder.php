@@ -25,7 +25,8 @@ class PostSeeder extends Seeder
                 "user_id" => 1,
                 "category_id" => 2,
                 "tag_id" => 3,
-                "comment_id" => 1,
+                "validate"=> 1,
+                // "comment_id" => 1,
             ],
             [
                 "title" => "Exemple d'article",
@@ -37,7 +38,8 @@ class PostSeeder extends Seeder
                 "user_id" => 1,
                 "category_id" => 2,
                 "tag_id" => 3,
-                "comment_id" => 1,
+                "validate"=> 1,
+                // "comment_id" => 1,
             ],
             [
                 "title" => "Exemple d'article",
@@ -49,7 +51,8 @@ class PostSeeder extends Seeder
                 "user_id" => 1,
                 "category_id" => 2,
                 "tag_id" => 3,
-                "comment_id" => 1,
+                "validate"=> 1,
+                // "comment_id" => 1,
             ],
         ]);
     }

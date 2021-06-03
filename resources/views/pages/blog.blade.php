@@ -30,28 +30,34 @@
         <div class="row">
             <div class="col-md-8 col-sm-7 blog-posts">
                 <!-- Post item -->
-                @foreach ($posts as $post)
+                @foreach ($articles as $article)
                 <div class="post-item">
                     <div class="post-thumbnail">
-                        <img src="img/{{$post->image}}" alt="">
+                        <img src="img/{{$article->image}}" alt="">
                         <div class="post-date">
-                            <h2>{{$post->dateDay}}</h2>
-                            <h3>{{$post->dateMonth}} {{$post->dateYear}}</h3>
+                            <h2>{{$article->dateDay}}</h2>
+                            <h3>{{$article->dateMonth}} {{$article->dateYear}}</h3>
                         </div>
                     </div>
                     <div class="post-content">
-                        <h2 class="post-title">{{$post->title}}</h2>
+                        <h2 class="post-title">{{$article->title}}</h2>
                         <div class="post-meta">
-                            <a href="">{{$post->user->name}}</a>
-                            <a href="">Design, Inspiration</a>
-                            @if ($post->comment->count() == 1)
-                                <a href="">{{$post->comment->count()}} Comment</a>
+                            <a href="">{{$article->user->name}}</a>
+                            <a href="">
+                                @foreach ($categories as $category)
+                                    {{$category->name}}
+                                @endforeach
+                            </a>
+                            {{-- @if ($article->comment->count() == 1)
+                                <a href="">{{$article->comment->count()}} Comment</a>
                             @else
-                                <a href="">{{$post->comment->count()}} Comments</a>
-                            @endif
+                                <a href="">{{$article->comment->count()}} Comments</a>
+                            @endif --}}
+                            {{-- comments --}}                
+                            <a href="">{{$article->comment->where('validate', 1)->count()}} comments</a>
                         </div>
-                        <p>{{$post->text}}</p>
-                        <a href="{{route('blog-post')}}" class="read-more">Read More</a>
+                        <p>{{$article->text}}</p>
+                        <a href="{{route('blog-post', $article->id)}}" class="read-more">Read More</a>
                     </div>
                 </div>
                 @endforeach
@@ -124,6 +130,5 @@
 <!-- page section end-->
 
 @include('partial.newsletter')
-@include('partial.footer')
 
 @endsection

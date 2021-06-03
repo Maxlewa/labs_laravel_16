@@ -7,6 +7,7 @@ use App\Models\Comment;
 use App\Models\Contact;
 use App\Models\Discover;
 use App\Models\Feature;
+use App\Models\Footer;
 use App\Models\Image;
 use App\Models\Logo;
 use App\Models\Map;
@@ -31,25 +32,41 @@ class FrontController extends Controller
         $title = Title::find(1);
         $contact = Contact::find(1);
         $testimonials = Testimonial::all();
-        return view('home', compact('video', 'services9', 'services3', 'discovers', 'images', 'logo', 'title', 'contact', 'testimonials'));
+        $subjects = Subject::all();
+        $footer = Footer::find(1);
+        return view('home', compact('video', 'services9', 'services3', 'discovers', 'images', 'logo', 'title', 'contact', 'testimonials', 'subjects', 'footer'));
     }
     public function blog() {
         $logo = Logo::find(1);
-        $posts = Post::all();
+        $articles = Post::all();
         $categories = Category::all();
         $tags = Tag::all();
-        return view('pages.blog', compact('logo', 'posts', 'categories', 'tags'));
+        $footer = Footer::find(1);
+        $comments = Comment::all();
+        return view('pages.blog', compact('logo', 'articles', 'categories', 'tags', 'footer', 'comments'));
     }
-    public function blogpost() {
-        $logo = Logo::find(1);
-        return view('pages.blog-post', compact('logo'));
-    }
+
+    // public function blogpost() {
+    //     $logo = Logo::find(1);
+    //     $posts = Post::all();
+    //     $categories = Category::all();
+    //     $tags = Tag::all();
+    //     $footer = Footer::find(1);
+    //     return view('pages.blog-post', compact('logo', 'posts', 'categories', 'tags', 'footer'));
+    // }
+
+    // public function show(Post $id) {
+    //     $post = $id;
+    //     return view('pages.blog-post', compact('post')); 
+    // }
+
     public function contact() {
         $map = Map::find(1);
         $logo = Logo::find(1);
         $contact = Contact::find(1);
         $subjects = Subject::all();
-        return view('pages.contact', compact('map', 'logo', 'contact', 'subjects'));
+        $footer = Footer::find(1);
+        return view('pages.contact', compact('map', 'logo', 'contact', 'subjects', 'footer'));
     }
     public function services() {
         $services = Service::paginate(9)->fragment('servicePaginate');
@@ -60,10 +77,24 @@ class FrontController extends Controller
         $posts3 = Post::inRandomOrder()->limit(3)->get();
         $subjects = Subject::all();
         $contact = Contact::find(1);
-        return view('pages.services', compact('services', 'featuresLeft', 'featuresRight', 'logo', 'title', 'posts3', 'subjects', 'contact'));
+        $footer = Footer::find(1);
+        return view('pages.services', compact('services', 'featuresLeft', 'featuresRight', 'logo', 'title', 'posts3', 'subjects', 'contact', 'footer'));
     }
     public function newsletter() {
         $logo = Logo::find(1);
         return view('mail.newsletter', compact('logo'));
+    }
+
+    public function showArticle(Post $id) {
+
+        $article = $id;
+        $logo = Logo::find(1);
+        $categories = Category::all();
+        $tags = Tag::all();
+        $footer = Footer::find(1);
+
+        $comments = Comment::where('post_id', $article->id)->where('validate', 1)->get();
+
+        return view('pages.blog-post', compact('article', 'categories', 'tags', 'footer', 'logo', 'comments'));
     }
 }

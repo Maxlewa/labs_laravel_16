@@ -29,6 +29,5 @@
 @include('partial.team')
 @include('partial.promotion')
 @include('partial.contact')
-@include('partial.footer')
 
 @endsection

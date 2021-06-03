@@ -157,7 +157,5 @@
 
 @include('partial.newsletter')
 @include('partial.contact')
-
-@include('partial.footer')
     
 @endsection

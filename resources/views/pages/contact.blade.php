@@ -41,6 +41,5 @@
 <div class="map" id="map-area" data-field-id="{{$map->location}}"></div>
 
 @include('partial.contact')
-@include('partial.footer')
 
 @endsection

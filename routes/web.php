@@ -1,34 +1,46 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
-/* ________________________ FRONT ________________________ */
+/* _____________________________ FRONT _____________________________ */
 
 Route::get('/', [FrontController::class, 'home'])->name('home');
+
 Route::get('/blog', [FrontController::class, 'blog'])->name('blog');
-Route::get('/blog-post', [FrontController::class, 'blogpost'])->name('blog-post');
+
+Route::get('/blog-post/{post}', [FrontController::class, 'showArticle'])->name('blog-post');
+// Route::get('/blog-post/{post}', [PostController::class, 'show'])->name('blog-post');
+
+
 Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
 Route::get('/services', [FrontController::class, 'services'])->name('services');
 
-// ___________ LOGO RESIZE *
+// ________ LOGO Resize *
 
-// Route::get('/', [LogoController::class, 'index']);
 Route::post('/image-resize', [LogoController::class, 'imgResize'])->name('img-resize');
 
-// ___________ NEWSLETTER *
+// ________ MAIL *
+
+// Newsletter
 
 Route::post('/newsletter/store', [NewsletterController::class, 'store'])->name('newsletterStore');
 
-// ___________ CONTACT FORM MAIL *
+// Contact
 
-Route::post('/mail', [ContactController::class, 'store'])->name('contact');
+Route::post('/mail', [ContactController::class, 'store'])->name('mail-contact');
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
+/* _____________________________ BACK _____________________________ */
+
+
+// _______ STORE Comment *
+
+Route::post('/comment/store', [CommentController::class, 'store'])->name('commentStore');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

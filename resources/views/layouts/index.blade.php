@@ -30,6 +30,8 @@
 </head>
 <body>
 	@yield('content')
+
+	@include('partial.footer')
     
 	<!--====== Javascripts & Jquery ======-->
 	<script src="{{asset('js/jquery-2.1.4.min.js')}}"></script>

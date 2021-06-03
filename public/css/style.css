@@ -789,6 +789,7 @@ ul {
 	background: #f6edfb;
 	padding: 17px 20px;
 	font-style: italic;
+	color: rgb(112, 112, 112);
 }
 
 .form-class input[type="text"]:focus,
