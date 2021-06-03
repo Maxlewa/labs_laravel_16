@@ -29,10 +29,11 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             TestimonialSeeder::class,
             CategorySeeder::class,
-            PostSeeder::class,
+            CommentSeeder::class,
             TagSeeder::class,
-            TagPostSeeder::class,
             UserSeeder::class,
+            PostSeeder::class,
+            TagPostSeeder::class,
         ]);
     }
 }

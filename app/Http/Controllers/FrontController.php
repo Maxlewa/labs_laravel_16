@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Contact;
 use App\Models\Discover;
 use App\Models\Feature;
 use App\Models\Image;
 use App\Models\Logo;
 use App\Models\Map;
+use App\Models\Post;
 use App\Models\Service;
+use App\Models\Tag;
 use App\Models\Testimonial;
 use App\Models\Title;
 use App\Models\Video;
@@ -30,7 +34,10 @@ class FrontController extends Controller
     }
     public function blog() {
         $logo = Logo::find(1);
-        return view('pages.blog', compact('logo'));
+        $posts = Post::all();
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('pages.blog', compact('logo', 'posts', 'categories', 'tags'));
     }
     public function blogpost() {
         $logo = Logo::find(1);
@@ -48,7 +55,8 @@ class FrontController extends Controller
         $featuresRight = Feature::where('id', ">", 3)->get();
         $logo = Logo::find(1);
         $title = Title::find(1);
-        return view('pages.services', compact('services', 'featuresLeft', 'featuresRight', 'logo', 'title'));
+        $posts3 = Post::inRandomOrder()->limit(3)->get();
+        return view('pages.services', compact('services', 'featuresLeft', 'featuresRight', 'logo', 'title', 'posts3'));
     }
     public function newsletter() {
         $logo = Logo::find(1);

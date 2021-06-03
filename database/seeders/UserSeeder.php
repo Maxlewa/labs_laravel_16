@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
                 "role_id" => 1,
                 "job_id" => 1,
                 "genre_id" => 1,
-                "post_id" => null,
+                // "post_id" => null,
                 "testimonial_id" => null,
             ]
         ]);

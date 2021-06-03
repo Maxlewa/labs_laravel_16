@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CommentSeeder extends Seeder
 {
@@ -13,6 +14,10 @@ class CommentSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('comments')->insert([
+            [
+                "comment" => "Exemple de commentaire"
+            ]
+        ]);
     }
 }

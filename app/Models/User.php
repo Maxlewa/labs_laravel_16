@@ -24,7 +24,7 @@ class User extends Authenticatable
     }
     
     public function post() {
-        return $this->belongsTo(Post::class);
+        return $this->hasMany(Post::class);
     }
     
     public function testimonial() {
