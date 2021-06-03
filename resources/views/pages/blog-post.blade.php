@@ -41,6 +41,7 @@
                     <div class="post-content">
                         <h2 class="post-title">{{$article->title}}</h2>
                         <div class="post-meta">
+                            {{-- @dump($article) --}}
                             <a href="">{{$article->user->name}}</a>
                             <a href="">
                                 @foreach ($categories as $category)

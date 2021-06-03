@@ -51,15 +51,15 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $article = $post;
-        $logo = Logo::find(1);
-        $categories = Category::all();
-        $tags = Tag::all();
-        $footer = Footer::find(1);
+        // $article = $post;
+        // $logo = Logo::find(1);
+        // $categories = Category::all();
+        // $tags = Tag::all();
+        // $footer = Footer::find(1);
 
-        $comments = Comment::where('post_id', $article->$post)->where('validate', 1)->get();
+        // $comments = Comment::where('post_id', $article->$post)->where('validate', 1)->get();
 
-        return view('pages.blog-post', compact('article', 'categories', 'tags', 'footer', 'logo', 'comments')); 
+        // return view('pages.blog-post', compact('article', 'categories', 'tags', 'footer', 'logo', 'comments')); 
     }
 
     /**

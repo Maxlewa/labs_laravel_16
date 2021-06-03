@@ -92,7 +92,7 @@ class FrontController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
         $footer = Footer::find(1);
-
+        
         $comments = Comment::where('post_id', $article->id)->where('validate', 1)->get();
 
         return view('pages.blog-post', compact('article', 'categories', 'tags', 'footer', 'logo', 'comments'));
