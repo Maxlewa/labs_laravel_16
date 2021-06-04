@@ -39,10 +39,8 @@ class FrontController extends Controller
         $subjects = Subject::all();
         $footer = Footer::find(1);
 
-        // $users = User::all();
         $users = User::where('job_id', '>', 1)->get();
         $userRandom = $users->random(2);
-
         $ceo = User::where('job_id', 1)->get();
         $centre = $ceo->random(1);
         
@@ -113,8 +111,6 @@ class FrontController extends Controller
                     // ->orWhere('category_id', 'LIKE', "%{$search}%")
                     // ->orWhere('tag_id', 'LIKE', "%{$search}%")
                     ->get();
-
-        // $tagSearch = Tag::where('name', 'LIKE', "%{$search}%");
 
         $logo = Logo::find(1);
         $categories = Category::all();

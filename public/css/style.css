@@ -1296,7 +1296,12 @@ ul {
 }
 
 .single-post .author .avatar img {
-	min-width: 117px;
+	/* min-width: 117px; */
+	height: 100px;
+    width: 100px;
+    object-fit: cover;
+	object-position: top;
+	border-radius: 100%;
 }
 
 .single-post .author .author-info h2 {

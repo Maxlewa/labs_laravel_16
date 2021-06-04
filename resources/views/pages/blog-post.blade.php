@@ -61,7 +61,7 @@
                     <!-- Post Author -->
                     <div class="author">
                         <div class="avatar">
-                            <img src="../img/{{$article->user->photo}}" alt="">
+                            <img src="../img/{{$article->user->photo}}" alt="" style="width: 100px">
                         </div>
                         <div class="author-info">
                             <h2>{{$article->user->firstname}} {{$article->user->name}}, <span>Author</span></h2>
