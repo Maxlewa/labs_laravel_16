@@ -41,17 +41,20 @@
                     <div class="post-content">
                         <h2 class="post-title">{{$article->title}}</h2>
                         <div class="post-meta">
+
+                            <!-- Nom auteur -->
                             <a href="">{{$article->user->name}}</a>
-                            <a href="">
-                                @foreach ($categories as $category)
-                                    {{$category->name}}
-                                @endforeach
-                            </a>
-                            @if ($article->comment->count() == 1)
+
+                            <!-- Catégorie de l'article -->
+                            <a href="">{{$article->category->name}}</a>
+
+                            <!-- Nombre de commentaires -->
+                            @if ($article->comment->count() <= 1)
                                 <a href="">{{$article->comment->count()}} Comment</a>
                             @else
                                 <a href="">{{$article->comment->count()}} Comments</a>
                             @endif
+
                         </div>
                         <p>{{$article->text}}</p>
                     </div>
@@ -127,16 +130,14 @@
                 <div class="widget-item">
                     <h2 class="widget-title">Categories</h2>
                     <ul>
-                        @foreach ($categories as $category)
-                            <li><a href="#">{{$category->name}}</a></li>
-                        @endforeach
+                        <li><a href="#">{{$article->category->name}}</a></li>
                     </ul>
                 </div>
                 <!-- Tags -->
                 <div class="widget-item">
                     <h2 class="widget-title">Tags</h2>
                     <ul class="tag">
-                        @foreach ($tags as $tag)
+                        @foreach ($article->tag as $tag)
                             <li><a href="">{{$tag->name}}</a></li>
                         @endforeach
                     </ul>

@@ -42,18 +42,21 @@
                     <div class="post-content">
                         <h2 class="post-title">{{$article->title}}</h2>
                         <div class="post-meta">
+
+                            <!-- Nom de l'auteur -->
                             <a href="">{{$article->user->name}}</a>
-                            <a href="">
-                                @foreach ($categories as $category)
-                                    {{$category->name}}
-                                @endforeach
-                            </a>
-                            @if ($article->comment->where('validate', 1)->count() == 1)
+
+                            <!-- Catégorie de l'article -->
+                            <a href="">{{$article->category->name}}</a>
+
+                            <!-- Nombre de commentaires -->
+                            @if ($article->comment->where('validate', 1)->count() <= 1)
                                 <a href="">{{$article->comment->count()}} Comment</a>
                             @else
                                 <a href="">{{$article->comment->count()}} Comments</a>
                             @endif      
                             {{-- <a href="">{{$article->comment->where('validate', 1)->count()}} comments</a> --}}
+                        
                         </div>
                         <p>{{$article->text}}</p>
                         <a href="{{route('blog-post', $article->id)}}" class="read-more">Read More</a>

@@ -19,6 +19,11 @@ class TagPostSeeder extends Seeder
                 "post_id" => 1, 
                 "tag_id" => 1,
                 "created_at" => now()
+            ],
+            [
+                "post_id" => 1, 
+                "tag_id" => 2,
+                "created_at" => now()
             ]
         ]);
     }

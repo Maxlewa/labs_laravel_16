@@ -14,8 +14,6 @@ Route::get('/', [FrontController::class, 'home'])->name('home');
 Route::get('/blog', [FrontController::class, 'blog'])->name('blog');
 
 Route::get('/blog-post/{id}', [FrontController::class, 'showArticle'])->name('blog-post');
-// Route::get('/blog-post/{post}', [PostController::class, 'show'])->name('blog-post');
-
 
 Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
 Route::get('/services', [FrontController::class, 'services'])->name('services');

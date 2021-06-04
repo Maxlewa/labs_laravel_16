@@ -25,7 +25,7 @@ class CreatePostsTable extends Migration
             $table->foreignId('user_id')->constrained();
 
             $table->foreignId('category_id')->nullable()->constrained();
-            $table->foreignId('tag_id')->nullable()->constrained();
+            // $table->foreignId('tag_id')->nullable()->constrained();
 
             $table->boolean('validate');
             

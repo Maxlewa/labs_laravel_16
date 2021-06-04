@@ -15,6 +15,7 @@ use App\Models\Post;
 use App\Models\Service;
 use App\Models\Subject;
 use App\Models\Tag;
+use App\Models\TagPost;
 use App\Models\Testimonial;
 use App\Models\Title;
 use App\Models\Video;
@@ -90,9 +91,8 @@ class FrontController extends Controller
         $article = $id;
         $logo = Logo::find(1);
         $categories = Category::all();
-        $tags = Tag::all();
         $footer = Footer::find(1);
         $comments = Comment::where('post_id', $article->id)->where('validate', 1)->get();
-        return view('pages.blog-post', compact('article', 'categories', 'tags', 'footer', 'logo', 'comments'));
+        return view('pages.blog-post', compact('article', 'categories', 'footer', 'logo', 'comments'));
     }
 }
