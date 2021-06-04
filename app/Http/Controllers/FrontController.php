@@ -18,6 +18,7 @@ use App\Models\Tag;
 use App\Models\TagPost;
 use App\Models\Testimonial;
 use App\Models\Title;
+use App\Models\User;
 use App\Models\Video;
 use Illuminate\Http\Request;
 
@@ -90,9 +91,28 @@ class FrontController extends Controller
     public function showArticle(Post $id) {
         $article = $id;
         $logo = Logo::find(1);
-        $categories = Category::all();
         $footer = Footer::find(1);
         $comments = Comment::where('post_id', $article->id)->where('validate', 1)->get();
-        return view('pages.blog-post', compact('article', 'categories', 'footer', 'logo', 'comments'));
+        return view('pages.blog-post', compact('article', 'footer', 'logo', 'comments'));
+    }
+
+    // BLOG SEARCHBAR
+
+    public function search (Request $request) {
+        $search = $request->search;
+        $articleSearch = Post::where('title', 'LIKE', "%{$search}%")
+                    ->orWhere('text', 'LIKE', "%{$search}%")->get();
+                    // ->orWhere('tag_id->name', 'LIKE', "%{$search}%")
+                    // ->orWhere('category_id->name', 'LIKE', "%{$search}%")->get();
+
+        // $tagSearch = Tag::where('name', 'LIKE', "%{$search}%");
+
+        $logo = Logo::find(1);
+        $categories = Category::all();
+        $tags = Tag::all();
+        $footer = Footer::find(1);
+        $comments = Comment::all();
+
+        return view('pages.blog-search', compact('articleSearch', 'logo', 'categories', 'tags', 'footer', 'comments')); 
     }
 }

@@ -29,9 +29,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-7 blog-posts">
-                     
-                <!-- Post item -->
-                @foreach ($articles as $article)
+
+                @if (count($articleSearch) == 0)
+                    <td colspan="4" class="text-center text-dark"> Pas de résultats ... </td>
+                @else
+
+                @foreach ($articleSearch as $article)
                 
                 <div class="post-item">
                     <div class="post-thumbnail">
@@ -65,6 +68,8 @@
                 </div>
                 @endforeach
 
+                @endif
+
                 <!-- Pagination -->
                 <div class="page-pagination">
                     <a class="active" href="">01.</a>
@@ -77,7 +82,7 @@
                 <!-- Single widget -->
                 <div class="widget-item">
                     <!-- Searchbar -->
-                    <form action="{{route('search')}}" class="search-form">
+                    <form action="#" class="search-form">
                         <input type="text" placeholder="Search" name="search">
                         <button class="search-btn"><i class="flaticon-026-search"></i></button>
                     </form>

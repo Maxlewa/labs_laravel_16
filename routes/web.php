@@ -32,6 +32,10 @@ Route::post('/newsletter/store', [NewsletterController::class, 'store'])->name('
 
 Route::post('/mail', [ContactController::class, 'store'])->name('mail-contact');
 
+// _______ SEARCHBAR Blog-Post *
+
+Route::get('/search', [FrontController::class,'search'])->name('search'); 
+
 
 /* _____________________________ BACK _____________________________ */
 
@@ -39,6 +43,8 @@ Route::post('/mail', [ContactController::class, 'store'])->name('mail-contact');
 // _______ STORE Comment *
 
 Route::post('/comment/store/{id}', [CommentController::class, 'store'])->name('commentStore');
+
+// _______ DASHBOARD *
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -100,8 +100,8 @@
                                     <div class="col-sm-6">
                                         <input type="text" name="email" id="email" placeholder="Your email">
                                     </div>
-                                    <!-- Message -->
                                     <div class="col-sm-12">
+                                        <!-- Message -->
                                         <textarea name="comment" id="comment" placeholder="Message"></textarea>
                                         <!-- SUBMIT -->
                                         <button class="site-btn" type=submit>send</button>

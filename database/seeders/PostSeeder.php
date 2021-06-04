@@ -29,7 +29,7 @@ class PostSeeder extends Seeder
                 // "comment_id" => 1,
             ],
             [
-                "title" => "Exemple d'article",
+                "title" => "Alex",
                 "text" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo.",
                 "image" => "blog/blog-2.jpg",
                 "dateDay" => date("d"),
@@ -42,7 +42,7 @@ class PostSeeder extends Seeder
                 // "comment_id" => 1,
             ],
             [
-                "title" => "Exemple d'article",
+                "title" => "Luiz",
                 "text" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo.",
                 "image" => "blog/blog-3.jpg",
                 "dateDay" => date("d"),
