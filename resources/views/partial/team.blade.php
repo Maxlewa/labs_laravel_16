@@ -15,25 +15,25 @@
             <!-- single member -->
             <div class="col-sm-4">
                 <div class="member">
-                    <img src="img/team/1.jpg" alt="">
-                    <h2>Christinne Williams</h2>
-                    <h3>Project Manager</h3>
+                    <img src="img/{{$userRandom[0]->photo}}" alt="">
+                    <h2>{{$userRandom[0]->firstname}} {{$userRandom[0]->name}}</h2>
+                    <h3>{{$userRandom[0]->job->name}}</h3>
+                </div>
+            </div>
+            <!-- CEO -->
+            <div class="col-sm-4">
+                <div class="member">
+                    <img src="img/{{$centre[0]->photo}}" alt="">
+                    <h2>{{$centre[0]->firstname}} {{$centre[0]->name}}</h2>
+                    <h3>{{$centre[0]->job->name}}</h3>
                 </div>
             </div>
             <!-- single member -->
             <div class="col-sm-4">
                 <div class="member">
-                    <img src="img/team/2.jpg" alt="">
-                    <h2>Christinne Williams</h2>
-                    <h3>Junior developer</h3>
-                </div>
-            </div>
-            <!-- single member -->
-            <div class="col-sm-4">
-                <div class="member">
-                    <img src="img/team/3.jpg" alt="">
-                    <h2>Christinne Williams</h2>
-                    <h3>Digital designer</h3>
+                    <img src="img/{{$userRandom[1]->photo}}" alt="">
+                    <h2>{{$userRandom[1]->firstname}} {{$userRandom[1]->name}}</h2>
+                    <h3>{{$userRandom[1]->job->name}}</h3>
                 </div>
             </div>
         </div>

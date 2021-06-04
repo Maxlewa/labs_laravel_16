@@ -38,7 +38,15 @@ class FrontController extends Controller
         $testimonials = Testimonial::all();
         $subjects = Subject::all();
         $footer = Footer::find(1);
-        return view('home', compact('video', 'services9', 'services3', 'discovers', 'images', 'logo', 'title', 'contact', 'testimonials', 'subjects', 'footer'));
+
+        // $users = User::all();
+        $users = User::where('job_id', '>', 1)->get();
+        $userRandom = $users->random(2);
+
+        $ceo = User::where('job_id', 1)->get();
+        $centre = $ceo->random(1);
+        
+        return view('home', compact('video', 'services9', 'services3', 'discovers', 'images', 'logo', 'title', 'contact', 'testimonials', 'subjects', 'footer', 'users', 'userRandom', 'ceo', 'centre'));
     }
 
     // CONTACT
@@ -96,14 +104,15 @@ class FrontController extends Controller
         return view('pages.blog-post', compact('article', 'footer', 'logo', 'comments'));
     }
 
-    // BLOG SEARCHBAR
+    // BLOG-SEARCH
 
     public function search (Request $request) {
         $search = $request->search;
         $articleSearch = Post::where('title', 'LIKE', "%{$search}%")
-                    ->orWhere('text', 'LIKE', "%{$search}%")->get();
-                    // ->orWhere('tag_id->name', 'LIKE', "%{$search}%")
-                    // ->orWhere('category_id->name', 'LIKE', "%{$search}%")->get();
+                    ->orWhere('text', 'LIKE', "%{$search}%")
+                    // ->orWhere('category_id', 'LIKE', "%{$search}%")
+                    // ->orWhere('tag_id', 'LIKE', "%{$search}%")
+                    ->get();
 
         // $tagSearch = Tag::where('name', 'LIKE', "%{$search}%");
 

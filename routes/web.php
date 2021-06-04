@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontController::class, 'home'])->name('home');
 
 Route::get('/blog', [FrontController::class, 'blog'])->name('blog');
-
 Route::get('/blog-post/{id}', [FrontController::class, 'showArticle'])->name('blog-post');
 
 Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
@@ -32,7 +31,7 @@ Route::post('/newsletter/store', [NewsletterController::class, 'store'])->name('
 
 Route::post('/mail', [ContactController::class, 'store'])->name('mail-contact');
 
-// _______ SEARCHBAR Blog-Post *
+// _______ BLOG-SEARCH *
 
 Route::get('/search', [FrontController::class,'search'])->name('search'); 
 

@@ -53,9 +53,13 @@
 
                             <!-- Nombre de commentaires -->
                             @if ($article->comment->where('post_id', "=", $article->id)->count() <= 1)
-                                <a href="">{{$article->comment->count()}} Comment</a>
+                                <a href="{{route('blog-post', $article->id)}}">
+                                    {{$article->comment->count()}} Comment
+                                </a>
                             @elseif ($article->comment->where('post_id', "=", $article->id)->count() > 1)
-                                <a href="">{{$article->comment->count()}} Comments</a>
+                                <a href="{{route('blog-post', $article->id)}}">
+                                    {{$article->comment->count()}} Comments
+                                </a>
                             @endif      
                         
                         </div>

@@ -79,6 +79,7 @@
                 {{-- <div>
                     {{$articleSearch->links()}}
                 </div> --}}
+
             </div>
             <!-- Sidebar area -->
             <div class="col-md-4 col-sm-5 sidebar">
@@ -90,25 +91,26 @@
                         <button class="search-btn"><i class="flaticon-026-search"></i></button>
                     </form>
                 </div>
-                <!-- Single widget -->
+                <!-- Categories -->
                 <div class="widget-item">
                     <h2 class="widget-title">Categories</h2>
                     <ul>
-                        <ul>
-                            <li><a href="#">{{$article->category->name}}</a></li>
-                        </ul>
+                        @foreach ($categories as $category)
+                            <li><a href="#">{{$category->name}}</a></li>
+                        @endforeach
                     </ul>
                 </div>
-                <!-- Single widget -->
+                <!-- Tags -->
                 <div class="widget-item">
                     <h2 class="widget-title">Tags</h2>
                     <ul class="tag">
-                        @foreach ($article->tag as $tag)
+                        @foreach ($tags as $tag)
                             <li><a href="">{{$tag->name}}</a></li>
                         @endforeach
                     </ul>
                 </div>
             </div>
+            
         </div>
     </div>
 </div>
