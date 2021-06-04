@@ -34,7 +34,7 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         request()->validate([
             "name" => ["required"],
@@ -52,7 +52,8 @@ class CommentController extends Controller
         $comment->dateMonth = date("M");
         $comment->dateYear = date("Y");
         $comment->validate = 1;
-        $comment->post_id = $request->post_id;
+        
+        $comment->post_id = $id;
         
         $comment->save();
         return back()->with('success', 'Votre commentaire a été envoyé et attend confirmation');

@@ -38,7 +38,7 @@ Route::post('/mail', [ContactController::class, 'store'])->name('mail-contact');
 
 // _______ STORE Comment *
 
-Route::post('/comment/store', [CommentController::class, 'store'])->name('commentStore');
+Route::post('/comment/store/{id}', [CommentController::class, 'store'])->name('commentStore');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

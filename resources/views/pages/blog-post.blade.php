@@ -89,7 +89,7 @@
                         <div class="col-md-9 comment-from">
                             <h2>Leave a comment</h2>
 
-                            <form class="form-class" method="POST" action={{route('commentStore')}}>
+                            <form class="form-class" method="POST" action={{route('commentStore', $article->id)}}>
                                 @csrf
                                 <div class="row">
                                     <!-- Name -->
@@ -105,10 +105,6 @@
                                         <textarea name="comment" id="comment" placeholder="Message"></textarea>
                                         <!-- SUBMIT -->
                                         <button class="site-btn" type=submit>send</button>
-                                        <!-- Invisible ID -->
-                                        <div>
-                                            <input class="invisible" type="text" name="post_id" id="post_id" value="{{$article->id}}">
-                                        </div>
                                     </div>
                                 </div>
                             </form>

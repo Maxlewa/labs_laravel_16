@@ -50,9 +50,9 @@
                             <a href="">{{$article->category->name}}</a>
 
                             <!-- Nombre de commentaires -->
-                            @if ($article->comment->where('validate', 1)->count() <= 1)
+                            @if ($article->comment->where('post_id', "=", $article->id)->count() <= 1)
                                 <a href="">{{$article->comment->count()}} Comment</a>
-                            @else
+                            @elseif ($article->comment->where('post_id', "=", $article->id)->count() > 1)
                                 <a href="">{{$article->comment->count()}} Comments</a>
                             @endif      
                             {{-- <a href="">{{$article->comment->where('validate', 1)->count()}} comments</a> --}}
