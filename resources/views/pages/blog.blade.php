@@ -27,7 +27,7 @@
 <!-- page section -->
 <div class="page-section spad">
     <div class="container">
-        <div class="row">
+        <div class="row" id="blogpaginate">
             <div class="col-md-8 col-sm-7 blog-posts">
                      
                 <!-- Post item -->
@@ -66,10 +66,13 @@
                 @endforeach
 
                 <!-- Pagination -->
-                <div class="page-pagination">
+                {{-- <div class="page-pagination">
                     <a class="active" href="">01.</a>
                     <a href="">02.</a>
                     <a href="">03.</a>
+                </div> --}}
+                <div>
+                    {{$articles->links()}}
                 </div>
             </div>
             <!-- Sidebar area -->

@@ -41,18 +41,6 @@ class FrontController extends Controller
         return view('home', compact('video', 'services9', 'services3', 'discovers', 'images', 'logo', 'title', 'contact', 'testimonials', 'subjects', 'footer'));
     }
 
-    // BLOG
-
-    public function blog() {
-        $logo = Logo::find(1);
-        $articles = Post::all();
-        $categories = Category::all();
-        $tags = Tag::all();
-        $footer = Footer::find(1);
-        $comments = Comment::all();
-        return view('pages.blog', compact('logo', 'articles', 'categories', 'tags', 'footer', 'comments'));
-    }
-
     // CONTACT
 
     public function contact() {
@@ -84,6 +72,18 @@ class FrontController extends Controller
     public function newsletter() {
         $logo = Logo::find(1);
         return view('mail.newsletter', compact('logo'));
+    }
+
+    // BLOG
+
+    public function blog() {
+        $logo = Logo::find(1);
+        $articles = Post::paginate(2)->fragment('blogpaginate');
+        $categories = Category::all();
+        $tags = Tag::all();
+        $footer = Footer::find(1);
+        $comments = Comment::all();
+        return view('pages.blog', compact('logo', 'articles', 'categories', 'tags', 'footer', 'comments'));
     }
 
     // BLOG-POST - ID

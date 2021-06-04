@@ -27,7 +27,7 @@
 <!-- page section -->
 <div class="page-section spad">
     <div class="container">
-        <div class="row">
+        <div class="row" id="blogpaginate">
             <div class="col-md-8 col-sm-7 blog-posts">
 
                 @if (count($articleSearch) == 0)
@@ -71,11 +71,14 @@
                 @endif
 
                 <!-- Pagination -->
-                <div class="page-pagination">
+                {{-- <div class="page-pagination">
                     <a class="active" href="">01.</a>
                     <a href="">02.</a>
                     <a href="">03.</a>
-                </div>
+                </div> --}}
+                {{-- <div>
+                    {{$articleSearch->links()}}
+                </div> --}}
             </div>
             <!-- Sidebar area -->
             <div class="col-md-4 col-sm-5 sidebar">
@@ -91,16 +94,16 @@
                 <div class="widget-item">
                     <h2 class="widget-title">Categories</h2>
                     <ul>
-                        @foreach ($categories as $category)
-                            <li><a href="#">{{$category->name}}</a></li>
-                        @endforeach
+                        <ul>
+                            <li><a href="#">{{$article->category->name}}</a></li>
+                        </ul>
                     </ul>
                 </div>
                 <!-- Single widget -->
                 <div class="widget-item">
                     <h2 class="widget-title">Tags</h2>
                     <ul class="tag">
-                        @foreach ($tags as $tag)
+                        @foreach ($article->tag as $tag)
                             <li><a href="">{{$tag->name}}</a></li>
                         @endforeach
                     </ul>
