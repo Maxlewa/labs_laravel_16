@@ -24,7 +24,8 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        //
+        $testimonials = Testimonial::all();
+        return view('admin.services.serviceCreate', compact('testimonials'));
     }
 
     /**
@@ -35,7 +36,23 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            "firstname" => ["required"],
+            "name" => ["required"],
+            "text" => ["required"],
+            "job" => ["required"],
+            "image" => ["required"],
+        ]);
+
+        $testimonial = new Testimonial();
+        $testimonial->firstname = $request->firstname;
+        $testimonial->name = $request->name;
+        $testimonial->text = $request->text;
+        $testimonial->job = $request->job;
+        $testimonial->image = $request->image;
+        $testimonial->save();
+
+        return redirect()->route('admin.adminHome')->with('success', $request->title . ' a bien été créé');
     }
 
     /**
@@ -57,7 +74,7 @@ class TestimonialController extends Controller
      */
     public function edit(Testimonial $testimonial)
     {
-        //
+        return view('admin.testimonials.testimonialEdit', compact('testimonial'));
     }
 
     /**
@@ -69,7 +86,22 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, Testimonial $testimonial)
     {
-        //
+        request()->validate([
+            "firstname" => ["required"],
+            "name" => ["required"],
+            "text" => ["required"],
+            "job" => ["required"],
+            "image" => ["required"],
+        ]);
+
+        $testimonial->firstname = $request->firstname;
+        $testimonial->name = $request->name;
+        $testimonial->text = $request->text;
+        $testimonial->job = $request->job;
+        $testimonial->image = $request->image;
+        $testimonial->save();
+
+        return redirect()->route('admin.adminHome')->with('success', 'Modifications enregistrées');
     }
 
     /**
@@ -80,6 +112,7 @@ class TestimonialController extends Controller
      */
     public function destroy(Testimonial $testimonial)
     {
-        //
+        $testimonial->delete();
+        return redirect()->route('admin.adminHome');
     }
 }

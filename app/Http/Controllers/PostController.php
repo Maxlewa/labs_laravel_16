@@ -29,7 +29,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $posts = Post::all();
+        return view('admin.posts.postCreate', compact('posts'));
     }
 
     /**
@@ -40,7 +41,27 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            "title" => ["required"],
+            "text" => ["required"],
+            "image" => ["required"],
+            "user_id" => ["required"],
+            "category_id" => ["required"],
+        ]);
+
+        $post = new Post();
+        $post->title = $request->title;
+        $post->text = $request->text;
+        $post->image = $request->image;
+        $post->dateDay = date("d");
+        $post->dateMonth = date("M");
+        $post->dateyear = date("Y");
+        $post->user_id = $request->user_id;
+        $post->category_id = $request->category_id;
+        $post->validate = 0;
+        $post->save();
+
+        return redirect()->route('admin.adminHome')->with('success', 'Votre article "' . $request->title . '" a bien été envoyé et est attente de validation');
     }
 
     /**
@@ -51,15 +72,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        // $article = $post;
-        // $logo = Logo::find(1);
-        // $categories = Category::all();
-        // $tags = Tag::all();
-        // $footer = Footer::find(1);
-
-        // $comments = Comment::where('post_id', $article->$post)->where('validate', 1)->get();
-
-        // return view('pages.blog-post', compact('article', 'categories', 'tags', 'footer', 'logo', 'comments')); 
+         
     }
 
     /**
@@ -70,7 +83,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.posts.postEdit', compact('post'));
     }
 
     /**
@@ -82,7 +95,26 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        request()->validate([
+            "title" => ["required"],
+            "text" => ["required"],
+            "image" => ["required"],
+            "user_id" => ["required"],
+            "category_id" => ["required"],
+        ]);
+
+        $post->title = $request->title;
+        $post->text = $request->text;
+        $post->image = $request->image;
+        $post->dateDay = date("d");
+        $post->dateMonth = date("M");
+        $post->dateyear = date("Y");
+        $post->user_id = $request->user_id;
+        $post->category_id = $request->category_id;
+        $post->validate = 0;
+        $post->save();
+        
+        return redirect()->route('admin.adminHome')->with('success', 'Modifications enregistrées, en attente de validation');
     }
 
     /**
@@ -93,6 +125,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('admin.adminHome');
     }
 }
