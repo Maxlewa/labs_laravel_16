@@ -17,7 +17,7 @@
         <script src="{{ asset('js/tailwind.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+        {{-- <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -29,6 +29,15 @@
 
             <!-- Page Content -->
             <main>
+                {{ $slot }}
+            </main>
+        </div> --}}
+
+        <div class="min-h-screen bg-gray-100 flex">
+            @include('admin.partial.nav')
+
+            <!-- Page Content -->
+            <main class="w-full py-8">
                 {{ $slot }}
             </main>
         </div>

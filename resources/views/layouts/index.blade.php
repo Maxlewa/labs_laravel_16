@@ -21,6 +21,9 @@
 	<link rel="stylesheet" href="{{asset('css/owl.carousel.css')}}"/>
 	<link rel="stylesheet" href="{{asset('css/style.css')}}"/>
 
+	<!-- Tailwind -->
+	{{-- <link rel="stylesheet" href="{{asset('css/tailwind.css')}}"/> --}}
+
 
 	<!--[if lt IE 9]>
 	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -42,6 +45,9 @@
 	<script src="{{asset('js/main.js')}}"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0YyDTa0qqOjIerob2VTIwo_XVMhrruxo"></script>
     <script src="{{asset('js/map.js')}}"></script>
+
+	<!-- Tailwind JS -->
+    {{-- <script src="{{asset('js/tailwind.js')}}"></script> --}}
     
 </body>
 </html>
