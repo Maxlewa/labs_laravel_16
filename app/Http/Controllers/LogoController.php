@@ -25,7 +25,9 @@ class LogoController extends Controller
             "name" => ["required"],
         ]);
 
-        $logo->name = $request->name;
+        $request->file('name')->storePublicly('img/', 'public');
+        $logo->name = $request->file('name')->hashName();
+
         $logo->save();
 
         return redirect()->route('dashboard')->with('success', 'Modifications enregistrées');

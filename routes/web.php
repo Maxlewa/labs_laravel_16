@@ -15,6 +15,8 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
+use App\Models\Footer;
+use App\Models\Logo;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -127,5 +129,13 @@ Route::get('/dashboard', function () {
     $users = User::all();
     return view('dashboard', compact('users'));
 })->middleware(['auth'])->name('dashboard');
+
+// Dashboard - General
+
+Route::get('/dashboard/general', function () {
+    $logo = Logo::find(1);
+    $footer = Footer::find(1);
+    return view('admin.pages.general', compact('logo', 'footer'));
+})->middleware(['auth'])->name('adminGeneral');
 
 require __DIR__.'/auth.php';

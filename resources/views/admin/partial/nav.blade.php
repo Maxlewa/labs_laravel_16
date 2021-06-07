@@ -49,9 +49,8 @@
                 </a>
             </li>
             @admin
-            {{-- users --}}
+            <!-- GENERAL, Logo + Footer -->
             <li class="mb-2 px-4 py-2 text-gray-100 flex flex-row  border-gray-300  hover:text-black   hover:bg-gray-300  hover:font-bold rounded rounded-lg">
-                {{-- {{ request()->routeIs('users.index') == true ? 'bg-gray-300 text-black font-bold' : ''}} --}}
                 <span>
                     <svg class="fill-current h-5 w-5 " viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -63,8 +62,8 @@
                             fill="currentColor" />
                     </svg>
                 </span>
-                <a href="">
-                    <span class="ml-2">Contact</span>
+                <a href="{{route('adminGeneral')}}">
+                    <span class="ml-2">General</span>
                 </a>
             </li>
             {{-- avatars --}}
