@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContactMailController;
+use App\Http\Controllers\DiscoverController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ImageController;
@@ -15,9 +16,12 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
+use App\Models\Discover;
 use App\Models\Footer;
 use App\Models\Logo;
+use App\Models\Title;
 use App\Models\User;
+use App\Models\Video;
 use Illuminate\Support\Facades\Route;
 
 /* _____________________________ FRONT _____________________________ */
@@ -82,6 +86,11 @@ Route::delete('/admin/service/{service}/delete', [ServiceController::class,'dest
 Route::get('/admin/title/{title}/edit', [TitleController::class, 'edit'])->name('titleEdit');
 Route::put('/admin/title/{title}/update', [TitleController::class, 'update'])->name('titleUpdate');
 
+// Discover
+
+Route::get('/admin/discover/{discover}/edit', [DiscoverController::class, 'edit'])->name('discoverEdit');
+Route::put('/admin/discover/{discover}/update', [DiscoverController::class, 'update'])->name('discoverUpdate');
+
 // Video
 
 Route::get('/admin/video/{video}/edit', [VideoController::class, 'edit'])->name('videoEdit');
@@ -137,5 +146,14 @@ Route::get('/dashboard/general', function () {
     $footer = Footer::find(1);
     return view('admin.pages.general', compact('logo', 'footer'));
 })->middleware(['auth'])->name('adminGeneral');
+
+// Dashboard - Discover
+
+Route::get('/dashboard/discover', function () {
+    $video = Video::find(1);
+    $title = Title::all();
+    $discover = Discover::find(1);
+    return view('admin.pages.discover', compact('video', 'title', 'discover'));
+})->middleware(['auth'])->name('adminDiscover');
 
 require __DIR__.'/auth.php';

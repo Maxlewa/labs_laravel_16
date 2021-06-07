@@ -39,16 +39,20 @@
                     @endphp
                 </h2>
             </div>
+
+            <!-- Discover Text Left & Right -->
             <div class="row">
-                @foreach ($discovers as $discover)
                 <div class="col-md-6">
-                    <p>{{$discover->text}}</p>
+                    <p>{{$discover->textLeft}}</p>
                 </div>
-                @endforeach
+                <div class="col-md-6">
+                    <p>{{$discover->textRight}}</p>
+                </div>
             </div>
             <div class="text-center mt60">
                 <a href="" class="site-btn">Browse</a>
             </div>
+            
             <!-- popup video -->
             <div class="intro-video">
                 <div class="row">

@@ -10,6 +10,8 @@
                     <form method="POST" action="{{ route('userUpdate', $user) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
+
+                        <h1><b>Modifier vos coordonnées :</b></h1>
             
                         <!-- Name -->
                         <div class="mt-4">

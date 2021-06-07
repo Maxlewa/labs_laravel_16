@@ -19,10 +19,12 @@ class DiscoverController extends Controller
     public function update(Request $request, Discover $discover) {
 
         request()->validate([
-            "text" => ["required"],
+            "textLeft" => ["required"],
+            "textRight" => ["required"],
         ]);
 
-        $discover->text = $request->text;
+        $discover->textLeft = $request->textLeft;
+        $discover->textRight = $request->textRight;
         $discover->save();
 
         return redirect()->route('dashboard')->with('success', 'Modifications enregistrées');

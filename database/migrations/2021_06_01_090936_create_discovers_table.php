@@ -15,7 +15,8 @@ class CreateDiscoversTable extends Migration
     {
         Schema::create('discovers', function (Blueprint $table) {
             $table->id();
-            $table->text('text', 500);
+            $table->text('textLeft', 500);
+            $table->text('textRight', 500);
             $table->timestamps();
         });
     }

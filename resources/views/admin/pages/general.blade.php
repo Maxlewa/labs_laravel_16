@@ -7,9 +7,12 @@
                     <!-- Validation Errors -->
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
+                    <!-- LOGO -->
                     <form method="POST" action="{{ route('logoUpdate', $logo) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
+
+                        <h1><b>Changer le logo Labs :</b></h1>
             
                         <!-- Logo -->
                         <div class="mt-4">
@@ -26,9 +29,12 @@
                         </div>
                     </form>
 
+                    <!-- FOOTER -->
                     <form method="POST" action="{{ route('footerUpdate', $footer) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
+
+                        <h1><b>Modifier le footer :</b></h1>
             
                         <!-- Year -->
                         <div class="mt-4">
