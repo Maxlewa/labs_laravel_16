@@ -71,7 +71,8 @@
 
                         <h1><b>Changer les coordonnées géographiques :</b></h1>
                         <h1>Clic droit sur le point Google Maps, et coller les coordonnées dans le champs</h1>
-                        <h1><i>Cela devrait ressembler à ceci : 50.85550521015151, 4.341224998017869</i></h1>
+                        <br>
+                        <h1><i>Cela devrait ressembler à quelque chose comme ceci : 50.85550521015151, 4.341224998017869</i></h1>
             
                         <!-- Link -->
                         <div class="mt-4">

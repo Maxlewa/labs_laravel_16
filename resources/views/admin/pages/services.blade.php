@@ -7,8 +7,8 @@
                     <!-- Validation Errors -->
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                    <!-- Title 2 -->
-                    <form method="POST" action="{{ route('titleUpdate', $title[1]) }}" enctype="multipart/form-data">
+                    <!-- Title 3 -->
+                    <form method="POST" action="{{ route('titleUpdate', $title[2]) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -19,7 +19,7 @@
                         <div class="mt-4">
                             <x-label for="name" :value="__('Title')" />
             
-                            <x-input id="name" class="block mt-1 w-full" type="text" name="name" value="{{$title[1]->name}}"  required autofocus />
+                            <x-input id="name" class="block mt-1 w-full" type="text" name="name" value="{{$title[2]->name}}"  required autofocus />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
@@ -34,27 +34,24 @@
                         @include('layouts.flash')
                     </div>
 
-                    <!-- Testimonials -->
+                    <!-- Services -->
                     <div>
-                        <h1><b>Testimonials</b></h1>
-                        <a href="{{route('testimonialCreate')}}">
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Ajouter un témoignage</button>
+                        <h1><b>Services</b></h1>
+                        <a href="{{route('serviceCreate')}}">
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Ajouter un service</button>
                         </a>
                         <div class="flex flex-wrap">
-                            @foreach ($testimonials as $testimonial)
-                                <div class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20 mr-6">
-                                    <div class="flex justify-center md:justify-end -mt-16">
-                                      <img class="w-20 h-20 object-cover rounded-full border-4 border-green-400" src="../img/{{$testimonial->image}}">
-                                    </div>
+                            @foreach ($services as $service)
+                                <div class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-10 mr-6">
                                     <div>
-                                      <h2 class="text-gray-800 text-3xl font-semibold">{{$testimonial->firstname}} {{$testimonial->name}}</h2>
-                                      <h4 class="text-gray-800 text-xl font-semibold">{{$testimonial->job}}</h4>
-                                      <p class="mt-2 text-gray-600">{{$testimonial->text}}</p>
+                                      <h2 class="text-gray-800 text-3xl font-semibold">{{$service->title}}</h2>
+                                      <p>Icône : {{$service->icon}}</p>
+                                      <p class="mt-2 text-gray-600">{{$service->text}}</p>
                                       <div class="flex">
-                                            <a href="{{route('testimonialEdit', $testimonial)}}">
+                                            <a href="{{route('serviceEdit', $service)}}">
                                                 <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-4">Edit</button>
                                             </a>
-                                            <form method="post" action="{{route('testimonialDestroy', $testimonial)}}">
+                                            <form method="post" action="{{route('serviceDestroy', $service)}}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4 ml-4" type="submit">Delete</button>

@@ -21,6 +21,7 @@ use App\Models\Discover;
 use App\Models\Footer;
 use App\Models\Logo;
 use App\Models\Map;
+use App\Models\Service;
 use App\Models\Testimonial;
 use App\Models\Title;
 use App\Models\User;
@@ -174,5 +175,13 @@ Route::get('/dashboard/contact', function () {
     $map = Map::find(1);
     return view('admin.pages.contact', compact('contact', 'map'));
 })->middleware(['auth'])->name('adminContact');
+
+// Dashboard - Services
+
+Route::get('/dashboard/services', function () {
+    $services = Service::all();
+    $title = Title::all();
+    return view('admin.pages.services', compact('services', 'title'));
+})->middleware(['auth'])->name('adminServices');
 
 require __DIR__.'/auth.php';
