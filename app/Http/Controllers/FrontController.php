@@ -120,4 +120,5 @@ class FrontController extends Controller
 
         return view('pages.blog-search', compact('articleSearch', 'logo', 'categories', 'tags', 'footer', 'comments')); 
     }
+
 }

@@ -13,7 +13,9 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\TitleController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /* _____________________________ FRONT _____________________________ */
@@ -46,6 +48,14 @@ Route::get('/search', [FrontController::class,'search'])->name('search');
 Route::post('/comment/store/{id}', [CommentController::class, 'store'])->name('commentStore');
 
 /* ---------------------- C R U D ---------------------- */
+
+// Users
+
+Route::get('/admin/user/create', [UserController::class, 'create'])->name('userCreate');
+Route::post('/admin/user/store', [UserController::class, 'store'])->name('userStore');
+Route::get('/admin/user/{user}/edit', [UserController::class, 'edit'])->name('userEdit');
+Route::put('/admin/user/{user}/update', [UserController::class, 'update'])->name('userUpdate');
+Route::delete('/admin/user/{user}/delete', [UserController::class,'destroy'])->name('userDestroy');
 
 // Images carousel
 
@@ -114,7 +124,8 @@ Route::put('/admin/footer/{footer}/update', [FooterController::class, 'update'])
 // _______________ DASHBOARD *
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $users = User::all();
+    return view('dashboard', compact('users'));
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

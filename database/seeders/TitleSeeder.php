@@ -20,7 +20,6 @@ class TitleSeeder extends Seeder
             ],
             [
                 "name" => "WHAT OUR CLIENTS SAY",
-
             ],
             [
                 "name" => "GET IN THE LAB AND SEE THE SERVICES",
@@ -28,9 +27,9 @@ class TitleSeeder extends Seeder
             [
                 "name" => "GET IN THE LAB AND MEET THE TEAM",
             ],
-            [
-                "name" => "GET IN THE LAB AND SEE THE SERVICES",
-            ],
+            // [
+            //     "name" => "GET IN THE LAB AND SEE THE SERVICES",
+            // ],
             [
                 "name" => "GET IN THE LAB AND DISCOVER THE WORLD",
             ],

@@ -1,23 +1,28 @@
 <nav class="flex flex-col bg-purple-900 w-64 max-h-full px-4 tex-gray-900">
+
+    <!-- USER Name + Photo -->
     <div class="flex flex-wrap mt-8">
         <div class="w-1/2">
-            <img src="{{ asset('img/'. Auth::user()->photo) }}" class="mx-auto w-20 h-20 rounded-full" />
+            <img src="{{ asset('img/'. Auth::user()->photo) }}" class="mx-auto h-30 border-4 border-green-500" />
         </div>
         <div class="w-1/2 mt-2 text-right">
-            <span class="font-semibold text-white">{{ Auth::user()->name }} {{ Auth::user()->firstname }}</span>
-            <form method="POST" action="{{ route('logout') }}" class="mt-4">
-                @csrf
-                <button class="bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded">Log Out</button>
-
-            </form>        
+            <span class="font-semibold text-white">{{ Auth::user()->name }} {{ Auth::user()->firstname }}</span>       
         </div>
- 
     </div>
+
+    <!-- LOG OUT -->
+    <div class="flex justify-center">
+        <form method="POST" action="{{ route('logout') }}" class="mt-4">
+            @csrf
+            <button class="bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-6 rounded">Log Out</button>
+        </form> 
+    </div>
+    
     <div class="mt-5 mb-4">
-        <ul class="ml-4">
-            {{-- dashboard --}}
-            <li
-                class="mb-2 px-4 py-4 text-gray-100 flex flex-row  border-gray-300 hover:text-black   hover:bg-gray-300  hover:font-bold rounded rounded-lg">
+        <ul class="ml-1">
+
+            <!-- DASHBOARD -->
+            <li class="mb-2 px-4 py-2 text-gray-100 flex flex-row  border-gray-300 hover:text-black   hover:bg-gray-300  hover:font-bold rounded rounded-lg">
                 <span>
                     <svg class="fill-current h-5 w-5 " viewBox="0 0 24 24">
                         <path d="M16 20h4v-4h-4m0-2h4v-4h-4m-6-2h4V4h-4m6
@@ -29,10 +34,23 @@
                     <span class="ml-2">Dashboard</span>
                 </a>
             </li>
+
+            <!-- INFO -->
+            <li class="mb-2 px-4 py-2 text-gray-100 flex flex-row  border-gray-300 hover:text-black   hover:bg-gray-300  hover:font-bold rounded rounded-lg">
+                <span>
+                    <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
+                        <path d="M12 4a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0
+                    014-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4
+                    8-4z"></path>
+                    </svg>
+                </span>
+                <a href="{{ route('userEdit', Auth::id()) }}">
+                    <span class="ml-2">Update your info</span>
+                </a>
+            </li>
             @admin
             {{-- users --}}
-            <li
-                class="mb-2 px-4 py-4 text-gray-100 flex flex-row  border-gray-300  hover:text-black   hover:bg-gray-300  hover:font-bold rounded rounded-lg">
+            <li class="mb-2 px-4 py-2 text-gray-100 flex flex-row  border-gray-300  hover:text-black   hover:bg-gray-300  hover:font-bold rounded rounded-lg">
                 {{-- {{ request()->routeIs('users.index') == true ? 'bg-gray-300 text-black font-bold' : ''}} --}}
                 <span>
                     <svg class="fill-current h-5 w-5 " viewBox="0 0 24 24" fill="none"
@@ -46,12 +64,11 @@
                     </svg>
                 </span>
                 <a href="">
-                    <span class="ml-2">Users</span>
+                    <span class="ml-2">Contact</span>
                 </a>
             </li>
             {{-- avatars --}}
-            <li
-                class="mb-2 px-4 py-4 text-gray-100 flex flex-row  border-gray-300 hover:text-black   hover:bg-gray-300  hover:font-bold rounded rounded-lg">
+            <li class="mb-2 px-4 py-2 text-gray-100 flex flex-row  border-gray-300 hover:text-black   hover:bg-gray-300  hover:font-bold rounded rounded-lg">
                 <span>
                     <svg class="fill-current h-5 w-5 " viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -70,8 +87,7 @@
                 </a>
             </li>
             {{-- images --}}
-            <li
-                class="mb-2 px-4 py-4 text-gray-100 flex flex-row  border-gray-300 hover:text-black   hover:bg-gray-300  hover:font-bold rounded rounded-lg">
+            <li class="mb-2 px-4 py-2 text-gray-100 flex flex-row  border-gray-300 hover:text-black   hover:bg-gray-300  hover:font-bold rounded rounded-lg">
                 <span>
                     <svg class="fill-current h-5 w-5 " viewBox="0 0 24 24">
                         <path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2
@@ -84,8 +100,7 @@
                 </a>
             </li>
             {{-- blog --}}
-            <li
-                class="mb-2 px-4 py-4 text-gray-100 flex flex-row  border-gray-300 hover:text-black   hover:bg-gray-300  hover:font-bold rounded rounded-lg">
+            <li class="mb-2 px-4 py-2 text-gray-100 flex flex-row  border-gray-300 hover:text-black   hover:bg-gray-300  hover:font-bold rounded rounded-lg">
                 <span>
                     <svg class="fill-current h-5 w-5 " viewBox="0 0 24 24">
                         <path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2
@@ -98,8 +113,7 @@
                 </a>
             </li>
             {{-- categories --}}
-            <li
-                class="mb-2 px-4 py-4 text-gray-100 flex flex-row  border-gray-300 hover:text-black   hover:bg-gray-300  hover:font-bold rounded rounded-lg">
+            <li class="mb-2 px-4 py-2 text-gray-100 flex flex-row  border-gray-300 hover:text-black   hover:bg-gray-300  hover:font-bold rounded rounded-lg">
                 <span>
                     <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
                         <path d="M12 4a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0
@@ -113,8 +127,7 @@
             </li>
             @endadmin
             {{-- Galerie --}}
-            <li
-                class="mb-2 px-4 py-4 text-gray-100 flex flex-row  border-gray-300 hover:text-black   hover:bg-gray-300  hover:font-bold rounded rounded-lg">
+            <li class="mb-2 px-4 py-2 text-gray-100 flex flex-row  border-gray-300 hover:text-black   hover:bg-gray-300  hover:font-bold rounded rounded-lg">
                 <span>
                     <svg class="fill-current h-5 w-5 " viewBox="0 0 24 24">
                         <path d="M12 13H7v5h5v2H5V10h2v1h5v2M8
