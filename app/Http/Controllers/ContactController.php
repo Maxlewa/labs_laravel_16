@@ -28,9 +28,9 @@ class ContactController extends Controller
         request()->validate([
             "description" => ["required"],
             "street" => ["required"],
-            "postcode" => ["required", "numeric"],
+            "postcode" => ["required"],
             "city" => ["required"],
-            "phone" => ["required", "numeric"],
+            "phone" => ["required"],
             "email" => ["required", "email"],
         ]);
 

@@ -16,9 +16,11 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
+use App\Models\Contact;
 use App\Models\Discover;
 use App\Models\Footer;
 use App\Models\Logo;
+use App\Models\Map;
 use App\Models\Testimonial;
 use App\Models\Title;
 use App\Models\User;
@@ -164,5 +166,13 @@ Route::get('/dashboard/testimonials', function () {
     $title = Title::all();
     return view('admin.pages.testimonial', compact('testimonials', 'title'));
 })->middleware(['auth'])->name('adminTestimonial');
+
+// Dashboard - Contact
+
+Route::get('/dashboard/contact', function () {
+    $contact = Contact::find(1);
+    $map = Map::find(1);
+    return view('admin.pages.contact', compact('contact', 'map'));
+})->middleware(['auth'])->name('adminContact');
 
 require __DIR__.'/auth.php';
