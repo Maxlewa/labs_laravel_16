@@ -37,9 +37,9 @@
                         <br>
                     </div>
                     <div class="py-2 mt-4">
-                        <div class="">
+                        <div class="text-center">
                             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                                <div class="p-6 border-b border-gray-200 text-green-600 bg-green-100">
+                                <div class="px-6 py-3 border-b border-gray-200 text-green-600 bg-green-100">
                                     @if (Auth::User()->genre->id == 1)
                                         <b>Vous êtes connecté</b>
                                     @elseif (Auth::User()->genre->id == 2)

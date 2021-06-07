@@ -21,6 +21,7 @@ use App\Models\Contact;
 use App\Models\Discover;
 use App\Models\Feature;
 use App\Models\Footer;
+use App\Models\Image;
 use App\Models\Logo;
 use App\Models\Map;
 use App\Models\Service;
@@ -71,8 +72,11 @@ Route::delete('/admin/user/{user}/delete', [UserController::class,'destroy'])->n
 
 // Images carousel
 
+Route::get('/admin/image/create', [ImageController::class, 'create'])->name('imageCreate');
+Route::post('/admin/image/store', [ImageController::class, 'store'])->name('imageStore');
 Route::get('/admin/image/{image}/edit', [ImageController::class, 'edit'])->name('imageEdit');
 Route::put('/admin/image/{image}/update', [ImageController::class, 'update'])->name('imageUpdate');
+Route::delete('/admin/image/{image}/delete', [ImageController::class,'destroy'])->name('imageDestroy');
 
 // Logo
 
@@ -194,5 +198,12 @@ Route::get('/dashboard/features', function () {
     $title = Title::all();
     return view('admin.pages.features', compact('features', 'title'));
 })->middleware(['auth'])->name('adminFeatures');
+
+// Dashboard - CAROUSEL
+
+Route::get('/dashboard/carousel', function () {
+    $images = Image::all();
+    return view('admin.pages.carousel', compact('images'));
+})->middleware(['auth'])->name('adminCarousel');
 
 require __DIR__.'/auth.php';
