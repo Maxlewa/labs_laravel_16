@@ -4,6 +4,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContactMailController;
 use App\Http\Controllers\DiscoverController;
+use App\Http\Controllers\FeatureController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ImageController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use App\Models\Contact;
 use App\Models\Discover;
+use App\Models\Feature;
 use App\Models\Footer;
 use App\Models\Logo;
 use App\Models\Map;
@@ -128,8 +130,8 @@ Route::put('/admin/map/{map}/update', [MapController::class, 'update'])->name('m
 
 // Features - Smartphone - Left/Right
 
-Route::get('/admin/feature/{feature}/edit', [LogoController::class, 'edit'])->name('featureEdit');
-Route::put('/admin/feature/{feature}/update', [LogoController::class, 'update'])->name('featureUpdate');
+Route::get('/admin/feature/{feature}/edit', [FeatureController::class, 'edit'])->name('featureEdit');
+Route::put('/admin/feature/{feature}/update', [FeatureController::class, 'update'])->name('featureUpdate');
 
 // Footer
 
@@ -140,10 +142,11 @@ Route::put('/admin/footer/{footer}/update', [FooterController::class, 'update'])
 
 Route::get('/dashboard', function () {
     $users = User::all();
-    return view('dashboard', compact('users'));
+    $logo = Logo::find(1);
+    return view('dashboard', compact('users', 'logo'));
 })->middleware(['auth'])->name('dashboard');
 
-// Dashboard - General
+// Dashboard - GENERAL
 
 Route::get('/dashboard/general', function () {
     $logo = Logo::find(1);
@@ -151,7 +154,7 @@ Route::get('/dashboard/general', function () {
     return view('admin.pages.general', compact('logo', 'footer'));
 })->middleware(['auth'])->name('adminGeneral');
 
-// Dashboard - Discover
+// Dashboard - DISCOVER
 
 Route::get('/dashboard/discover', function () {
     $video = Video::find(1);
@@ -160,7 +163,7 @@ Route::get('/dashboard/discover', function () {
     return view('admin.pages.discover', compact('video', 'title', 'discover'));
 })->middleware(['auth'])->name('adminDiscover');
 
-// Dashboard - Testimonials
+// Dashboard - TESTIMONIALS
 
 Route::get('/dashboard/testimonials', function () {
     $testimonials = Testimonial::all();
@@ -168,7 +171,7 @@ Route::get('/dashboard/testimonials', function () {
     return view('admin.pages.testimonial', compact('testimonials', 'title'));
 })->middleware(['auth'])->name('adminTestimonial');
 
-// Dashboard - Contact
+// Dashboard - CONTACT
 
 Route::get('/dashboard/contact', function () {
     $contact = Contact::find(1);
@@ -176,12 +179,20 @@ Route::get('/dashboard/contact', function () {
     return view('admin.pages.contact', compact('contact', 'map'));
 })->middleware(['auth'])->name('adminContact');
 
-// Dashboard - Services
+// Dashboard - SERVICES
 
 Route::get('/dashboard/services', function () {
     $services = Service::all();
     $title = Title::all();
     return view('admin.pages.services', compact('services', 'title'));
 })->middleware(['auth'])->name('adminServices');
+
+// Dashboard - FEATURES
+
+Route::get('/dashboard/features', function () {
+    $features = Feature::all();
+    $title = Title::all();
+    return view('admin.pages.features', compact('features', 'title'));
+})->middleware(['auth'])->name('adminFeatures');
 
 require __DIR__.'/auth.php';

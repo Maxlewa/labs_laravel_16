@@ -56,7 +56,7 @@ class ServiceController extends Controller
         $service->text = $request->text;
         $service->save();
 
-        return redirect()->route('dashboard')->with('success', 'Modifications enregistrées');
+        return redirect()->route('adminServices')->with('success', 'Le service "' . $request->title . '" a bien été modifié');
     }
 
     // DELETE

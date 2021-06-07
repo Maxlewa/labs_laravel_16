@@ -5,17 +5,13 @@
         </h2>
     </x-slot>
 
-    <div class="py-6">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 border-b border-gray-200 text-green-600 bg-green-100">
-                    <b>Vous êtes connecté(e)</b>
-                </div>
-            </div>
-        </div>
+    <div class="flex justify-center my-4">
+        <img src="../img/{{$logo->name}}" alt="" style="height: 60px" class="mb-4">
     </div>
 
-    @include('layouts.flash')
+    <div class="mb-4">
+        @include('layouts.flash')
+    </div>
 
     <div class="py-2">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -36,15 +32,28 @@
                             <h6 class="card-subtitle mb-2 text-muted"><b>Rôle :</b> {{ Auth::User()->role->name }}</h6>
                             <h6 class="card-subtitle mb-2 text-muted"><b>Job :</b> {{ Auth::User()->job->name }}</h6>
                             <p class="card-subtitle mb-2 text-muted"><b>Description :</b> {{ Auth::User()->description }}</p>
-                            {{-- <h6 class="card-text ">Rôle : {{ Auth::User()->role->nom }}</h6> --}}
                             <br>
                         </div>
                         <br>
+                    </div>
+                    <div class="py-2 mt-4">
+                        <div class="">
+                            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                                <div class="p-6 border-b border-gray-200 text-green-600 bg-green-100">
+                                    @if (Auth::User()->genre->id == 1)
+                                        <b>Vous êtes connecté</b>
+                                    @elseif (Auth::User()->genre->id == 2)
+                                        <b>Vous êtes connectée</b>
+                                    @else
+                                        <b>Vous êtes connecté.e</b>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
 </x-app-layout>

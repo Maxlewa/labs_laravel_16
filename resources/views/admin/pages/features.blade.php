@@ -1,0 +1,61 @@
+<x-app-layout>
+    <div class="py-2">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
+
+                    <!-- Validation Errors -->
+                    <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
+                    <!-- Title 4 -->
+                    <form method="POST" action="{{ route('titleUpdate', $title[3]) }}" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+
+                        <h1><b>Changer le titre :</b></h1>
+                        <h1>A l'aide des parenthèses, surligner au choix</h1>
+            
+                        <!-- Name -->
+                        <div class="mt-4">
+                            <x-label for="name" :value="__('Title')" />
+            
+                            <x-input id="name" class="block mt-1 w-full" type="text" name="name" value="{{$title[3]->name}}"  required autofocus />
+                        </div>
+
+                        <div class="flex items-center justify-end mt-4">
+            
+                            <x-button class="ml-4" type="submit">
+                                {{ __('Update') }}
+                            </x-button>
+                        </div>
+                    </form>
+
+                    <div class="my-4">
+                        @include('layouts.flash')
+                    </div>
+
+                    <!-- Features -->
+                    <div>
+                        <h1><b>Services</b></h1>
+                        <div class="flex flex-wrap">
+                            @foreach ($features as $feature)
+                                <div class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-10 mr-6">
+                                    <div>
+                                      <h2 class="text-gray-800 text-3xl font-semibold">{{$feature->title}}</h2>
+                                      <p>Icône : {{$feature->icon}}</p>
+                                      <p class="mt-2 text-gray-600">{{$feature->text}}</p>
+                                      <div class="flex">
+                                            <a href="{{route('featureEdit', $feature)}}">
+                                                <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-4">Edit</button>
+                                            </a>
+                                      </div>
+                                    </div>
+                                  </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
