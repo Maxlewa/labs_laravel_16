@@ -64,6 +64,6 @@ class ServiceController extends Controller
     public function destroy(Service $service) {
 
         $service->delete();
-        return redirect()->route('adminServices')->with('success', 'Le service ' . $service->title . ' a bien été supprimé');
+        return redirect()->route('adminServices')->with('success', 'Le service "' . $service->title . '" a bien été supprimé');
     }
 }

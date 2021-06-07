@@ -119,6 +119,6 @@ class TestimonialController extends Controller
     public function destroy(Testimonial $testimonial)
     {
         $testimonial->delete();
-        return redirect()->route('adminTestimonial')->with('success', 'Le témoignage a bien été supprimé');
+        return redirect()->route('adminTestimonial')->with('success', 'Le témoignage de ' . $testimonial->firstname . ' a bien été supprimé');
     }
 }
