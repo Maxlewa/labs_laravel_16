@@ -19,6 +19,7 @@ use App\Http\Controllers\VideoController;
 use App\Models\Discover;
 use App\Models\Footer;
 use App\Models\Logo;
+use App\Models\Testimonial;
 use App\Models\Title;
 use App\Models\User;
 use App\Models\Video;
@@ -155,5 +156,13 @@ Route::get('/dashboard/discover', function () {
     $discover = Discover::find(1);
     return view('admin.pages.discover', compact('video', 'title', 'discover'));
 })->middleware(['auth'])->name('adminDiscover');
+
+// Dashboard - Testimonials
+
+Route::get('/dashboard/testimonials', function () {
+    $testimonials = Testimonial::all();
+    $title = Title::all();
+    return view('admin.pages.testimonial', compact('testimonials', 'title'));
+})->middleware(['auth'])->name('adminTestimonial');
 
 require __DIR__.'/auth.php';

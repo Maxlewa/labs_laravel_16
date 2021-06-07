@@ -45,11 +45,14 @@ class TestimonialController extends Controller
         ]);
 
         $testimonial = new Testimonial();
+
+        $request->file('image')->storePublicly('img/', 'public');
+        $testimonial->image = $request->file('image')->hashName();
+
         $testimonial->firstname = $request->firstname;
         $testimonial->name = $request->name;
         $testimonial->text = $request->text;
         $testimonial->job = $request->job;
-        $testimonial->image = $request->image;
         $testimonial->save();
 
         return redirect()->route('dashboard')->with('success', $request->title . ' a bien été créé');
@@ -94,14 +97,17 @@ class TestimonialController extends Controller
             "image" => ["required"],
         ]);
 
+        $request->file('image')->storePublicly('img/', 'public');
+        $testimonial->image = $request->file('image')->hashName();
+
         $testimonial->firstname = $request->firstname;
         $testimonial->name = $request->name;
         $testimonial->text = $request->text;
         $testimonial->job = $request->job;
-        $testimonial->image = $request->image;
+        
         $testimonial->save();
 
-        return redirect()->route('dashboard')->with('success', 'Modifications enregistrées');
+        return redirect()->route('adminTestimonial')->with('success', 'Modifications enregistrées');
     }
 
     /**
