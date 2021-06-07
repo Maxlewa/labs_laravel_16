@@ -36,6 +36,9 @@
 
                     <div>
                         <h1><b>Testimonials</b></h1>
+                        <a href="{{route('testimonialCreate')}}">
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Ajouter un témoignage</button>
+                        </a>
                         <div class="flex flex-wrap">
                             @foreach ($testimonials as $testimonial)
                                 <div class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20 mr-6">
@@ -46,9 +49,16 @@
                                       <h2 class="text-gray-800 text-3xl font-semibold">{{$testimonial->firstname}} {{$testimonial->name}}</h2>
                                       <h4 class="text-gray-800 text-xl font-semibold">{{$testimonial->job}}</h4>
                                       <p class="mt-2 text-gray-600">{{$testimonial->text}}</p>
-                                      <a href="{{route('testimonialEdit', $testimonial)}}">
-                                          <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-4">Edit</button>
-                                      </a>
+                                      <div class="flex">
+                                            <a href="{{route('testimonialEdit', $testimonial)}}">
+                                                <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-4">Edit</button>
+                                            </a>
+                                            <form method="post" action="{{route('testimonialDestroy', $testimonial)}}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4 ml-4" type="submit">Delete</button>
+                                            </form>
+                                      </div>
                                     </div>
                                   </div>
                             @endforeach

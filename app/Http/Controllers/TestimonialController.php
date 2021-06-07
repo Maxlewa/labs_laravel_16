@@ -25,7 +25,7 @@ class TestimonialController extends Controller
     public function create()
     {
         $testimonials = Testimonial::all();
-        return view('admin.services.serviceCreate', compact('testimonials'));
+        return view('admin.testimonials.testimonialCreate', compact('testimonials'));
     }
 
     /**
@@ -55,7 +55,7 @@ class TestimonialController extends Controller
         $testimonial->job = $request->job;
         $testimonial->save();
 
-        return redirect()->route('dashboard')->with('success', $request->title . ' a bien été créé');
+        return redirect()->route('adminTestimonial')->with('success', 'Le témoignage de ' . $request->firstname . ' a bien été enregistré');
     }
 
     /**
@@ -119,6 +119,6 @@ class TestimonialController extends Controller
     public function destroy(Testimonial $testimonial)
     {
         $testimonial->delete();
-        return redirect()->route('dashboard');
+        return redirect()->route('adminTestimonial')->with('success', 'Le témoignage a bien été supprimé');
     }
 }
