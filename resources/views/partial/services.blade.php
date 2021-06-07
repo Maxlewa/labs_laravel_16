@@ -4,7 +4,7 @@
         <div class="section-title dark">
             <h2>
                 @php
-                    $title1 = str_replace('(', '<span>', $title->titleHome3);
+                    $title1 = str_replace('(', '<span>', $title[2]->name);
                     $title2 = str_replace(')', '</span>', $title1);
                     echo $title2
                 @endphp

@@ -31,6 +31,6 @@ class FooterController extends Controller
         $footer->person = $request->person;
         $footer->save();
 
-        return redirect()->route('admin.adminHome')->with('success', 'Modifications enregistrées');
+        return redirect()->route('dashboard')->with('success', 'Modifications enregistrées');
     }
 }

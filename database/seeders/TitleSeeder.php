@@ -16,13 +16,24 @@ class TitleSeeder extends Seeder
     {
         DB::table('titles')->insert([
             [
-                "titleHome1" => "GET IN THE LAB AND DISCOVER THE WORLD",
-                "titleHome2" => "WHAT OUR CLIENTS SAY",
-                "titleHome3" => "GET IN THE LAB AND SEE THE SERVICES",
-                "titleHome4" => "GET IN THE LAB AND MEET THE TEAM",
-                "titleServices1" => "GET IN THE LAB AND SEE THE SERVICES",
-                "titleServices2" => "GET IN THE LAB AND DISCOVER THE WORLD",
-            ]
+                "name" => "GET IN THE LAB AND DISCOVER THE WORLD",
+            ],
+            [
+                "name" => "WHAT OUR CLIENTS SAY",
+
+            ],
+            [
+                "name" => "GET IN THE LAB AND SEE THE SERVICES",
+            ],
+            [
+                "name" => "GET IN THE LAB AND MEET THE TEAM",
+            ],
+            [
+                "name" => "GET IN THE LAB AND SEE THE SERVICES",
+            ],
+            [
+                "name" => "GET IN THE LAB AND DISCOVER THE WORLD",
+            ],
         ]);
     }
 }

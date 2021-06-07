@@ -61,7 +61,7 @@ class PostController extends Controller
         $post->validate = 0;
         $post->save();
 
-        return redirect()->route('admin.adminHome')->with('success', 'Votre article "' . $request->title . '" a bien été envoyé et est attente de validation');
+        return redirect()->route('dashboard')->with('success', 'Votre article "' . $request->title . '" a bien été envoyé et est attente de validation');
     }
 
     /**

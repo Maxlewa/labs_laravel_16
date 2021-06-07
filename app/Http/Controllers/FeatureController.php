@@ -29,6 +29,6 @@ class FeatureController extends Controller
         $feature->icon = $request->icon;
         $feature->save();
 
-        return redirect()->route('admin.adminHome')->with('success', 'Modifications enregistrées');
+        return redirect()->route('dashboard')->with('success', 'Modifications enregistrées');
     }
 }

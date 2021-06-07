@@ -28,7 +28,7 @@ class LogoController extends Controller
         $logo->name = $request->name;
         $logo->save();
 
-        return redirect()->route('admin.adminHome')->with('success', 'Modifications enregistrées');
+        return redirect()->route('dashboard')->with('success', 'Modifications enregistrées');
     }
 
     /**

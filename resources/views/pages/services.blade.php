@@ -45,7 +45,7 @@
         <div class="section-title dark" id="servicePaginate">
             <h2>
                 @php
-                    $title1 = str_replace('(', '<span>', $title->titleServices1);
+                    $title1 = str_replace('(', '<span>', $title[4]->name);
                     $title2 = str_replace(')', '</span>', $title1);
                     echo $title2
                 @endphp
@@ -82,7 +82,7 @@
         <div class="section-title">
             <h2>
                 @php
-                    $title1 = str_replace('(', '<span>', $title->titleServices2);
+                    $title1 = str_replace('(', '<span>', $title[5]->name);
                     $title2 = str_replace(')', '</span>', $title1);
                     echo $title2
                 @endphp

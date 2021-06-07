@@ -25,6 +25,6 @@ class VideoController extends Controller
         $video->link = $request->link;
         $video->save();
 
-        return redirect()->route('admin.adminHome')->with('success', 'Modifications enregistrées');
+        return redirect()->route('dashboard')->with('success', 'Modifications enregistrées');
     }
 }

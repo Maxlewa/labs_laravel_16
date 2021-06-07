@@ -7,7 +7,7 @@
                 <div class="section-title left">
                     <h2>
                         @php
-                            $title1 = str_replace('(', '<span>', $title->titleHome2);
+                            $title1 = str_replace('(', '<span>', $title[1]->name);
                             $title2 = str_replace(')', '</span>', $title1);
                             echo $title2
                         @endphp

@@ -31,7 +31,7 @@ class ServiceController extends Controller
         $service->text = $request->text;
         $service->save();
 
-        return redirect()->route('admin.adminHome')->with('success', $request->title . ' a bien été créé');
+        return redirect()->route('dashboard')->with('success', $request->title . ' a bien été créé');
     }
 
     // EDIT Service
@@ -56,7 +56,7 @@ class ServiceController extends Controller
         $service->text = $request->text;
         $service->save();
 
-        return redirect()->route('admin.adminHome')->with('success', 'Modifications enregistrées');
+        return redirect()->route('dashboard')->with('success', 'Modifications enregistrées');
     }
 
     // DELETE
@@ -64,6 +64,6 @@ class ServiceController extends Controller
     public function destroy(Service $service) {
 
         $service->delete();
-        return redirect()->route('admin.adminHome');
+        return redirect()->route('dashboard');
     }
 }

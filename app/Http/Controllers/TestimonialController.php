@@ -52,7 +52,7 @@ class TestimonialController extends Controller
         $testimonial->image = $request->image;
         $testimonial->save();
 
-        return redirect()->route('admin.adminHome')->with('success', $request->title . ' a bien été créé');
+        return redirect()->route('dashboard')->with('success', $request->title . ' a bien été créé');
     }
 
     /**
@@ -101,7 +101,7 @@ class TestimonialController extends Controller
         $testimonial->image = $request->image;
         $testimonial->save();
 
-        return redirect()->route('admin.adminHome')->with('success', 'Modifications enregistrées');
+        return redirect()->route('dashboard')->with('success', 'Modifications enregistrées');
     }
 
     /**
@@ -113,6 +113,6 @@ class TestimonialController extends Controller
     public function destroy(Testimonial $testimonial)
     {
         $testimonial->delete();
-        return redirect()->route('admin.adminHome');
+        return redirect()->route('dashboard');
     }
 }

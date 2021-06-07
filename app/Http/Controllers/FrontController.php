@@ -33,7 +33,7 @@ class FrontController extends Controller
         $discovers = Discover::all();
         $images = Image::all();
         $logo = Logo::find(1);
-        $title = Title::find(1);
+        $title = Title::all();
         $contact = Contact::find(1);
         $testimonials = Testimonial::all();
         $subjects = Subject::all();
@@ -65,7 +65,7 @@ class FrontController extends Controller
         $featuresLeft = Feature::where('id', "<", 4)->get();
         $featuresRight = Feature::where('id', ">", 3)->get();
         $logo = Logo::find(1);
-        $title = Title::find(1);
+        $title = Title::all();
         $posts3 = Post::inRandomOrder()->limit(3)->get();
         $subjects = Subject::all();
         $contact = Contact::find(1);

@@ -19,22 +19,12 @@ class TitleController extends Controller
     public function update(Request $request, Title $title) {
 
         request()->validate([
-            "titleHome1" => ["required"],
-            "titleHome2" => ["required"],
-            "titleHome3" => ["required"],
-            "titleHome4" => ["required"],
-            "titleServices1" => ["required"],
-            "titleServices2" => ["required"],
+            "name" => ["required"],
         ]);
 
-        $title->titleHome1 = $request->titleHome1;
-        $title->titleHome2 = $request->titleHome2;
-        $title->titleHome3 = $request->titleHome3;
-        $title->titleHome4 = $request->titleHome4;
-        $title->titleServices1 = $request->titleServices1;
-        $title->titleServices2 = $request->titleServices2;
+        $title->name = $request->name;
         $title->save();
 
-        return redirect()->route('admin.adminHome')->with('success', 'Modifications enregistrées');
+        return redirect()->route('dashboard')->with('success', 'Modifications enregistrées');
     }
 }
