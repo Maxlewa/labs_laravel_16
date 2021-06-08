@@ -57,7 +57,7 @@
             <div class="col-md-4 col-sm-6">
                 <div class="service">
                     <div class="icon">
-                        <i class="{{$service->icon}}"></i>
+                        <i class="{{$service->icon->name}}"></i>
                     </div>
                     <div class="service-text">
                         <h2>{{$service->title}}</h2>
@@ -98,7 +98,7 @@
                         <p>{{$fLeft->text}}</p>
                     </div>
                     <div class="icon">
-                        <i class="{{$fLeft->icon}}"></i>
+                        <i class="{{$fLeft->icon->name}}"></i>
                     </div>
                 </div>
                 @endforeach
@@ -114,7 +114,7 @@
                 @foreach ($featuresRight as $fRight)
                 <div class="icon-box light">
                     <div class="icon">
-                        <i class="{{$fRight->icon}}"></i>
+                        <i class="{{$fRight->icon->name}}"></i>
                     </div>
                     <div class="service-text">
                         <h2>{{$fRight->title}}</h2>

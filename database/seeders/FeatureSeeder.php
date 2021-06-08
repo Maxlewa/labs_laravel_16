@@ -18,32 +18,32 @@ class FeatureSeeder extends Seeder
             [
                 "title" => "Get in the lab",
                 "text" => "Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec",
-                "icon" => "flaticon-002-caliper"
+                "icon_id" => 1
             ],
             [
                 "title" => "Projects online",
                 "text" => "Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec",
-                "icon" => "flaticon-019-coffee-cup"
+                "icon_id" => 2
             ],
             [
                 "title" => "SMART MARKETING",
                 "text" => "Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec",
-                "icon" => "flaticon-020-creativity"
+                "icon_id" => 3
             ],
             [
                 "title" => "Get in the lab",
                 "text" => "Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec",
-                "icon" => "flaticon-037-idea"
+                "icon_id" => 4
             ],
             [
                 "title" => "Projects online",
                 "text" => "Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec",
-                "icon" => "flaticon-025-imagination"
+                "icon_id" => 5
             ],
             [
                 "title" => "SMART MARKETING",
                 "text" => "Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec",
-                "icon" => "flaticon-008-team"
+                "icon_id" => 6
             ],
         ]);
     }
