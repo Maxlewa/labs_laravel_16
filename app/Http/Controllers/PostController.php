@@ -126,6 +126,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('admin.adminHome');
+        return redirect()->route('adminBlog')->with('success', 'Le post "' . $post->title . '" a bien été supprimé');;
     }
 }

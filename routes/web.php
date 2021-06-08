@@ -21,9 +21,12 @@ use App\Models\Contact;
 use App\Models\Discover;
 use App\Models\Feature;
 use App\Models\Footer;
+use App\Models\Genre;
 use App\Models\Image;
+use App\Models\Job;
 use App\Models\Logo;
 use App\Models\Map;
+use App\Models\Post;
 use App\Models\Service;
 use App\Models\Testimonial;
 use App\Models\Title;
@@ -142,7 +145,7 @@ Route::put('/admin/feature/{feature}/update', [FeatureController::class, 'update
 Route::get('/admin/footer/{footer}/edit', [FooterController::class, 'edit'])->name('footerEdit');
 Route::put('/admin/footer/{footer}/update', [FooterController::class, 'update'])->name('footerUpdate');
 
-// _______________ DASHBOARD *
+// ___________________________________ DASHBOARD *
 
 Route::get('/dashboard', function () {
     $users = User::all();
@@ -205,5 +208,21 @@ Route::get('/dashboard/carousel', function () {
     $images = Image::all();
     return view('admin.pages.carousel', compact('images'));
 })->middleware(['auth'])->name('adminCarousel');
+
+// Dashboard - BLOG
+
+Route::get('/dashboard/blog', function () {
+    $posts = Post::all();
+    return view('admin.pages.blog', compact('posts'));
+})->middleware(['auth'])->name('adminBlog');
+
+// __________________ REGISTER *
+
+// Route::get('/register', function () {
+//     $users = User::all();
+//     $genres = Genre::all();
+//     $jobs = Job::all();
+//     return view('auth.register', compact('users', 'genres', 'jobs' ));
+// })->name('register');
 
 require __DIR__.'/auth.php';

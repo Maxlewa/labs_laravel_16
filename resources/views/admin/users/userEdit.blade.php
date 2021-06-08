@@ -63,7 +63,7 @@
                             <select id="genre_id" class="block mt-1 w-full ml-1" name="genre_id" :value="old('genre_id')">
                                 <option value="">Select a genre</option>
                                 @foreach ($genres as $genre)
-                                <option value="{{$genre->id}}">{{$genre->name}}</option>
+                                    <option value="{{$genre->id}}">{{$genre->name}}</option>
                                 @endforeach
                             </select>
                         </div>

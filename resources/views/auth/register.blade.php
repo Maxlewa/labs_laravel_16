@@ -4,7 +4,7 @@
             {{-- <a href="/">
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
             </a> --}}
-            <img src="img/{{$logo->name}}" alt="" style="height: 80px" class="mb-3">
+            <img src="img/{{$logo->name}}" alt="" style="height: 80px" class="mb-3 mt-4">
         </x-slot>
 
         <!-- Validation Errors -->
@@ -13,19 +13,80 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
+            <!-- ROW 1 -->
+            <div class="grid grid-cols-2">
+                <!-- Name -->
+                <div class="mr-2">
+                    <x-label for="name" :value="__('Name')" />
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                    <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                </div>
+
+                <!-- First name -->
+                <div class="ml-2">
+                    <x-label for="firstname" :value="__('First name')" />
+
+                    <x-input id="firstname" class="block mt-1 w-full" type="text" name="firstname" :value="old('firstname')" required autofocus />
+                </div>
             </div>
 
-            <!-- Email Address -->
+            <!-- ROW 2 -->
+            <div class="grid grid-cols-2 mt-4">
+                <!-- Email Address -->
+                <div class="mr-2">
+                    <x-label for="email" :value="__('Email')" />
+    
+                    <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                </div>
+    
+                <!-- Age -->
+                <div class="ml-2">
+                    <x-label for="age" :value="__('Age')" />
+    
+                    <x-input id="age" class="block mt-1 w-full" type="number" min="16" max="100" name="age" :value="old('age')"   required autofocus />
+                </div>
+            </div>
+
+            <!-- ROW 3 -->
+            <div class="grid grid-cols-2 mt-4">
+                <!-- Genre -->
+                <div class="mr-2">
+                    <x-label for="genre_id" :value="__('Genre')" />
+                    
+                    <select id="genre_id" class="block mt-1 w-full ml-1" name="genre_id" :value="old('genre_id')">
+                        <option value="">Select a genre</option>
+                        @foreach ($genres as $genre)
+                            <option value="{{$genre->id}}">{{$genre->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <!-- Job -->
+                <div class="ml-2">
+                    <x-label for="job_id" :value="__('Job')" />
+                    
+                    <select id="job_id" class="block mt-1 w-full ml-1" name="job_id" :value="old('job_id')">
+                        <option value="">Select a job</option>
+                        @foreach ($jobs as $job)
+                        <option value="{{$job->id}}">{{$job->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            
+            {{-- <!-- Photo -->
             <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
+                <x-label for="photo" :value="__('Photo')" />
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
+                <x-input id="photo" class="block mt-1 w-full" type="file" name="photo" :value="old('photo')"  required autofocus />
+            </div> --}}
+
+            {{-- <!-- Description -->
+            <div class="mt-4">
+                <x-label for="description" :value="__('Description')" />
+
+                <x-input id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description')"  required autofocus />
+            </div> --}}
 
             <!-- Password -->
             <div class="mt-4">
