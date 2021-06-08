@@ -11,6 +11,7 @@ use App\Models\Tag;
 use App\Models\TagPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -101,7 +102,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.postEdit', compact('post'));
+        $tags = Tag::all();
+        $categories = Category::all();
+        $tagposts = TagPost::all()->where('post_id', $post->id);
+        return view('admin.posts.postEdit', compact('post', 'tags', 'categories', 'tagposts'));
     }
 
     /**
@@ -117,22 +121,35 @@ class PostController extends Controller
             "title" => ["required"],
             "text" => ["required"],
             "image" => ["required"],
-            "user_id" => ["required"],
             "category_id" => ["required"],
         ]);
 
+        $request->file('image')->storePublicly('img/', 'public');
+        $post->image = $request->file('image')->hashName();
+
         $post->title = $request->title;
         $post->text = $request->text;
-        $post->image = $request->image;
+        
         $post->dateDay = date("d");
         $post->dateMonth = date("M");
         $post->dateyear = date("Y");
-        $post->user_id = $request->user_id;
+        $post->user_id = Auth::User()->id;
         $post->category_id = $request->category_id;
         $post->validate = 0;
+
         $post->save();
+
+        DB::table('tagposts')->where('post_id', $post->id)->delete();
+
+        foreach ($request->input('taglist') as $value) {
+
+            $tag = new TagPost();
+            $tag->post_id = $post->id;
+            $tag->tag_id = $value;
+            $tag->save();
+        }
         
-        return redirect()->route('admin.adminHome')->with('success', 'Modifications enregistrées, en attente de validation');
+        return redirect()->route('adminBlog')->with('success', 'Modifications enregistrées, en attente de validation');
     }
 
     /**

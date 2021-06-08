@@ -22,15 +22,10 @@
                             
                         <div class="mt-6 mb-8">
                             <div class="flex flex-col w-full bg-white shadow-lg sm:w-3/4 md:w-1/2 lg:w-3/5">
-                                <div class="w-full h-64">
-                                    <img src="../img/{{$post->image}}" alt="">
+                                <div class="w-full">
+                                    <img src="../img/{{$post->image}}" alt="" style="height: 250px">
                                 </div>
                                 <div class="flex flex-col w-full md:flex-row">
-                                    {{-- <div class="flex flex-row justify-around p-4 font-bold leading-none uppercase bg-purple-600 md:flex-col md:items-center md:justify-center md:w-1/4">
-                                        <div class="md:text-6xl text-white">{{$post->dateDay}}</div>
-                                        <div class="md:text-xl text-green-400">{{$post->dateMonth}}</div>
-                                        <div class="md:text-2xl text-green-400">{{$post->dateYear}}</div>
-                                    </div> --}}
                                     <div class="p-4 font-normal text-gray-800">
                                       <h1 class="mb-4 text-4xl font-bold leading-none tracking-tight text-gray-800">{{$post->title}}</h1>
                                       <p class="leading-normal">{{$post->text}}</p>
@@ -38,9 +33,9 @@
                                             <div class="w-1/2 mb-2">
                                                 <p><b>Auteur :</b> {{$post->user->name}}</p>
                                             </div>
-                                            <div class="w-1/6">
+                                            <div style="width: 100px">
                                                 <p class="mb-2"><b>Date :</b> </p>
-                                                <div class="p-3 font-bold bg-purple-600 text-center mb-1">
+                                                <div class="px-3 py-3 font-bold bg-purple-600 text-center mb-1">
                                                     <div class="md:text-4xl text-white">{{$post->dateDay}}</div>
                                                     <div class="md:text-xl text-green-400">{{$post->dateMonth}}</div>
                                                     <div class="md:text-xl text-green-400">{{$post->dateYear}}</div>
