@@ -17,7 +17,7 @@
                         <div class="mt-4">
                             <x-label for="icon" :value="__('Icon')" />
 
-                            <select id="icon" class="block mt-1 w-full ml-1" name="icon" :value="old('icon')">
+                            <select id="icon" class="block mt-1 w-full border-b border-gray-200 overflow-hidden shadow-sm sm:rounded-lg" name="icon" :value="old('icon')">
                                 <option selected>{{$feature->icon->name}}</option>
                                 @foreach ($icons as $icon)
                                     <option value="{{$icon->id}}">{{$icon->name}}</option>

@@ -60,7 +60,7 @@
                         <div class="mt-4">
                             <x-label for="genre_id" :value="__('Genre')" />
                             
-                            <select id="genre_id" class="block mt-1 w-full ml-1" name="genre_id" :value="old('genre_id')">
+                            <select id="genre_id" class="block mt-1 w-full border-b border-gray-200 overflow-hidden shadow-sm sm:rounded-lg" name="genre_id" :value="old('genre_id')">
                                 <option value="">Select a genre</option>
                                 @foreach ($genres as $genre)
                                     <option value="{{$genre->id}}">{{$genre->name}}</option>
@@ -72,7 +72,7 @@
                         <div class="mt-4">
                             <x-label for="job_id" :value="__('Job')" />
                             
-                            <select id="job_id" class="block mt-1 w-full ml-1" name="job_id" :value="old('job_id')">
+                            <select id="job_id" class="block mt-1 w-full border-b border-gray-200 overflow-hidden shadow-sm sm:rounded-lg" name="job_id" :value="old('job_id')">
                                 <option value="">Select a job</option>
                                 @foreach ($jobs as $job)
                                 <option value="{{$job->id}}">{{$job->name}}</option>
