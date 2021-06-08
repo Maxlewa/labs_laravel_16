@@ -8,7 +8,9 @@ use App\Models\Footer;
 use App\Models\Logo;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\TagPost;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -30,7 +32,9 @@ class PostController extends Controller
     public function create()
     {
         $posts = Post::all();
-        return view('admin.posts.postCreate', compact('posts'));
+        $tags = Tag::all();
+        $categories = Category::all();
+        return view('admin.posts.postCreate', compact('posts', 'categories', 'tags'));
     }
 
     /**
@@ -41,25 +45,39 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->input("taglist"));
+
         request()->validate([
             "title" => ["required"],
             "text" => ["required"],
             "image" => ["required"],
-            "user_id" => ["required"],
             "category_id" => ["required"],
         ]);
 
         $post = new Post();
+
+        $request->file('image')->storePublicly('img/', 'public');
+        $post->image = $request->file('image')->hashName();
+
         $post->title = $request->title;
         $post->text = $request->text;
-        $post->image = $request->image;
+        
         $post->dateDay = date("d");
         $post->dateMonth = date("M");
         $post->dateyear = date("Y");
-        $post->user_id = $request->user_id;
+        $post->user_id = Auth::User()->id;
         $post->category_id = $request->category_id;
         $post->validate = 0;
+
         $post->save();
+
+        foreach ($request->input('taglist') as $value) {
+
+            $tag = new TagPost();
+            $tag->post_id = $post->id;
+            $tag->tag_id = $value;
+            $tag->save();
+        }
 
         return redirect()->route('dashboard')->with('success', 'Votre article "' . $request->title . '" a bien été envoyé et est attente de validation');
     }

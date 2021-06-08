@@ -216,13 +216,4 @@ Route::get('/dashboard/blog', function () {
     return view('admin.pages.blog', compact('posts'));
 })->middleware(['auth'])->name('adminBlog');
 
-// __________________ REGISTER *
-
-// Route::get('/register', function () {
-//     $users = User::all();
-//     $genres = Genre::all();
-//     $jobs = Job::all();
-//     return view('auth.register', compact('users', 'genres', 'jobs' ));
-// })->name('register');
-
 require __DIR__.'/auth.php';

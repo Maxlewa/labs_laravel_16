@@ -10,7 +10,4 @@ class TagPost extends Model
     use HasFactory;
     protected $table = "tagposts"; 
 
-    // public function tag() {
-    //     return $this->hasMany(Tag::class);
-    // }
 }
