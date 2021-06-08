@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Icon;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -11,8 +12,9 @@ class ServiceController extends Controller
 
     public function create() {
 
+        $icons = Icon::all();
         $services = Service::all();
-        return view('admin.services.serviceCreate', compact('services'));
+        return view('admin.services.serviceCreate', compact('icons', 'services'));
     }
 
     // STORE Service 
@@ -26,19 +28,20 @@ class ServiceController extends Controller
         ]);
 
         $service = new Service();
-        $service->icon = $request->icon;
+        $service->icon_id = $request->icon;
         $service->title = $request->title;
         $service->text = $request->text;
         $service->save();
 
-        return redirect()->route('dashboard')->with('success', $request->title . ' a bien été créé');
+        return redirect()->route('adminServices')->with('success', '"' . $request->title . '" a bien été créé');
     }
 
     // EDIT Service
 
     public function edit(Service $service) {
 
-        return view('admin.services.serviceEdit', compact('service'));
+        $icons = Icon::all();
+        return view('admin.services.serviceEdit', compact('service', 'icons'));
     }
 
     // UPDATE Service
@@ -51,7 +54,7 @@ class ServiceController extends Controller
             "text" => ["required"],
         ]);
 
-        $service->icon = $request->icon;
+        $service->icon_id = $request->icon;
         $service->title = $request->title;
         $service->text = $request->text;
         $service->save();

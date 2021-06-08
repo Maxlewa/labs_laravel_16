@@ -11,13 +11,18 @@
                         @csrf
 
                         <h1><b>Nouveau service :</b></h1>
-            
+                        
                         <!-- Icon -->
                         <div class="mt-4">
                             <x-label for="icon" :value="__('Icon')" />
-            
-                            <x-input id="icon" class="block mt-1 w-full" type="text" name="icon" required autofocus />
+
+                            <select id="icon" class="block mt-1 w-full ml-1" name="icon" :value="old('icon')">
+                                @foreach ($icons as $icon)
+                                    <option value="{{$icon->id}}">{{$icon->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
+            
             
                         <!-- Title -->
                         <div class="mt-4">

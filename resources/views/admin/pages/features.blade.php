@@ -41,8 +41,12 @@
                             @foreach ($features as $feature)
                                 <div class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-10 mr-6">
                                     <div>
-                                      <h2 class="text-gray-800 text-3xl font-semibold">{{$feature->title}}</h2>
-                                      <p>Icône : {{$feature->icon}}</p>
+                                        <h2 class="text-gray-800 text-3xl font-semibold">{{$feature->title}}</h2>
+                                        <p class="mb-2">Icône : {{$feature->icon->name}}</p>
+                                        <div class="icon mb-2">
+                                            <i class="{{$feature->icon->name}} text-4xl"></i>
+                                        </div>
+
                                       <p class="mt-2 text-gray-600">{{$feature->text}}</p>
                                       <div class="flex">
                                             <a href="{{route('featureEdit', $feature)}}">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Feature;
+use App\Models\Icon;
 use Illuminate\Http\Request;
 
 class FeatureController extends Controller
@@ -10,8 +11,8 @@ class FeatureController extends Controller
      // EDIT Feature
 
      public function edit(Feature $feature) {
-
-        return view('admin.features.featureEdit', compact('feature'));
+        $icons = Icon::all();
+        return view('admin.features.featureEdit', compact('feature', 'icons'));
     }
 
     // UPDATE Feature
@@ -26,7 +27,7 @@ class FeatureController extends Controller
 
         $feature->title = $request->title;
         $feature->text = $request->text;
-        $feature->icon = $request->icon;
+        $feature->icon_id = $request->icon;
         $feature->save();
 
         return redirect()->route('adminFeatures')->with('success', 'La feature "' . $request->title . '" a bien été modifiée');

@@ -14,7 +14,7 @@
                     @endif
                             <div class="lab-card">
                                 <div class="icon">
-                                    <i class="{{$service->icon}}"></i>
+                                    <i class="{{$service->icon->name}}"></i>
                                 </div>
                                 <h2>{{$service->title}}</h2>
                                 <p>{{$service->text}}</p>

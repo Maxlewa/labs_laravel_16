@@ -42,21 +42,24 @@
                         </a>
                         <div class="flex flex-wrap">
                             @foreach ($services as $service)
-                                <div class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-10 mr-6">
+                                <div class="w-2/5 py-4 px-8 bg-white shadow-lg rounded-lg my-10 mr-6">
                                     <div>
-                                      <h2 class="text-gray-800 text-3xl font-semibold">{{$service->title}}</h2>
-                                      <p>Icône : {{$service->icon}}</p>
-                                      <p class="mt-2 text-gray-600">{{$service->text}}</p>
-                                      <div class="flex">
-                                            <a href="{{route('serviceEdit', $service)}}">
-                                                <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-4">Edit</button>
-                                            </a>
-                                            <form method="post" action="{{route('serviceDestroy', $service)}}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4 ml-4" type="submit">Delete</button>
-                                            </form>
-                                      </div>
+                                        <h2 class="text-gray-800 text-3xl font-semibold">{{$service->title}}</h2>
+                                        <p class="mb-2">Icône : {{$service->icon->name}}</p>
+                                        <div class="icon mb-2">
+                                            <i class="{{$service->icon->name}} text-4xl"></i>
+                                        </div>
+                                        <p class="mt-2 text-gray-600">{{$service->text}}</p>
+                                        <div class="flex">
+                                                <a href="{{route('serviceEdit', $service)}}">
+                                                    <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-4">Edit</button>
+                                                </a>
+                                                <form method="post" action="{{route('serviceDestroy', $service)}}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4 ml-4" type="submit">Delete</button>
+                                                </form>
+                                        </div>
                                     </div>
                                   </div>
                             @endforeach
