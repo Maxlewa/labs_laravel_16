@@ -38,11 +38,25 @@ class ValidationController extends Controller
         return redirect()->back();
     }
 
+    public function deleteComment(Comment $id)
+    {
+        $commentaire = $id;
+        $commentaire->delete();
+        return redirect()->back()->with('success', 'Commentaire supprimé');
+    }
+
     public function updateArticle(Post $id)
     {
         $post = $id;
         $post->validate = 1;
         $post->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Commentaire validé');
+    }
+
+    public function deleteArticle(Post $id)
+    {
+        $post = $id;
+        $post->delete();
+        return redirect()->back()->with('success', 'Article supprimé');
     }
 }

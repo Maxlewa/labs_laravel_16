@@ -230,15 +230,15 @@ Route::get('/dashboard/blog', function () {
 Route::get('/admin/validate', [ValidationController::class, 'index'])->middleware(['auth'])->name('adminValidate');
 
 // Valider un article
-
 Route::put('/admin/validate/update/{id}', [ValidationController::class, 'updateArticle'])->name('validateUpdateArticle');
+// Supprimer un article non-validé
+Route::delete('/admin/validate/article/{id}/delete', [ValidationController::class,'deleteArticle'])->name('validateDeleteArticle');
+// Supprimer un commentaire non-validé
+Route::delete('/admin/validate/comment/{id}/delete', [ValidationController::class,'deleteComment'])->name('validateDeleteComment');
 
 // Commentaires
-
 Route::post('/blog/article/{id}/comment', [CommentController::class, "store"])->name('commentStore');
-
 // Valider un commentaire
-
 Route::put('/admin/validation/update/{id}', [CommentController::class, 'update'])->name('commentUpdate');
 
 

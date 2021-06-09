@@ -31,13 +31,18 @@
                                 <td>
                                     <p class="text-gray-900 mt-4"><b>Catégorie :</b> {{$article->category->name}}</p>
                                 </td>
-                                <td class="px-8 py-3 whitespace-nowrap text-left text-sm font-medium">
-                                    <form action={{route('validateUpdateArticle', $article->id)}} method="post" class="flex mt-2">
+                                <div class="flex mt-4">
+                                    <form action={{route('validateUpdateArticle', $article->id)}} method="post">
                                         @csrf
                                         @method('PUT')
-                                        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">VALIDER</i></button>
+                                        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">Validate</i></button>
                                     </form>
-                                </td>
+                                    <form method="post" action="{{route('validateDeleteArticle', $article)}}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" type="submit">Delete</button>
+                                    </form>
+                                </div>
                             </tr>
                             @empty 
                             <tr>
@@ -66,13 +71,18 @@
                                 <td class="px-6 py-4 break-words">
                                     <p class="text-gray-900 mt-2">{{$commentaire->comment}}</p>
                                 </td>
-                                <td class="px-8 py-3 whitespace-nowrap text-left text-sm font-medium">
-                                    <form action={{route('commentUpdate', $commentaire->id)}} method="post" class="flex mt-2">
+                                <div class="flex mt-4">
+                                    <form action={{route('commentUpdate', $commentaire->id)}} method="post">
                                         @csrf
                                         @method('PUT')
-                                        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">VALIDER</i></button>
+                                        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">Validate</i></button>
                                     </form>
-                                </td>
+                                    <form method="post" action="{{route('validateDeleteComment', $commentaire)}}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" type="submit">Delete</button>
+                                    </form>
+                                </div>
                             </tr>
                             @empty 
                             <tr>

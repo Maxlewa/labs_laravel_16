@@ -93,7 +93,7 @@ class CommentController extends Controller
         $comment = $id;
         $comment->validate = 1;
         $comment->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Commentaire validé');
     }
 
     /**
