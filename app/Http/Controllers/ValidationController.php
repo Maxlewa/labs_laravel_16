@@ -35,7 +35,7 @@ class ValidationController extends Controller
         $commentaire = $id;
         $commentaire->validate = 1;
         $commentaire->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Commentaire validé');
     }
 
     public function deleteComment(Comment $id)
@@ -50,7 +50,7 @@ class ValidationController extends Controller
         $post = $id;
         $post->validate = 1;
         $post->save();
-        return redirect()->back()->with('success', 'Commentaire validé');
+        return redirect()->back()->with('success', 'Article validé');
     }
 
 }

@@ -19,8 +19,7 @@ class CreateCommentsTable extends Migration
             $table->string('email');
             $table->text('comment', 400);
 
-            $table->unsignedBigInteger('post_id')->nullable();
-            $table->foreign('post_id')->references('id')->on('posts');
+            $table->unsignedBigInteger('post_id')->constrained('posts')->OnDelete('cascade');
 
             $table->string("dateDay");
             $table->string("dateMonth");

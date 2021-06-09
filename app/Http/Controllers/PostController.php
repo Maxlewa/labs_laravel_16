@@ -69,6 +69,7 @@ class PostController extends Controller
         $post->user_id = Auth::User()->id;
         $post->category_id = $request->category_id;
         $post->validate = 0;
+        $post->trash = 0;
 
         $post->save();
 

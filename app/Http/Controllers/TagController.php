@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tag;
+use App\Models\TagPost;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
@@ -57,7 +58,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view('admin.tag.tagEdit', compact('tag'));
     }
 
     /**
@@ -69,7 +70,14 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        //
+        request()->validate([
+            "name" => ["required"],
+        ]);
+
+        $tag->name = $request->name;
+        $tag->save();
+
+        return redirect()->route('adminTagCategory')->with('success', 'Modifications enregistrées');
     }
 
     /**
@@ -80,6 +88,12 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        $tagposts = TagPost::where('tag_id', $tag->id)->get();
+        foreach ($tagposts as $tagpost) {
+            $tagpost->delete();
+        }
+
+        $tag->delete();
+        return redirect()->route('adminTagCategory')->with('success', 'Le service "' . $tag->name . '" a bien été supprimé');
     }
 }

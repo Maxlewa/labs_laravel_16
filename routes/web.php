@@ -13,12 +13,14 @@ use App\Http\Controllers\MapController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\TrashController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ValidationController;
 use App\Http\Controllers\VideoController;
+use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Discover;
 use App\Models\Feature;
@@ -30,6 +32,7 @@ use App\Models\Logo;
 use App\Models\Map;
 use App\Models\Post;
 use App\Models\Service;
+use App\Models\Tag;
 use App\Models\Testimonial;
 use App\Models\Title;
 use App\Models\User;
@@ -142,6 +145,12 @@ Route::put('/admin/map/{map}/update', [MapController::class, 'update'])->name('m
 Route::get('/admin/feature/{feature}/edit', [FeatureController::class, 'edit'])->name('featureEdit');
 Route::put('/admin/feature/{feature}/update', [FeatureController::class, 'update'])->name('featureUpdate');
 
+// Tags
+
+Route::get('/admin/tag/{tag}/edit', [TagController::class, 'edit'])->name('tagEdit');
+Route::put('/admin/tag/{tag}/update', [TagController::class, 'update'])->name('tagUpdate');
+Route::delete('/admin/tag/{tag}/delete', [TagController::class,'destroy'])->name('tagDestroy');
+
 // Footer
 
 Route::get('/admin/footer/{footer}/edit', [FooterController::class, 'edit'])->name('footerEdit');
@@ -225,6 +234,14 @@ Route::get('/dashboard/blog', function () {
     $posts = Post::all()->where('trash', 0);
     return view('admin.pages.blog', compact('posts'));
 })->middleware(['auth'])->name('adminBlog');
+
+// Dashboard - TAG
+
+Route::get('/dashboard/tag-category', function () {
+    $tags = Tag::all();
+    $categories = Category::all();
+    return view('admin.pages.tag-category', compact('tags', 'categories'));
+})->middleware(['auth'])->name('adminTagCategory');
 
 // Dashboard - VALIDATE
 

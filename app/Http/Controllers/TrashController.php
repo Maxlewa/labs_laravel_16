@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Post;
+use App\Models\TagPost;
 use Illuminate\Http\Request;
 
 class TrashController extends Controller
@@ -22,7 +24,19 @@ class TrashController extends Controller
     public function deleteArticle(Post $id)
     {
         $post = $id;
+
+        $tagposts = TagPost::where('post_id', $post->id)->get();
+        foreach ($tagposts as $tagpost) {
+            $tagpost->delete();
+        }
+
+        $comments = Comment::where('post_id', $post->id)->get();
+        foreach ($comments as $comment) {
+            $comment->delete();
+        }
+        
         $post->delete();
+
         return redirect()->back()->with('success', 'Article supprimé');
     }
 
