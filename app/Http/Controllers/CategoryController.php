@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -24,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view ('admin.category.categoryCreate');
     }
 
     /**
@@ -35,7 +36,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            "name" => ["required"],
+        ]);
+
+        $category = new Category();
+
+        $category->name = $request->name;
+        $category->save();
+
+        return redirect()->route('adminTagCategory')->with('success', 'La catégorie "' . $request->name . '" a été enregistrée');
     }
 
     /**
@@ -57,7 +67,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.category.categoryEdit', compact('category'));
     }
 
     /**
@@ -69,7 +79,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        request()->validate([
+            "name" => ["required"],
+        ]);
+
+        $category->name = $request->name;
+        $category->save();
+
+        return redirect()->route('adminTagCategory')->with('success', 'Modifications enregistrées');
     }
 
     /**
@@ -80,6 +97,15 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $categoriz = Post::where('category_id', $category->id)->get();
+
+        foreach ($categoriz as $categori) {
+
+            $categori->category_id = 5;
+            $categori->save();
+        }
+
+        $category->delete();
+        return redirect()->route('adminTagCategory')->with('success', 'La catégorie "' . $category->name . '" a bien été supprimée');
     }
 }

@@ -25,7 +25,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view ('admin.tag.tagCreate');
     }
 
     /**
@@ -36,7 +36,16 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            "name" => ["required"],
+        ]);
+
+        $tag = new Tag();
+
+        $tag->name = $request->name;
+        $tag->save();
+
+        return redirect()->route('adminTagCategory')->with('success', 'Le tag "' . $request->name . '" a été enregistré');
     }
 
     /**
@@ -94,6 +103,6 @@ class TagController extends Controller
         }
 
         $tag->delete();
-        return redirect()->route('adminTagCategory')->with('success', 'Le service "' . $tag->name . '" a bien été supprimé');
+        return redirect()->route('adminTagCategory')->with('success', 'Le tag "' . $tag->name . '" a bien été supprimé');
     }
 }

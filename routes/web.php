@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContactMailController;
@@ -147,9 +148,19 @@ Route::put('/admin/feature/{feature}/update', [FeatureController::class, 'update
 
 // Tags
 
+Route::get('/admin/tag/create', [TagController::class, 'create'])->name('tagCreate');
+Route::post('/admin/tag/store', [TagController::class, 'store'])->name('tagStore');
 Route::get('/admin/tag/{tag}/edit', [TagController::class, 'edit'])->name('tagEdit');
 Route::put('/admin/tag/{tag}/update', [TagController::class, 'update'])->name('tagUpdate');
 Route::delete('/admin/tag/{tag}/delete', [TagController::class,'destroy'])->name('tagDestroy');
+
+// Categories
+
+Route::get('/admin/category/create', [CategoryController::class, 'create'])->name('categoryCreate');
+Route::post('/admin/category/store', [CategoryController::class, 'store'])->name('categoryStore');
+Route::get('/admin/category/{category}/edit', [CategoryController::class, 'edit'])->name('categoryEdit');
+Route::put('/admin/category/{category}/update', [CategoryController::class, 'update'])->name('categoryUpdate');
+Route::delete('/admin/category/{category}/delete', [CategoryController::class,'destroy'])->name('categoryDestroy');
 
 // Footer
 
@@ -235,11 +246,11 @@ Route::get('/dashboard/blog', function () {
     return view('admin.pages.blog', compact('posts'));
 })->middleware(['auth'])->name('adminBlog');
 
-// Dashboard - TAG
+// Dashboard - TAG/CATEGORY
 
 Route::get('/dashboard/tag-category', function () {
     $tags = Tag::all();
-    $categories = Category::all();
+    $categories = Category::where('id', '!=', 5)->get();
     return view('admin.pages.tag-category', compact('tags', 'categories'));
 })->middleware(['auth'])->name('adminTagCategory');
 

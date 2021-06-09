@@ -123,12 +123,14 @@
                     </form>
                 </div>
                 <!-- Categories -->
+                @if ($article->category->id != 5)
                 <div class="widget-item">
                     <h2 class="widget-title">Categories</h2>
                     <ul>
                         <li><a href="#">{{$article->category->name}}</a></li>
                     </ul>
                 </div>
+                @endif
                 <!-- Tags -->
                 <div class="widget-item">
                     <h2 class="widget-title">Tags</h2>

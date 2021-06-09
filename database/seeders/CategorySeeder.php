@@ -27,6 +27,9 @@ class CategorySeeder extends Seeder
             [
                 "name" => "IT"
             ],
+            [
+                "name" => "No Category"
+            ],
         ]);
     }
 }

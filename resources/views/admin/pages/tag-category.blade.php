@@ -11,11 +11,46 @@
                         @include('layouts.flash')
                     </div>
 
+                    <!-- CATEGORIES -->
+                    <h1><b>Modifier/supprimer les catégories existantes</b></h1>
+
+                    <a href="{{route('categoryCreate')}}">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Ajouter une catégorie</button>
+                    </a>
+
+                    <div class="flex flex-wrap mb-4">
+                        @foreach ($categories as $category)
+                            <div class="w-1/5 py-4 px-8 bg-white shadow-lg rounded-lg my-6 mr-6">
+                                <div>
+                                    <p class="mb-2">{{$category->name}}</p>
+                                    <div class="flex">
+                                        <a href="{{route('categoryEdit', $category)}}">
+                                            <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-4">Edit</button>
+                                        </a>
+                                        <form method="post" action="{{route('categoryDestroy', $category)}}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4 ml-4" type="submit">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <hr>
+                    <br>
+
+                    <!-- TAGS -->
                     <h1><b>Modifier/supprimer les tags existants</b></h1>
 
-                    <div class="flex flex-wrap">
+                    <a href="{{route('tagCreate')}}">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Ajouter un tag</button>
+                    </a>
+
+                    <div class="flex flex-wrap mb-4">
                         @foreach ($tags as $tag)
-                            <div class="w-1/5 py-4 px-8 bg-white shadow-lg rounded-lg my-10 mr-6">
+                            <div class="w-1/5 py-4 px-8 bg-white shadow-lg rounded-lg my-6 mr-6">
                                 <div>
                                     <p class="mb-2">{{$tag->name}}</p>
                                     <div class="flex">
@@ -31,11 +66,6 @@
                                 </div>
                             </div>
                         @endforeach
-                    </div>
-
-
-
-                
                     </div>
                 </div>
             </div>
