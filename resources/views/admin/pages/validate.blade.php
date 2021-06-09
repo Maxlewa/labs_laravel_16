@@ -14,9 +14,9 @@
                     <!-- Articles à valider -->
                     <div class="mb-4">
                         <h1><b>Articles en attente de validation</b></h1>
-                        <div class="mt-4 w-3/5 border border-purple-700 rounded py-4 px-4">
+                        <div>
                             @forelse ($articles as $article)
-                            <tr>
+                            <div class="mt-4 w-3/5 border border-purple-700 rounded py-4 px-4">
                                 <td class="px-8 py-4 whitespace-nowrap text-left text-sm font-medium">
                                     <h1 class="text-xl mb-4"><b>Titre :</b> {{$article->title}}</h1>
                                 </td>
@@ -37,13 +37,13 @@
                                         @method('PUT')
                                         <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">Validate</i></button>
                                     </form>
-                                    <form method="post" action="{{route('validateDeleteArticle', $article)}}">
+                                    <form method="post" action="{{route('trashArticle', $article)}}">
                                         @csrf
-                                        @method('DELETE')
-                                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" type="submit">Delete</button>
+                                        @method('PUT')
+                                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" type="submit">Trash</button>
                                     </form>
                                 </div>
-                            </tr>
+                            </div>
                             @empty 
                             <tr>
                                 <td class="text-sm font-medium" colspan="5" >

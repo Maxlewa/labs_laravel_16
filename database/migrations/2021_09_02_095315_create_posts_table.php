@@ -28,6 +28,7 @@ class CreatePostsTable extends Migration
             // $table->foreignId('tag_id')->nullable()->constrained();
 
             $table->boolean('validate');
+            $table->boolean('trash');
             
             // $table->foreignId('comment_id')->nullable()->constrained();
 

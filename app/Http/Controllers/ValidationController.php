@@ -16,7 +16,7 @@ class ValidationController extends Controller
         $roles = Role::all();
         // $commentaires = Comment::all();
         $commentaires = Comment::where('validate', 0)->get();
-        $articles = Post::where('validate', 0)->get();
+        $articles = Post::where('validate', 0)->where('trash', 0)->get();
         // $articles = Article::all();
         return view('admin.pages.validate', compact('roles','commentaires','articles'));
     }
@@ -53,10 +53,4 @@ class ValidationController extends Controller
         return redirect()->back()->with('success', 'Commentaire validé');
     }
 
-    public function deleteArticle(Post $id)
-    {
-        $post = $id;
-        $post->delete();
-        return redirect()->back()->with('success', 'Article supprimé');
-    }
 }

@@ -15,6 +15,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\TitleController;
+use App\Http\Controllers\TrashController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ValidationController;
 use App\Http\Controllers\VideoController;
@@ -221,7 +222,7 @@ Route::get('/dashboard/carousel', function () {
 
 Route::get('/dashboard/blog', function () {
     // $this->authorize('isWriter');
-    $posts = Post::all();
+    $posts = Post::all()->where('trash', 0);
     return view('admin.pages.blog', compact('posts'));
 })->middleware(['auth'])->name('adminBlog');
 
@@ -231,8 +232,10 @@ Route::get('/admin/validate', [ValidationController::class, 'index'])->middlewar
 
 // Valider un article
 Route::put('/admin/validate/update/{id}', [ValidationController::class, 'updateArticle'])->name('validateUpdateArticle');
-// Supprimer un article non-validé
-Route::delete('/admin/validate/article/{id}/delete', [ValidationController::class,'deleteArticle'])->name('validateDeleteArticle');
+// Déplacer un article dans la corbeille
+Route::put('/admin/trash/article/{id}/', [TrashController::class,'trashArticle'])->name('trashArticle');
+// Récupérer un article de la corbeille
+Route::put('/admin/recup/article/{id}/', [TrashController::class,'recupArticle'])->name('recupArticle');
 // Supprimer un commentaire non-validé
 Route::delete('/admin/validate/comment/{id}/delete', [ValidationController::class,'deleteComment'])->name('validateDeleteComment');
 
@@ -240,6 +243,13 @@ Route::delete('/admin/validate/comment/{id}/delete', [ValidationController::clas
 Route::post('/blog/article/{id}/comment', [CommentController::class, "store"])->name('commentStore');
 // Valider un commentaire
 Route::put('/admin/validation/update/{id}', [CommentController::class, 'update'])->name('commentUpdate');
+
+// Dashboard - TRASH
+
+Route::get('/admin/trash', [TrashController::class, 'index'])->middleware(['auth'])->name('adminTrash');
+
+// Supprimer un article de la corbeille définitivement
+Route::delete('/admin/trash/article/{id}/delete', [TrashController::class,'deleteArticle'])->name('deleteArticle');
 
 
 require __DIR__.'/auth.php';

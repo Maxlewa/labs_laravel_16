@@ -41,14 +41,14 @@
                                                     <div class="md:text-xl text-green-400">{{$post->dateYear}}</div>
                                                 </div>
                                             </div>
-                                            <div class="flex">
+                                            <div class="flex mt-4">
                                                 <a href="{{route('postEdit', $post)}}">
-                                                    <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-4">Edit</button>
+                                                    <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mr-2">Edit</button>
                                                 </a>
-                                                <form method="post" action="{{route('postDestroy', $post)}}">
+                                                <form method="post" action="{{route('trashArticle', $post)}}">
                                                     @csrf
-                                                    @method('DELETE')
-                                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4 ml-4" type="submit">Delete</button>
+                                                    @method('PUT')
+                                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" type="submit">Trash</button>
                                                 </form>
                                             </div>
                                         </div>

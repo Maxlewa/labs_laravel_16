@@ -50,9 +50,9 @@
 
                             <!-- Nombre de commentaires -->
                             @if ($article->comment->where('validate', 1)->count() <= 1)
-                                <a href="">{{$article->comment->where('validate', 1)->count()}} Comment</a>
+                                <a href="">{{$article->comment->where('validate', 1)->where('trash', 0)->count()}} Comment</a>
                             @else
-                                <a href="">{{$article->comment->where('validate', 1)->count()}} Comments</a>
+                                <a href="">{{$article->comment->where('validate', 1)->where('trash', 0)->count()}} Comments</a>
                             @endif
 
                         </div>

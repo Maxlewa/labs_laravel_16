@@ -51,14 +51,14 @@
                                         </div>
                                         <p class="mt-2 text-gray-600">{{$service->text}}</p>
                                         <div class="flex">
-                                                <a href="{{route('serviceEdit', $service)}}">
-                                                    <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-4">Edit</button>
-                                                </a>
-                                                <form method="post" action="{{route('serviceDestroy', $service)}}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4 ml-4" type="submit">Delete</button>
-                                                </form>
+                                            <a href="{{route('serviceEdit', $service)}}">
+                                                <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-4">Edit</button>
+                                            </a>
+                                            <form method="post" action="{{route('serviceDestroy', $service)}}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4 ml-4" type="submit">Delete</button>
+                                            </form>
                                         </div>
                                     </div>
                                   </div>

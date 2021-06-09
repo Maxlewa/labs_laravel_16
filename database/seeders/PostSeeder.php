@@ -26,6 +26,7 @@ class PostSeeder extends Seeder
                 "category_id" => 1,
                 // "tag_id" => 3,
                 "validate"=> 1,
+                "trash" => 0,
                 // "comment_id" => 1,
             ],
             [
@@ -39,6 +40,7 @@ class PostSeeder extends Seeder
                 "category_id" => 2,
                 // "tag_id" => 3,
                 "validate"=> 1,
+                "trash" => 0,
                 // "comment_id" => 1,
             ],
             [
@@ -51,7 +53,8 @@ class PostSeeder extends Seeder
                 "user_id" => 1,
                 "category_id" => 4,
                 // "tag_id" => 3,
-                "validate"=> 1,
+                "validate" => 1,
+                "trash" => 0,
                 // "comment_id" => 1,
             ],
             [
@@ -65,6 +68,7 @@ class PostSeeder extends Seeder
                 "category_id" => 4,
                 // "tag_id" => 3,
                 "validate"=> 0,
+                "trash" => 0,
                 // "comment_id" => 1,
             ],
         ]);
