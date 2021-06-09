@@ -25,7 +25,7 @@
                         <div class="mt-4">
                             <x-label for="text" :value="__('Text')" />
 
-                            <textarea name="text" id="text" class="block mt-1 w-full border-b border-gray-200 overflow-hidden shadow-sm sm:rounded-lg" rows="5" cols="60" value="{{$post->text}}"></textarea>
+                            <textarea name="text" id="text" class="block mt-1 w-full border-b border-gray-200 overflow-hidden shadow-sm sm:rounded-lg" rows="5" cols="60" value="{{$post->text}}">{{$post->text}}</textarea>
                         </div>
 
                         <!-- Image -->

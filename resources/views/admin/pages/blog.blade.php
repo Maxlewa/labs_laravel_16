@@ -28,7 +28,7 @@
                                 <div class="flex flex-col w-full md:flex-row">
                                     <div class="p-4 font-normal text-gray-800">
                                       <h1 class="mb-4 text-4xl font-bold leading-none tracking-tight text-gray-800">{{$post->title}}</h1>
-                                      <p class="leading-normal">{{$post->text}}</p>
+                                      <p class="leading-normal">{{Str::limit($post->text, 200, '...')}}</p>
                                         <div class="items-center mt-4 text-gray-700">
                                             <div class="w-1/2 mb-2">
                                                 <p><b>Auteur :</b> {{$post->user->name}}</p>

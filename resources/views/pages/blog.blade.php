@@ -63,7 +63,7 @@
                             @endif      
                         
                         </div>
-                        <p>{{$article->text}}</p>
+                        <p>{{Str::limit($article->text, 200, '...')}}</p>
                         <a href="{{route('blog-post', $article->id)}}" class="read-more">Read More</a>
                     </div>
                 </div>
