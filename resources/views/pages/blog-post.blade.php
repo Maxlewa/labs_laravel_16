@@ -49,10 +49,10 @@
                             <a href="">{{$article->category->name}}</a>
 
                             <!-- Nombre de commentaires -->
-                            @if ($article->comment->count() <= 1)
-                                <a href="">{{$article->comment->count()}} Comment</a>
+                            @if ($article->comment->where('validate', 1)->count() <= 1)
+                                <a href="">{{$article->comment->where('validate', 1)->count()}} Comment</a>
                             @else
-                                <a href="">{{$article->comment->count()}} Comments</a>
+                                <a href="">{{$article->comment->where('validate', 1)->count()}} Comments</a>
                             @endif
 
                         </div>

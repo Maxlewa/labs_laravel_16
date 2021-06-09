@@ -52,13 +52,13 @@
                             <a href="">{{$article->category->name}}</a>
 
                             <!-- Nombre de commentaires -->
-                            @if ($article->comment->where('post_id', "=", $article->id)->count() <= 1)
+                            @if ($article->comment->where('post_id', "=", $article->id)->where('validate', 1)->count() <= 1)
                                 <a href="{{route('blog-post', $article->id)}}">
-                                    {{$article->comment->count()}} Comment
+                                    {{$article->comment->where('validate', 1)->count()}} Comment
                                 </a>
-                            @elseif ($article->comment->where('post_id', "=", $article->id)->count() > 1)
+                            @elseif ($article->comment->where('post_id', "=", $article->id)->where('validate', 1)->count() > 1)
                                 <a href="{{route('blog-post', $article->id)}}">
-                                    {{$article->comment->count()}} Comments
+                                    {{$article->comment->where('validate', 1)->count()}} Comments
                                 </a>
                             @endif      
                         

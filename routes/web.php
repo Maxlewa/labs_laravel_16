@@ -16,6 +16,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ValidationController;
 use App\Http\Controllers\VideoController;
 use App\Models\Contact;
 use App\Models\Discover;
@@ -156,6 +157,7 @@ Route::get('/dashboard', function () {
 // Dashboard - GENERAL
 
 Route::get('/dashboard/general', function () {
+    // $this->authorize('isAdmin');
     $logo = Logo::find(1);
     $footer = Footer::find(1);
     return view('admin.pages.general', compact('logo', 'footer'));
@@ -164,6 +166,7 @@ Route::get('/dashboard/general', function () {
 // Dashboard - DISCOVER
 
 Route::get('/dashboard/discover', function () {
+    // $this->authorize('isAdmin');
     $video = Video::find(1);
     $title = Title::all();
     $discover = Discover::find(1);
@@ -173,6 +176,7 @@ Route::get('/dashboard/discover', function () {
 // Dashboard - TESTIMONIALS
 
 Route::get('/dashboard/testimonials', function () {
+    // $this->authorize('isAdmin');
     $testimonials = Testimonial::all();
     $title = Title::all();
     return view('admin.pages.testimonial', compact('testimonials', 'title'));
@@ -181,6 +185,7 @@ Route::get('/dashboard/testimonials', function () {
 // Dashboard - CONTACT
 
 Route::get('/dashboard/contact', function () {
+    // $this->authorize('isAdmin');
     $contact = Contact::find(1);
     $map = Map::find(1);
     return view('admin.pages.contact', compact('contact', 'map'));
@@ -189,6 +194,7 @@ Route::get('/dashboard/contact', function () {
 // Dashboard - SERVICES
 
 Route::get('/dashboard/services', function () {
+    // $this->authorize('isAdmin');
     $services = Service::all();
     $title = Title::all();
     return view('admin.pages.services', compact('services', 'title'));
@@ -197,6 +203,7 @@ Route::get('/dashboard/services', function () {
 // Dashboard - FEATURES
 
 Route::get('/dashboard/features', function () {
+    // $this->authorize('isAdmin');
     $features = Feature::all();
     $title = Title::all();
     return view('admin.pages.features', compact('features', 'title'));
@@ -205,6 +212,7 @@ Route::get('/dashboard/features', function () {
 // Dashboard - CAROUSEL
 
 Route::get('/dashboard/carousel', function () {
+    // $this->authorize('isAdmin');
     $images = Image::all();
     return view('admin.pages.carousel', compact('images'));
 })->middleware(['auth'])->name('adminCarousel');
@@ -212,8 +220,26 @@ Route::get('/dashboard/carousel', function () {
 // Dashboard - BLOG
 
 Route::get('/dashboard/blog', function () {
+    // $this->authorize('isWriter');
     $posts = Post::all();
     return view('admin.pages.blog', compact('posts'));
 })->middleware(['auth'])->name('adminBlog');
+
+// Dashboard - VALIDATE
+
+Route::get('/admin/validate', [ValidationController::class, 'index'])->middleware(['auth'])->name('adminValidate');
+
+// Valider un article
+
+Route::put('/admin/validate/update/{id}', [ValidationController::class, 'updateArticle'])->name('validateUpdateArticle');
+
+// Commentaires
+
+Route::post('/blog/article/{id}/comment', [CommentController::class, "store"])->name('commentStore');
+
+// Valider un commentaire
+
+Route::put('/admin/validation/update/{id}', [CommentController::class, 'update'])->name('commentUpdate');
+
 
 require __DIR__.'/auth.php';

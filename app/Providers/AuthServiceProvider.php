@@ -25,6 +25,28 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // // Admin
+        
+        // Gate::define('isAdmin', function($online) {
+        //     return $online->role_id == 1;
+        // });
+
+        // // Webmaster (+ Admin)
+
+        // Gate::define('isWebmaster', function($online) {
+        //     return $online->role_id == 1 || $online->role_id == 2;
+        // });
+
+        // // Writer (+ Admin)
+
+        // Gate::define('isWriter', function($online) {
+        //     return $online->role_id == 1 || $online->role_id == 3;
+        // });
+
+        // // Member (+ Admin)
+
+        // Gate::define('isMember', function($online) {
+        //     return $online->role_id == 1 || $online->role_id == 4;
+        // });
     }
 }

@@ -51,7 +51,7 @@ class CommentController extends Controller
         $comment->dateDay = date("d");
         $comment->dateMonth = date("M");
         $comment->dateYear = date("Y");
-        $comment->validate = 1;
+        $comment->validate = 0;
         
         $comment->post_id = $id;
         
@@ -88,9 +88,12 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Comment $id)
     {
-        //
+        $comment = $id;
+        $comment->validate = 1;
+        $comment->save();
+        return redirect()->back();
     }
 
     /**
