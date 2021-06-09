@@ -7,9 +7,10 @@ Bienvenue dans l'équipe de Labs !
 
 Votre e-mail : {{$mail->email}}
 
-{{-- 
-@component('mail::button', ['url' => '/'])
-Revenir au site
+Token de connection : /xy
+
+{{-- @component('mail::button', ['url' => '/xy'])
+Se connecter au site
 @endcomponent --}}
 
 A bientôt,<br>
