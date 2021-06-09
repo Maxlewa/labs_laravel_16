@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="text-center mt60">
-                <a href="" class="site-btn">Browse</a>
+                <a href="{{route('services')}}" class="site-btn">Browse</a>
             </div>
             
             <!-- popup video -->

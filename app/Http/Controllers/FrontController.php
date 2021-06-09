@@ -66,7 +66,7 @@ class FrontController extends Controller
         $featuresRight = Feature::where('id', ">", 3)->get();
         $logo = Logo::find(1);
         $title = Title::all();
-        $posts3 = Post::inRandomOrder()->limit(3)->get();
+        $posts3 = Post::where('validate',1)->inRandomOrder()->limit(3)->get();
         $subjects = Subject::all();
         $contact = Contact::find(1);
         $footer = Footer::find(1);

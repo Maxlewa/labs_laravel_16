@@ -17,6 +17,5 @@ Nouveau message de {{ $mail->name }}, {{ $mail->mail }}
 Revenir au site
 @endcomponent --}}
 
-A bientôt,<br>
 {{ config('app.name') }}
 @endcomponent
