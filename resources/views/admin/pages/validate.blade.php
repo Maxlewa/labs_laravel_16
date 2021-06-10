@@ -129,11 +129,8 @@
                                     Aucun
                                 </td>
                             </tr>
-                            @endforelse 
-                                       
-                                
+                            @endforelse        
                         </div>
-
                     </div>
                 </div>
             </div>

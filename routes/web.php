@@ -49,10 +49,6 @@ Route::get('/blog-post/{id}', [FrontController::class, 'showArticle'])->name('bl
 Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
 Route::get('/services', [FrontController::class, 'services'])->name('services');
 
-// LOGO Resize *
-
-// Route::post('/image-resize', [LogoController::class, 'imgResize'])->name('img-resize');
-
 // MAIL * Newsletter, Contact
 
 Route::post('/newsletter/store', [NewsletterController::class, 'store'])->name('newsletterStore');
@@ -66,7 +62,7 @@ Route::get('/search', [FrontController::class,'search'])->name('search');
 /* _____________________________ BACK _____________________________ */
 
 
-// _______ STORE Comment *
+//  STORE Comment *
 
 Route::post('/comment/store/{id}', [CommentController::class, 'store'])->name('commentStore');
 
@@ -179,7 +175,6 @@ Route::get('/dashboard', function () {
 // Dashboard - GENERAL
 
 Route::get('/dashboard/general', function () {
-    // $this->authorize('isAdmin');
     $logo = Logo::find(1);
     $footer = Footer::find(1);
     return view('admin.pages.general', compact('logo', 'footer'));
@@ -188,7 +183,6 @@ Route::get('/dashboard/general', function () {
 // Dashboard - DISCOVER
 
 Route::get('/dashboard/discover', function () {
-    // $this->authorize('isAdmin');
     $video = Video::find(1);
     $title = Title::all();
     $discover = Discover::find(1);
@@ -198,7 +192,6 @@ Route::get('/dashboard/discover', function () {
 // Dashboard - TESTIMONIALS
 
 Route::get('/dashboard/testimonials', function () {
-    // $this->authorize('isAdmin');
     $testimonials = Testimonial::all();
     $title = Title::all();
     return view('admin.pages.testimonial', compact('testimonials', 'title'));
@@ -207,7 +200,6 @@ Route::get('/dashboard/testimonials', function () {
 // Dashboard - CONTACT
 
 Route::get('/dashboard/contact', function () {
-    // $this->authorize('isAdmin');
     $contact = Contact::find(1);
     $map = Map::find(1);
     return view('admin.pages.contact', compact('contact', 'map'));
@@ -216,7 +208,6 @@ Route::get('/dashboard/contact', function () {
 // Dashboard - SERVICES
 
 Route::get('/dashboard/services', function () {
-    // $this->authorize('isAdmin');
     $services = Service::all();
     $title = Title::all();
     return view('admin.pages.services', compact('services', 'title'));
@@ -225,7 +216,6 @@ Route::get('/dashboard/services', function () {
 // Dashboard - FEATURES
 
 Route::get('/dashboard/features', function () {
-    // $this->authorize('isAdmin');
     $features = Feature::all();
     $title = Title::all();
     return view('admin.pages.features', compact('features', 'title'));
@@ -234,7 +224,6 @@ Route::get('/dashboard/features', function () {
 // Dashboard - CAROUSEL
 
 Route::get('/dashboard/carousel', function () {
-    // $this->authorize('isAdmin');
     $images = Image::all();
     return view('admin.pages.carousel', compact('images'));
 })->middleware(['auth'])->name('adminCarousel');
@@ -242,7 +231,6 @@ Route::get('/dashboard/carousel', function () {
 // Dashboard - BLOG
 
 Route::get('/dashboard/blog', function () {
-    // $this->authorize('isWriter');
     $posts = Post::all()->where('trash', 0)->where('validate', 1);
     return view('admin.pages.blog', compact('posts'));
 })->middleware(['auth'])->name('adminBlog');
@@ -271,17 +259,16 @@ Route::put('/admin/validate/update/{id}', [ValidationController::class, 'updateA
 Route::put('/admin/trash/article/{id}/', [TrashController::class,'trashArticle'])->name('trashArticle');
 // Récupérer un article de la corbeille
 Route::put('/admin/recup/article/{id}/', [TrashController::class,'recupArticle'])->name('recupArticle');
-// Supprimer un commentaire non-validé
-Route::delete('/admin/validate/comment/{id}/delete', [ValidationController::class,'deleteComment'])->name('validateDeleteComment');
 
 // Commentaires
 Route::post('/blog/article/{id}/comment', [CommentController::class, "store"])->name('commentStore');
 // Valider un commentaire
 Route::put('/admin/validation/update/{id}', [CommentController::class, 'update'])->name('commentUpdate');
+// Supprimer un commentaire non-validé
+Route::delete('/admin/validate/comment/{id}/delete', [ValidationController::class,'deleteComment'])->name('validateDeleteComment');
 
 // Dashboard - USERS ROLES
 
-// Page Users Roles
 Route::get('/admin/user-role', [UserRoleController::class, 'index'])->name('adminUserRole');
 Route::get('/admin/user-role/{id}/edit', [UserRoleController::class, 'edit'])->name('editRole');
 Route::put('/admin/user-role/{id}/update', [UserRoleController::class, 'update'])->name('updateRole');
@@ -292,6 +279,5 @@ Route::get('/admin/trash', [TrashController::class, 'index'])->middleware(['auth
 
 // Supprimer un article de la corbeille définitivement
 Route::delete('/admin/trash/article/{id}/delete', [TrashController::class,'deleteArticle'])->name('deleteArticle');
-
 
 require __DIR__.'/auth.php';

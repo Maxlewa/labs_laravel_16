@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
-    // public function store(Request $request) {
-    //     Mail::to('maxence@labs.com')->send(new ContactSender($request));
-    //     return redirect()->back();
-    // }
-
     // EDIT Contact
 
     public function edit(Contact $contact) {

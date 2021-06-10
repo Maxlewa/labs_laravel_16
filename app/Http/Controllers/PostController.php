@@ -47,8 +47,6 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->input("taglist"));
-
         request()->validate([
             "title" => ["required"],
             "text" => ["required"],
@@ -75,8 +73,7 @@ class PostController extends Controller
         } else {
             $post->validate = 0;
         }
-        
-        // $post->validate = 0;
+
         $post->trash = 0;
 
         $post->save();

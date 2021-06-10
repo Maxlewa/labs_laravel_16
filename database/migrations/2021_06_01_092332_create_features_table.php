@@ -17,7 +17,6 @@ class CreateFeaturesTable extends Migration
             $table->id();
             $table->string('title', 50);
             $table->text('text', 500);
-            // $table->string('icon', 30);
             $table->foreignId('icon_id')->constrained();
             $table->timestamps();
         });

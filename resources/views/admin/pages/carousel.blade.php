@@ -20,7 +20,6 @@
                             @foreach ($images as $image)
                                 <div class="w-2/5 py-4 px-8 bg-white shadow-lg rounded-lg my-10 mr-6">
                                     <div>
-                                      {{-- <p class="text-gray-800 font-semibold mb-4">{{$image->name}}</p> --}}
                                       <img src="../img/{{$image->name}}" alt="" style="height: 180px">
                                       <div class="flex">
                                             <a href="{{route('imageEdit', $image)}}">

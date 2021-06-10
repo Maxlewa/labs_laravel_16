@@ -29,9 +29,7 @@ class UserController extends Controller
             "photo" => ["required"],
             "description" => ["required"],
             "email" => ["required", "email"],
-            // "password" => ["required"],
             "genre_id" => ["required"],
-            // "role_id" => ["required"],
             "job_id" => ["required"],
         ]);
 
@@ -45,7 +43,6 @@ class UserController extends Controller
         $user->age = $request->age;
         $user->description = $request->description;
         $user->email = $request->email;
-        // $user->password = $request->password;
         $user->genre_id = $request->genre_id;
         $user->role_id = 4;
         $user->job_id = $request->job_id;
@@ -74,9 +71,7 @@ class UserController extends Controller
             "photo" => ["required"],
             "description" => ["required"],
             "email" => ["required", "email"],
-            // "password" => ["required"],
             "genre_id" => ["required"],
-            // "role_id" => ["required"],
             "job_id" => ["required"],
         ]);
 
@@ -88,7 +83,7 @@ class UserController extends Controller
         $user->age = $request->age;
         $user->description = $request->description;
         $user->email = $request->email;
-        // $user->password = $request->password;
+
         $user->genre_id = $request->genre_id;
         
         if ($user->role_id == 1) {

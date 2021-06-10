@@ -21,8 +21,6 @@
                         <!-- Logo -->
                         <div class="mt-4">
                             <x-label for="name" :value="__('Logo')" />
-            
-                            {{-- <x-input id="name" class="block mt-1 w-full" type="file" name="name" value="{{$logo->name}}"  required autofocus /> --}}
 
                             <x-input id="name" type='file' class="mt-1 flex flex-col items-center px-2 py-4 bg-white text-purple-900 rounded-lg tracking-wide border border-blue cursor-pointer hover:text-green-500" name="name" value="{{$logo->name}}" style="width: 310px" required autofocus />
                         </div>

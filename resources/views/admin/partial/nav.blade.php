@@ -267,7 +267,6 @@
                     <span class="ml-2">Trash</span>
                 </a>
             </li>
-
             @endadmin
 
             @webmaster

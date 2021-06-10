@@ -9,10 +9,6 @@ Votre e-mail : {{$mail->email}}
 
 Votre compte devait être validé par le webmaster d'ici peu.
 
-{{-- @component('mail::button', ['url' => '/xy'])
-Se connecter au site
-@endcomponent --}}
-
 A bientôt,<br>
 {{ config('app.name') }}
 @endcomponent

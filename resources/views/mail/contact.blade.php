@@ -12,10 +12,5 @@ Nouveau message de {{ $mail->name }}, {{ $mail->mail }}
     <br>
 </div>
 
-{{-- 
-@component('mail::button', ['url' => '/'])
-Revenir au site
-@endcomponent --}}
-
 {{ config('app.name') }}
 @endcomponent

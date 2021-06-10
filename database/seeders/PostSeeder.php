@@ -24,10 +24,8 @@ class PostSeeder extends Seeder
                 "dateYear" => date("Y"),
                 "user_id" => 1,
                 "category_id" => 1,
-                // "tag_id" => 3,
                 "validate"=> 1,
                 "trash" => 0,
-                // "comment_id" => 1,
             ],
             [
                 "title" => "Alex",
@@ -38,10 +36,8 @@ class PostSeeder extends Seeder
                 "dateYear" => date("Y"),
                 "user_id" => 1,
                 "category_id" => 2,
-                // "tag_id" => 3,
                 "validate"=> 1,
                 "trash" => 0,
-                // "comment_id" => 1,
             ],
             [
                 "title" => "Luiz",
@@ -52,10 +48,8 @@ class PostSeeder extends Seeder
                 "dateYear" => date("Y"),
                 "user_id" => 1,
                 "category_id" => 4,
-                // "tag_id" => 3,
                 "validate" => 1,
                 "trash" => 0,
-                // "comment_id" => 1,
             ],
             [
                 "title" => "Article non-validé à la base",
@@ -66,10 +60,8 @@ class PostSeeder extends Seeder
                 "dateYear" => date("Y"),
                 "user_id" => 1,
                 "category_id" => 4,
-                // "tag_id" => 3,
                 "validate"=> 0,
                 "trash" => 0,
-                // "comment_id" => 1,
             ],
         ]);
     }

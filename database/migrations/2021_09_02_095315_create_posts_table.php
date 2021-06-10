@@ -25,12 +25,9 @@ class CreatePostsTable extends Migration
             $table->foreignId('user_id')->constrained();
 
             $table->foreignId('category_id')->nullable()->constrained()->OnDelete('cascade');
-            // $table->foreignId('tag_id')->nullable()->constrained();
 
             $table->boolean('validate');
             $table->boolean('trash');
-            
-            // $table->foreignId('comment_id')->nullable()->constrained();
 
             $table->timestamps();
         });

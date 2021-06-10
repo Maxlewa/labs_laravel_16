@@ -11,10 +11,6 @@ Vous êtes validé ! Vous pouvez dès à présent modifier votre profil.
 
 Token de connection : /xy
 
-{{-- @component('mail::button', ['url' => '/xy'])
-Se connecter au site
-@endcomponent --}}
-
 A bientôt,<br>
 {{ config('app.name') }}
 @endcomponent
