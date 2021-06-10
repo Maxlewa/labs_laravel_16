@@ -18,9 +18,11 @@
                             <x-label for="role_id" :value="__('Rôle')" />
                             
                             <select id="role_id" class="block mt-1 w-1/3 border-b border-gray-200 overflow-hidden shadow-sm sm:rounded-lg" name="role_id" :value="old('role_id')">
-                                <option value="">Select a role</option>
+                                <option value="{{$user->role->id}}" selected>{{$user->role->name}}</option>
                                 @foreach ($roles as $role)
-                                    <option value="{{$role->id}}">{{$role->name}}</option>
+                                    @if ($role->id != $user->role_id)
+                                        <option value="{{$role->id}}">{{$role->name}}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>

@@ -135,7 +135,6 @@
                 <div class="widget-item">
                     <h2 class="widget-title">Tags</h2>
                     <ul class="tag">
-                        @dump($article)
                         @foreach ($article->tag as $tag)
                             <li><a href="">{{$tag->name}}</a></li>
                         @endforeach

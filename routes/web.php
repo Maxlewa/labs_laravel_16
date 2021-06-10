@@ -66,7 +66,7 @@ Route::get('/search', [FrontController::class,'search'])->name('search');
 
 //  STORE Comment *
 
-Route::post('/comment/store/{id}', [CommentController::class, 'store'])->name('commentStore');
+// Route::post('/comment/store/{id}', [CommentController::class, 'store'])->name('commentStore');
 
 /* ---------------------- C R U D ---------------------- */
 
@@ -74,104 +74,104 @@ Route::post('/comment/store/{id}', [CommentController::class, 'store'])->name('c
 
 Route::get('/admin/user/create', [UserController::class, 'create'])->name('userCreate');
 Route::post('/admin/user/store', [UserController::class, 'store'])->name('userStore');
-Route::get('/admin/user/{user}/edit', [UserController::class, 'edit'])->name('userEdit');
-Route::put('/admin/user/{user}/update', [UserController::class, 'update'])->name('userUpdate');
-Route::delete('/admin/user/{user}/delete', [UserController::class,'destroy'])->name('userDestroy');
+Route::get('/admin/user/{user}/edit', [UserController::class, 'edit'])->middleware(['auth'])->name('userEdit');
+Route::put('/admin/user/{user}/update', [UserController::class, 'update'])->middleware(['auth'])->name('userUpdate');
+Route::delete('/admin/user/{user}/delete', [UserController::class,'destroy'])->middleware(['auth'])->name('userDestroy');
 
 // Images carousel
 
-Route::get('/admin/image/create', [ImageController::class, 'create'])->name('imageCreate');
-Route::post('/admin/image/store', [ImageController::class, 'store'])->name('imageStore');
-Route::get('/admin/image/{image}/edit', [ImageController::class, 'edit'])->name('imageEdit');
-Route::put('/admin/image/{image}/update', [ImageController::class, 'update'])->name('imageUpdate');
-Route::delete('/admin/image/{image}/delete', [ImageController::class,'destroy'])->name('imageDestroy');
+Route::get('/admin/image/create', [ImageController::class, 'create'])->middleware(['admin'])->name('imageCreate');
+Route::post('/admin/image/store', [ImageController::class, 'store'])->middleware(['admin'])->name('imageStore');
+Route::get('/admin/image/{image}/edit', [ImageController::class, 'edit'])->middleware(['admin'])->name('imageEdit');
+Route::put('/admin/image/{image}/update', [ImageController::class, 'update'])->middleware(['admin'])->name('imageUpdate');
+Route::delete('/admin/image/{image}/delete', [ImageController::class,'destroy'])->middleware(['admin'])->name('imageDestroy');
 
 // Image en first dans le carousel
-Route::put('/admin/image/{image}/first-image', [ImageController::class, 'firstImage'])->name('firstImage');
+Route::put('/admin/image/{image}/first-image', [ImageController::class, 'firstImage'])->middleware(['admin'])->name('firstImage');
 
 // Logo
 
-Route::get('/admin/logo/{logo}/edit', [LogoController::class, 'edit'])->name('logoEdit');
-Route::put('/admin/logo/{logo}/update', [LogoController::class, 'update'])->name('logoUpdate');
+Route::get('/admin/logo/{logo}/edit', [LogoController::class, 'edit'])->middleware(['admin'])->name('logoEdit');
+Route::put('/admin/logo/{logo}/update', [LogoController::class, 'update'])->middleware(['admin'])->name('logoUpdate');
 
 // Services
 
-Route::get('/admin/service/create', [ServiceController::class, 'create'])->name('serviceCreate');
-Route::post('/admin/service/store', [ServiceController::class, 'store'])->name('serviceStore');
-Route::get('/admin/service/{service}/edit', [ServiceController::class, 'edit'])->name('serviceEdit');
-Route::put('/admin/service/{service}/update', [ServiceController::class, 'update'])->name('serviceUpdate');
-Route::delete('/admin/service/{service}/delete', [ServiceController::class,'destroy'])->name('serviceDestroy');
+Route::get('/admin/service/create', [ServiceController::class, 'create'])->middleware(['admin'])->name('serviceCreate');
+Route::post('/admin/service/store', [ServiceController::class, 'store'])->middleware(['admin'])->name('serviceStore');
+Route::get('/admin/service/{service}/edit', [ServiceController::class, 'edit'])->middleware(['admin'])->name('serviceEdit');
+Route::put('/admin/service/{service}/update', [ServiceController::class, 'update'])->middleware(['admin'])->name('serviceUpdate');
+Route::delete('/admin/service/{service}/delete', [ServiceController::class,'destroy'])->middleware(['admin'])->name('serviceDestroy');
 
 // Titles
 
-Route::get('/admin/title/{title}/edit', [TitleController::class, 'edit'])->name('titleEdit');
-Route::put('/admin/title/{title}/update', [TitleController::class, 'update'])->name('titleUpdate');
+Route::get('/admin/title/{title}/edit', [TitleController::class, 'edit'])->middleware(['admin'])->name('titleEdit');
+Route::put('/admin/title/{title}/update', [TitleController::class, 'update'])->middleware(['admin'])->name('titleUpdate');
 
 // Discover
 
-Route::get('/admin/discover/{discover}/edit', [DiscoverController::class, 'edit'])->name('discoverEdit');
-Route::put('/admin/discover/{discover}/update', [DiscoverController::class, 'update'])->name('discoverUpdate');
+Route::get('/admin/discover/{discover}/edit', [DiscoverController::class, 'edit'])->middleware(['admin'])->name('discoverEdit');
+Route::put('/admin/discover/{discover}/update', [DiscoverController::class, 'update'])->middleware(['admin'])->name('discoverUpdate');
 
 // Video
 
-Route::get('/admin/video/{video}/edit', [VideoController::class, 'edit'])->name('videoEdit');
-Route::put('/admin/video/{video}/update', [VideoController::class, 'update'])->name('videoUpdate');
+Route::get('/admin/video/{video}/edit', [VideoController::class, 'edit'])->middleware(['admin'])->name('videoEdit');
+Route::put('/admin/video/{video}/update', [VideoController::class, 'update'])->middleware(['admin'])->name('videoUpdate');
 
 // Slogan
 
-Route::put('/admin/bigtitle/{bigtitle}/update', [BigTitleController::class, 'update'])->name('bigtitleUpdate');
+Route::put('/admin/bigtitle/{bigtitle}/update', [BigTitleController::class, 'update'])->middleware(['admin'])->name('bigtitleUpdate');
 
 // Testimonials
 
-Route::get('/admin/testimonial/create', [TestimonialController::class, 'create'])->name('testimonialCreate');
-Route::post('/admin/testimonial/store', [TestimonialController::class, 'store'])->name('testimonialStore');
-Route::get('/admin/testimonial/{testimonial}/edit', [TestimonialController::class, 'edit'])->name('testimonialEdit');
-Route::put('/admin/testimonial/{testimonial}/update', [TestimonialController::class, 'update'])->name('testimonialUpdate');
-Route::delete('/admin/testimonial/{testimonial}/delete', [TestimonialController::class,'destroy'])->name('testimonialDestroy');
+Route::get('/admin/testimonial/create', [TestimonialController::class, 'create'])->middleware(['admin'])->name('testimonialCreate');
+Route::post('/admin/testimonial/store', [TestimonialController::class, 'store'])->middleware(['admin'])->name('testimonialStore');
+Route::get('/admin/testimonial/{testimonial}/edit', [TestimonialController::class, 'edit'])->middleware(['admin'])->name('testimonialEdit');
+Route::put('/admin/testimonial/{testimonial}/update', [TestimonialController::class, 'update'])->middleware(['admin'])->name('testimonialUpdate');
+Route::delete('/admin/testimonial/{testimonial}/delete', [TestimonialController::class,'destroy'])->middleware(['admin'])->name('testimonialDestroy');
 
 // Contact
 
-Route::get('/admin/contact/{contact}/edit', [ContactController::class, 'edit'])->name('contactEdit');
-Route::put('/admin/contact/{contact}/update', [ContactController::class, 'update'])->name('contactUpdate');
+Route::get('/admin/contact/{contact}/edit', [ContactController::class, 'edit'])->middleware(['admin'])->name('contactEdit');
+Route::put('/admin/contact/{contact}/update', [ContactController::class, 'update'])->middleware(['admin'])->name('contactUpdate');
 
 // Articles blog
 
-Route::get('/admin/post/create', [PostController::class, 'create'])->name('postCreate');
-Route::post('/admin/post/store', [PostController::class, 'store'])->name('postStore');
-Route::get('/admin/post/{post}/edit', [PostController::class, 'edit'])->name('postEdit');
-Route::put('/admin/post/{post}/update', [PostController::class, 'update'])->name('postUpdate');
-Route::delete('/admin/post/{post}/delete', [PostController::class,'destroy'])->name('postDestroy');
+Route::get('/admin/post/create', [PostController::class, 'create'])->middleware(['writer'])->name('postCreate');
+Route::post('/admin/post/store', [PostController::class, 'store'])->middleware(['writer'])->name('postStore');
+Route::get('/admin/post/{post}/edit', [PostController::class, 'edit'])->middleware(['writer'])->name('postEdit');
+Route::put('/admin/post/{post}/update', [PostController::class, 'update'])->middleware(['writer'])->name('postUpdate');
+Route::delete('/admin/post/{post}/delete', [PostController::class,'destroy'])->middleware(['writer'])->name('postDestroy');
 
 // Google Maps
 
-Route::get('/admin/map/{map}/edit', [MapController::class, 'edit'])->name('mapEdit');
-Route::put('/admin/map/{map}/update', [MapController::class, 'update'])->name('mapUpdate');
+Route::get('/admin/map/{map}/edit', [MapController::class, 'edit'])->middleware(['admin'])->name('mapEdit');
+Route::put('/admin/map/{map}/update', [MapController::class, 'update'])->middleware(['admin'])->name('mapUpdate');
 
 // Features - Smartphone - Left/Right
 
-Route::get('/admin/feature/{feature}/edit', [FeatureController::class, 'edit'])->name('featureEdit');
-Route::put('/admin/feature/{feature}/update', [FeatureController::class, 'update'])->name('featureUpdate');
+Route::get('/admin/feature/{feature}/edit', [FeatureController::class, 'edit'])->middleware(['admin'])->name('featureEdit');
+Route::put('/admin/feature/{feature}/update', [FeatureController::class, 'update'])->middleware(['admin'])->name('featureUpdate');
 
 // Tags
 
-Route::get('/admin/tag/create', [TagController::class, 'create'])->name('tagCreate');
-Route::post('/admin/tag/store', [TagController::class, 'store'])->name('tagStore');
-Route::get('/admin/tag/{tag}/edit', [TagController::class, 'edit'])->name('tagEdit');
-Route::put('/admin/tag/{tag}/update', [TagController::class, 'update'])->name('tagUpdate');
-Route::delete('/admin/tag/{tag}/delete', [TagController::class,'destroy'])->name('tagDestroy');
+Route::get('/admin/tag/create', [TagController::class, 'create'])->middleware(['admin'])->name('tagCreate');
+Route::post('/admin/tag/store', [TagController::class, 'store'])->middleware(['admin'])->name('tagStore');
+Route::get('/admin/tag/{tag}/edit', [TagController::class, 'edit'])->middleware(['admin'])->name('tagEdit');
+Route::put('/admin/tag/{tag}/update', [TagController::class, 'update'])->middleware(['admin'])->name('tagUpdate');
+Route::delete('/admin/tag/{tag}/delete', [TagController::class,'destroy'])->middleware(['admin'])->name('tagDestroy');
 
 // Categories
 
-Route::get('/admin/category/create', [CategoryController::class, 'create'])->name('categoryCreate');
-Route::post('/admin/category/store', [CategoryController::class, 'store'])->name('categoryStore');
-Route::get('/admin/category/{category}/edit', [CategoryController::class, 'edit'])->name('categoryEdit');
-Route::put('/admin/category/{category}/update', [CategoryController::class, 'update'])->name('categoryUpdate');
-Route::delete('/admin/category/{category}/delete', [CategoryController::class,'destroy'])->name('categoryDestroy');
+Route::get('/admin/category/create', [CategoryController::class, 'create'])->middleware(['admin'])->name('categoryCreate');
+Route::post('/admin/category/store', [CategoryController::class, 'store'])->middleware(['admin'])->name('categoryStore');
+Route::get('/admin/category/{category}/edit', [CategoryController::class, 'edit'])->middleware(['admin'])->name('categoryEdit');
+Route::put('/admin/category/{category}/update', [CategoryController::class, 'update'])->middleware(['admin'])->name('categoryUpdate');
+Route::delete('/admin/category/{category}/delete', [CategoryController::class,'destroy'])->middleware(['admin'])->name('categoryDestroy');
 
 // Footer
 
-Route::get('/admin/footer/{footer}/edit', [FooterController::class, 'edit'])->name('footerEdit');
-Route::put('/admin/footer/{footer}/update', [FooterController::class, 'update'])->name('footerUpdate');
+Route::get('/admin/footer/{footer}/edit', [FooterController::class, 'edit'])->middleware(['admin'])->name('footerEdit');
+Route::put('/admin/footer/{footer}/update', [FooterController::class, 'update'])->middleware(['admin'])->name('footerUpdate');
 
 // ___________________________________ DASHBOARD *
 
@@ -259,35 +259,36 @@ Route::get('/dashboard/tag-category', function () {
 Route::get('/admin/validate', [ValidationController::class, 'index'])->middleware(['webmaster'])->name('adminValidate');
 
 // Valider un membre
-Route::put('/admin/validation/member/update/{id}', [ValidationController::class, 'updateUser'])->name('validateUserUpdate');
+Route::put('/admin/validation/member/update/{id}', [ValidationController::class, 'updateUser'])->middleware(['webmaster'])->name('validateUserUpdate');
 // Supprimer un membre non-validé
-Route::delete('/admin/validate/user/{id}/delete', [ValidationController::class,'deleteUser'])->name('validateDeleteUser');
+Route::delete('/admin/validate/user/{id}/delete', [ValidationController::class,'deleteUser'])->middleware(['webmaster'])->name('validateDeleteUser');
 
 // Valider un article
-Route::put('/admin/validate/update/{id}', [ValidationController::class, 'updateArticle'])->name('validateUpdateArticle');
+Route::put('/admin/validate/update/{id}', [ValidationController::class, 'updateArticle'])->middleware(['webmaster'])->name('validateUpdateArticle');
 // Déplacer un article dans la corbeille
-Route::put('/admin/trash/article/{id}/', [TrashController::class,'trashArticle'])->name('trashArticle');
+Route::put('/admin/trash/article/{id}/', [TrashController::class,'trashArticle'])->middleware(['webmaster'])->name('trashArticle');
 // Récupérer un article de la corbeille
-Route::put('/admin/recup/article/{id}/', [TrashController::class,'recupArticle'])->name('recupArticle');
+Route::put('/admin/recup/article/{id}/', [TrashController::class,'recupArticle'])->middleware(['webmaster'])->name('recupArticle');
 
 // Commentaires
 Route::post('/blog/article/{id}/comment', [CommentController::class, "store"])->name('commentStore');
+
 // Valider un commentaire
-Route::put('/admin/validation/update/{id}', [CommentController::class, 'update'])->name('commentUpdate');
+Route::put('/admin/validation/update/{id}', [CommentController::class, 'update'])->middleware(['webmaster'])->name('commentUpdate');
 // Supprimer un commentaire non-validé
-Route::delete('/admin/validate/comment/{id}/delete', [ValidationController::class,'deleteComment'])->name('validateDeleteComment');
+Route::delete('/admin/validate/comment/{id}/delete', [ValidationController::class,'deleteComment'])->middleware(['webmaster'])->name('validateDeleteComment');
 
 // Dashboard - USERS ROLES
 
 Route::get('/admin/user-role', [UserRoleController::class, 'index'])->middleware(['webmaster'])->name('adminUserRole');
-Route::get('/admin/user-role/{id}/edit', [UserRoleController::class, 'edit'])->name('editRole');
-Route::put('/admin/user-role/{id}/update', [UserRoleController::class, 'update'])->name('updateRole');
+Route::get('/admin/user-role/{id}/edit', [UserRoleController::class, 'edit'])->middleware(['webmaster'])->name('editRole');
+Route::put('/admin/user-role/{id}/update', [UserRoleController::class, 'update'])->middleware(['webmaster'])->name('updateRole');
 
 // Dashboard - TRASH
 
 Route::get('/admin/trash', [TrashController::class, 'index'])->middleware(['webmaster'])->name('adminTrash');
 
 // Supprimer un article de la corbeille définitivement
-Route::delete('/admin/trash/article/{id}/delete', [TrashController::class,'deleteArticle'])->name('deleteArticle');
+Route::delete('/admin/trash/article/{id}/delete', [TrashController::class,'deleteArticle'])->middleware(['webmaster'])->name('deleteArticle');
 
 require __DIR__.'/auth.php';
