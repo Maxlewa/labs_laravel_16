@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ValidateUserSender;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ValidationController extends Controller
 {
@@ -17,18 +19,21 @@ class ValidationController extends Controller
         // $commentaires = Comment::all();
         $commentaires = Comment::where('validate', 0)->get();
         $articles = Post::where('validate', 0)->where('trash', 0)->get();
+        $users = User::where('validate', 0)->get();
         // $articles = Article::all();
-        return view('admin.pages.validate', compact('roles','commentaires','articles'));
+        return view('admin.pages.validate', compact('roles','commentaires','articles', 'users'));
     }
 
-    // public function update(Request $request, User $id)
-    // {
-    //     $user = $id;
-    //     $user->role_id = $request->role;
-    //     $user->validate = 1;
-    //     $user->save();
-    //     return redirect()->back();
-    // }
+    public function updateUser(User $id)
+    {
+        $user = $id;
+        $user->validate = 1;
+        $user->save();
+
+        Mail::to($user->email)->send(new ValidateUserSender($user));
+
+        return redirect()->back()->with('success', 'Membre validé');
+    }
 
     public function updateCommentaire(Comment $id)
     {
@@ -36,6 +41,13 @@ class ValidationController extends Controller
         $commentaire->validate = 1;
         $commentaire->save();
         return redirect()->back()->with('success', 'Commentaire validé');
+    }
+
+    public function deleteUser(User $id)
+    {
+        $user = $id;
+        $user->delete();
+        return redirect()->back()->with('success', 'User supprimé');
     }
 
     public function deleteComment(Comment $id)

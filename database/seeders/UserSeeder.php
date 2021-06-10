@@ -29,6 +29,7 @@ class UserSeeder extends Seeder
                 "genre_id" => 1,
                 // "post_id" => null,
                 "testimonial_id" => null,
+                "validate" => 1,
             ],
             [
                 "firstname" => "webmaster",
@@ -43,6 +44,7 @@ class UserSeeder extends Seeder
                 "genre_id" => 1,
                 // "post_id" => null,
                 "testimonial_id" => null,
+                "validate" => 1,
             ],
             [
                 "firstname" => "writer",
@@ -57,6 +59,7 @@ class UserSeeder extends Seeder
                 "genre_id" => 1,
                 // "post_id" => null,
                 "testimonial_id" => null,
+                "validate" => 1,
             ],
             [
                 "firstname" => "member",
@@ -71,6 +74,7 @@ class UserSeeder extends Seeder
                 "genre_id" => 1,
                 // "post_id" => null,
                 "testimonial_id" => null,
+                "validate" => 0,
             ]
         ]);
     }

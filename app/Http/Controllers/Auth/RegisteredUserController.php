@@ -56,37 +56,19 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        // $user = User::create([
-        //     'name' => $request->name,
-        //     'firstname' => $request->firstname,
-        //     'email' => $request->email,
-        //     "age" => $request->age,
-
-        //     "description" => $request->description,
-        //     // "password" => ["required"],
-        //     "genre_id" => $request->genre_id,
-        //     // "role_id" => ["required"],
-        //     "job_id" => $request->job_id,
-        //     'password' => Hash::make($request->password),
-        // ]);
-
         $user = new User();
-
-        // $request->file('photo')->storePublicly('img/', 'public');
-        // $user->photo = $request->file('photo')->hashName();
 
         $user->photo = "default.png";
 
         $user->firstname = $request->firstname;
         $user->name = $request->name;
         $user->age = $request->age;
-        // $user->description = $request->description;
         $user->email = $request->email;
-        // $user->password = $request->password;
         $user->password = Hash::make($request->password);
         $user->genre_id = $request->genre_id;
         $user->role_id = 4;
         $user->job_id = $request->job_id;
+        $user->validate = 0;
         $user->save();
 
         event(new Registered($user));

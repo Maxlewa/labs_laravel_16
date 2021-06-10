@@ -258,6 +258,11 @@ Route::get('/dashboard/tag-category', function () {
 
 Route::get('/admin/validate', [ValidationController::class, 'index'])->middleware(['auth'])->name('adminValidate');
 
+// Valider un membre
+Route::put('/admin/validation/member/update/{id}', [ValidationController::class, 'updateUser'])->name('validateUserUpdate');
+// Supprimer un membre non-validé
+Route::delete('/admin/validate/user/{id}/delete', [ValidationController::class,'deleteUser'])->name('validateDeleteUser');
+
 // Valider un article
 Route::put('/admin/validate/update/{id}', [ValidationController::class, 'updateArticle'])->name('validateUpdateArticle');
 // Déplacer un article dans la corbeille

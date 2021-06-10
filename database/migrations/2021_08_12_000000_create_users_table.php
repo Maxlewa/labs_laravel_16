@@ -29,6 +29,8 @@ class CreateUsersTable extends Migration
             $table->foreignId('job_id')->constrained();
             // $table->foreignId('post_id')->nullable()->constrained();
             $table->foreignId('testimonial_id')->nullable()->constrained();
+
+            $table->boolean('validate');
             
             $table->rememberToken();
             $table->timestamps();

@@ -39,9 +39,9 @@ class FrontController extends Controller
         $subjects = Subject::all();
         $footer = Footer::find(1);
 
-        $users = User::where('job_id', '>', 1)->get();
+        $users = User::where('job_id', '>', 1)->where('validate', 1)->get();
         $userRandom = $users->random(2);
-        $ceo = User::where('job_id', 1)->get();
+        $ceo = User::where('job_id', 1)->where('validate', 1)->get();
         $centre = $ceo->random(1);
         
         return view('home', compact('video', 'services9', 'services3', 'discover', 'images', 'logo', 'title', 'contact', 'testimonials', 'subjects', 'footer', 'users', 'userRandom', 'ceo', 'centre'));

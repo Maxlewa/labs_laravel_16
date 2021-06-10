@@ -11,6 +11,40 @@
                         @include('layouts.flash')
                     </div>
 
+                    <!-- Membres à valider -->
+                    <div class="mb-4">
+                        <h1><b>Membress en attente de validation</b></h1>
+
+                        <div>
+                            @forelse ($users as $user)
+                            <div class="mt-4 w-1/3 border border-green-700 rounded py-4 px-4">
+                                <td class="px-8 py-4 whitespace-nowrap text-left text-sm font-medium">
+                                    <p class="text-gray-900 ">{{$user->name}}</p>
+                                    <p class="text-gray-700 ">{{$user->email}}</p>
+                                </td>
+                                <div class="flex mt-4">
+                                    <form action={{route('validateUserUpdate', $user->id)}} method="post">
+                                        @csrf
+                                        @method('PUT')
+                                        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">Validate</i></button>
+                                    </form>
+                                    <form method="post" action="{{route('validateDeleteUser', $user)}}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" type="submit">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                            @empty 
+                            <tr>
+                                <td class="text-sm font-medium" colspan="3" >
+                                    Aucun membre en attente
+                                </td>
+                            </tr>
+                            @endforelse 
+                        </div>
+                    </div>
+
                     <!-- Articles à valider -->
                     <div class="mb-4">
                         <h1><b>Articles en attente de validation</b></h1>
@@ -61,9 +95,9 @@
                     <div class="mb-4">
                         <h1><b>Commentaires en attente de validation</b></h1>
 
-                        <div class="mt-4 w-1/3 border border-green-700 rounded py-4 px-4">
+                        <div>
                             @forelse ($commentaires as $commentaire)
-                            <tr>
+                            <div class="mt-4 w-1/3 border border-green-700 rounded py-4 px-4">
                                 <td class="px-8 py-4 whitespace-nowrap text-left text-sm font-medium">
                                     <p class="text-gray-900 ">{{$commentaire->name}}</p>
                                     <p class="text-gray-700 ">{{$commentaire->email}}</p>
@@ -83,7 +117,7 @@
                                         <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" type="submit">Delete</button>
                                     </form>
                                 </div>
-                            </tr>
+                            </div>
                             @empty 
                             <tr>
                                 <td class="text-sm font-medium" colspan="3" >

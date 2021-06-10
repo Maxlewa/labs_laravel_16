@@ -7,7 +7,9 @@ Bienvenue dans l'équipe de Labs !
 
 Votre e-mail : {{$mail->email}}
 
-Votre compte devait être validé par le webmaster d'ici peu.
+Vous êtes validé ! Vous pouvez dès à présent modifier votre profil.
+
+Token de connection : /xy
 
 {{-- @component('mail::button', ['url' => '/xy'])
 Se connecter au site
