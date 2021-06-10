@@ -17,9 +17,11 @@ class ImageSeeder extends Seeder
         DB::table('images')->insert([
             [
                 "name" => "01.jpg",
+                "active" => 1,
             ],
             [
                 "name" => "02.jpg",
+                "active" => 0,
             ]
         ]);
     }

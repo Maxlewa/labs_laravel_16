@@ -21,7 +21,21 @@
                                 <div class="w-2/5 py-4 px-8 bg-white shadow-lg rounded-lg my-10 mr-6">
                                     <div>
                                       <img src="../img/{{$image->name}}" alt="" style="height: 180px">
-                                      <div class="flex">
+                                      <div>
+                                        @if ($image->active == 1)
+                                            <h1 class="text-md mt-4 py-2 px-4 border border-black rounded w-3/5"><b>Cette image est la première</b></h1>
+                                            
+                                        @else
+                                            
+                                        <form method="POST" action="{{ route('firstImage', $image) }}" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PUT')
+
+                                                <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded mt-4">Définir en tant que première image</button>
+                                        </form>
+                                        @endif
+                                        </div>
+                                        <div class="flex">
                                             <a href="{{route('imageEdit', $image)}}">
                                                 <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-4">Edit</button>
                                             </a>
@@ -30,7 +44,7 @@
                                                 @method('DELETE')
                                                 <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4 ml-4" type="submit">Delete</button>
                                             </form>
-                                      </div>
+                                        </div>
                                     </div>
                                   </div>
                             @endforeach
@@ -41,3 +55,4 @@
         </div>
     </div>
 </x-app-layout>
+

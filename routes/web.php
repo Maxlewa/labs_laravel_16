@@ -84,6 +84,9 @@ Route::get('/admin/image/{image}/edit', [ImageController::class, 'edit'])->name(
 Route::put('/admin/image/{image}/update', [ImageController::class, 'update'])->name('imageUpdate');
 Route::delete('/admin/image/{image}/delete', [ImageController::class,'destroy'])->name('imageDestroy');
 
+// Image en first dans le carousel
+Route::put('/admin/image/{image}/first-image', [ImageController::class, 'firstImage'])->name('firstImage');
+
 // Logo
 
 Route::get('/admin/logo/{logo}/edit', [LogoController::class, 'edit'])->name('logoEdit');

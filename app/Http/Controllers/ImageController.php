@@ -28,6 +28,8 @@ class ImageController extends Controller
         $request->file('name')->storePublicly('img/', 'public');
         $image->name = $request->file('name')->hashName();
 
+        $image->active = 0;
+
         $image->save();
 
         return redirect()->route('adminCarousel')->with('success', "L'image a bien été ajoutée");
@@ -62,5 +64,21 @@ class ImageController extends Controller
 
         $image->delete();
         return redirect()->route('adminCarousel')->with('success', 'La photo "' . $image->name . '" a bien été supprimée');
+    }
+
+    // FIRST Image
+
+    public function firstImage(Image $image) {
+
+        $pictures = Image::all();
+        foreach ($pictures as $picture) {
+            $picture->active = 0;
+            $picture->save();
+        }
+
+        $image->active = 1;
+        $image->save();
+
+        return redirect()->route('adminCarousel')->with('success', "L'image est maintenant la première à apparaître dans le carousel");
     }
 }
