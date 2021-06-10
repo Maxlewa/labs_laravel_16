@@ -68,7 +68,8 @@
             @endforeach
         </div>
         <div class="col-12 d-flex justify-content-center paginationServices">
-            {{$services->links()}}
+            {{-- {{$services->links()}} --}}
+            {{ $services->links('vendor.pagination.default') }}
         </div>
     </div>
 </div>

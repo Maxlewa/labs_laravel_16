@@ -69,14 +69,9 @@
                 </div>
                 @endforeach
 
-                <!-- Pagination -->
-                {{-- <div class="page-pagination">
-                    <a class="active" href="">01.</a>
-                    <a href="">02.</a>
-                    <a href="">03.</a>
-                </div> --}}
                 <div>
-                    {{$articles->links()}}
+                    {{-- {{$articles->links()}} --}}
+                    {{ $articles->links('vendor.pagination.default') }}
                 </div>
             </div>
             <!-- Sidebar area -->
