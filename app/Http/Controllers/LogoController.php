@@ -30,7 +30,7 @@ class LogoController extends Controller
 
         $logo->save();
 
-        return redirect()->route('dashboard')->with('success', 'Modifications enregistrées');
+        return redirect()->route('adminGeneral')->with('success', 'Modifications enregistrées');
     }
 
     /**

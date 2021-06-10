@@ -22,12 +22,13 @@
                             <x-input id="name" class="block mt-1 w-full" type="text" name="name" value="{{$title[2]->name}}"  required autofocus />
                         </div>
 
-                        <div class="flex items-center justify-end mt-4">
+                        <div class="flex items-center my-4">
             
-                            <x-button class="ml-4" type="submit">
+                            <x-button type="submit">
                                 {{ __('Update') }}
                             </x-button>
                         </div>
+                        <hr>
                     </form>
 
                     <div class="my-4">

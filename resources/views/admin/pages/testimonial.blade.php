@@ -22,12 +22,13 @@
                             <x-input id="name" class="block mt-1 w-full" type="text" name="name" value="{{$title[1]->name}}"  required autofocus />
                         </div>
 
-                        <div class="flex items-center justify-end mt-4">
+                        <div class="flex items-center my-4">
             
-                            <x-button class="ml-4" type="submit">
+                            <x-button type="submit">
                                 {{ __('Update') }}
                             </x-button>
                         </div>
+                        <hr>
                     </form>
 
                     <div class="my-4">
@@ -42,7 +43,7 @@
                         </a>
                         <div class="flex flex-wrap">
                             @foreach ($testimonials as $testimonial)
-                                <div class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20 mr-6">
+                                <div class="py-4 px-8 bg-white shadow-lg rounded-lg my-20 mr-6" style="width: 450px">
                                     <div class="flex justify-center md:justify-end -mt-16">
                                       <img class="w-20 h-20 object-cover rounded-full border-4 border-green-400" src="../img/{{$testimonial->image}}">
                                     </div>

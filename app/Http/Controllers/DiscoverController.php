@@ -27,6 +27,6 @@ class DiscoverController extends Controller
         $discover->textRight = $request->textRight;
         $discover->save();
 
-        return redirect()->route('dashboard')->with('success', 'Modifications enregistrées');
+        return redirect()->route('adminDiscover')->with('success', 'Modifications enregistrées');
     }
 }

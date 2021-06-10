@@ -7,8 +7,12 @@
                     <!-- Validation Errors -->
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
+                    <div class="my-4">
+                        @include('layouts.flash')
+                    </div>
+
                     <!-- LOGO -->
-                    <form method="POST" action="{{ route('logoUpdate', $logo) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('logoUpdate', $logo) }}" enctype="multipart/form-data" class="mb-6">
                         @csrf
                         @method('PUT')
 
@@ -18,15 +22,18 @@
                         <div class="mt-4">
                             <x-label for="name" :value="__('Logo')" />
             
-                            <x-input id="name" class="block mt-1 w-full" type="file" name="name" value="{{$logo->name}}"  required autofocus />
+                            {{-- <x-input id="name" class="block mt-1 w-full" type="file" name="name" value="{{$logo->name}}"  required autofocus /> --}}
+
+                            <x-input id="name" type='file' class="mt-1 flex flex-col items-center px-2 py-4 bg-white text-purple-900 rounded-lg tracking-wide border border-blue cursor-pointer hover:text-green-500" name="name" value="{{$logo->name}}" style="width: 310px" required autofocus />
                         </div>
 
-                        <div class="flex items-center justify-end mt-4">
+                        <div class="flex items-center my-4">
             
-                            <x-button class="ml-4" type="submit">
+                            <x-button type="submit">
                                 {{ __('Update') }}
                             </x-button>
                         </div>
+                        <hr>
                     </form>
 
                     <!-- FOOTER -->
@@ -64,9 +71,9 @@
                             <x-input id="person" class="block mt-1 w-full" type="text" name="person" value="{{$footer->person}}"  required autofocus />
                         </div>
 
-                        <div class="flex items-center justify-end mt-4">
+                        <div class="flex items-center mt-4">
             
-                            <x-button class="ml-4" type="submit">
+                            <x-button type="submit">
                                 {{ __('Update') }}
                             </x-button>
                         </div>

@@ -7,8 +7,12 @@
                     <!-- Validation Errors -->
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
+                    <div class="my-4">
+                        @include('layouts.flash')
+                    </div>
+
                     <!-- Video -->
-                    <form method="POST" action="{{ route('videoUpdate', $video) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('videoUpdate', $video) }}" enctype="multipart/form-data" class="mb-6">
                         @csrf
                         @method('PUT')
 
@@ -21,16 +25,17 @@
                             <x-input id="link" class="block mt-1 w-full" type="text" name="link" value="{{$video->link}}"  required autofocus />
                         </div>
 
-                        <div class="flex items-center justify-end mt-4">
+                        <div class="flex items-center my-4">
             
-                            <x-button class="ml-4" type="submit">
+                            <x-button type="submit">
                                 {{ __('Update') }}
                             </x-button>
                         </div>
+                        <hr>
                     </form>
 
                     <!-- Title 1 -->
-                    <form method="POST" action="{{ route('titleUpdate', $title[0]) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('titleUpdate', $title[0]) }}" enctype="multipart/form-data" class="mb-6">
                         @csrf
                         @method('PUT')
 
@@ -44,16 +49,17 @@
                             <x-input id="name" class="block mt-1 w-full" type="text" name="name" value="{{$title[0]->name}}"  required autofocus />
                         </div>
 
-                        <div class="flex items-center justify-end mt-4">
+                        <div class="flex items-center my-4">
             
-                            <x-button class="ml-4" type="submit">
+                            <x-button type="submit">
                                 {{ __('Update') }}
                             </x-button>
                         </div>
+                        <hr>
                     </form>
 
                     <!-- Discover -->
-                    <form method="POST" action="{{ route('discoverUpdate', $discover) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('discoverUpdate', $discover) }}" enctype="multipart/form-data" class="mb-6">
                         @csrf
                         @method('PUT')
 
@@ -75,9 +81,9 @@
                             </div>
                         </div>
 
-                        <div class="flex items-center justify-end mt-4">
+                        <div class="flex items-center mt-4">
             
-                            <x-button class="ml-4" type="submit">
+                            <x-button type="submit">
                                 {{ __('Update') }}
                             </x-button>
                         </div>

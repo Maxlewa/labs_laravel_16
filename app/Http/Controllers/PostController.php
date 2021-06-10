@@ -9,6 +9,7 @@ use App\Models\Logo;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Models\TagPost;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -68,7 +69,14 @@ class PostController extends Controller
         $post->dateyear = date("Y");
         $post->user_id = Auth::User()->id;
         $post->category_id = $request->category_id;
-        $post->validate = 0;
+
+        if (Auth::user()->role_id == 1) {
+            $post->validate = 1;
+        } else {
+            $post->validate = 0;
+        }
+        
+        // $post->validate = 0;
         $post->trash = 0;
 
         $post->save();
@@ -81,7 +89,11 @@ class PostController extends Controller
             $tag->save();
         }
 
-        return redirect()->route('dashboard')->with('success', 'Votre article "' . $request->title . '" a bien été envoyé et est attente de validation');
+        if (Auth::user()->role_id == 1) {
+            return redirect()->route('adminBlog')->with('success', 'Votre article "' . $request->title . '" a bien été enregistré');
+        } else {
+            return redirect()->route('adminBlog')->with('success', 'Votre article "' . $request->title . '" a bien été envoyé et est attente de validation');
+        }
     }
 
     /**

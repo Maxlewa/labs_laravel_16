@@ -13,7 +13,7 @@
 
                     <!-- Articles à valider -->
                     <div class="mb-4">
-                        <h1><b>Articles dans la corbeille</b></h1>
+                        <h1><b>Articles dans la corbeille :</b></h1>
                         <div>
                             @forelse ($articles as $article)
                             <div class="mt-4 w-3/5 border border-purple-700 rounded py-4 px-4">
@@ -47,7 +47,7 @@
                             @empty 
                             <tr>
                                 <td class="text-sm font-medium" colspan="5" >
-                                    Aucun article dans la corbeille
+                                    Aucun
                                 </td>
                             </tr>
                             @endforelse

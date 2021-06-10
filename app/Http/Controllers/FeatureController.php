@@ -22,12 +22,12 @@ class FeatureController extends Controller
         request()->validate([
             "title" => ["required"],
             "text" => ["required"],
-            "icon" => ["required"],
+            "icon_id" => ["required"],
         ]);
 
         $feature->title = $request->title;
         $feature->text = $request->text;
-        $feature->icon_id = $request->icon;
+        $feature->icon_id = $request->icon_id;
         $feature->save();
 
         return redirect()->route('adminFeatures')->with('success', 'La feature "' . $request->title . '" a bien été modifiée');

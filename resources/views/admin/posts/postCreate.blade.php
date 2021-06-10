@@ -60,8 +60,8 @@
                             </div>
                         </div>
             
-                        <div class="flex items-center justify-end mt-4">
-                            <x-button class="ml-4" type="submit">
+                        <div class="flex items-center mt-6">
+                            <x-button type="submit">
                                 {{ __('Create') }}
                             </x-button>
                         </div>

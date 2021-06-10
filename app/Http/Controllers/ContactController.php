@@ -42,6 +42,6 @@ class ContactController extends Controller
         $contact->email = $request->email;
         $contact->save();
 
-        return redirect()->route('dashboard')->with('success', 'Modifications enregistrées');
+        return redirect()->route('adminContact')->with('success', 'Modifications enregistrées');
     }
 }

@@ -15,10 +15,10 @@
 
                         <!-- Icon -->
                         <div class="mt-4">
-                            <x-label for="icon" :value="__('Icon')" />
+                            <x-label for="icon_id" :value="__('Icon')" />
 
-                            <select id="icon" class="block mt-1 w-full border-b border-gray-200 overflow-hidden shadow-sm sm:rounded-lg" name="icon" :value="old('icon')">
-                                <option selected>{{$service->icon->name}}</option>
+                            <select id="icon_id" class="block mt-1 w-full border-b border-gray-200 overflow-hidden shadow-sm sm:rounded-lg" name="icon_id" :value="old('icon_id')">
+                                <option selected>Select an icon</option>
                                 @foreach ($icons as $icon)
                                     <option value="{{$icon->id}}">{{$icon->name}}</option>
                                 @endforeach
@@ -39,9 +39,9 @@
                             <textarea name="text" id="text" class="block mt-1 w-full border-b border-gray-200 overflow-hidden shadow-sm sm:rounded-lg" rows="5" cols="60">{{$service->text}}</textarea>
                         </div>
 
-                        <div class="flex items-center justify-end mt-4">
+                        <div class="flex items-center mt-4">
             
-                            <x-button class="ml-4" type="submit">
+                            <x-button type="submit">
                                 {{ __('Update') }}
                             </x-button>
                         </div>

@@ -6,6 +6,8 @@ use App\Mail\ValidateUserSender;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Role;
+use App\Models\Tag;
+use App\Models\TagPost;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;

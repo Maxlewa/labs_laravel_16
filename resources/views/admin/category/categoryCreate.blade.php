@@ -7,11 +7,11 @@
                     <!-- Validation Errors -->
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                    <form method="POST" action="{{ route('categoryStore') }}" enctype="multipart/form-data">
+                    <h1><b>Nouvelle catégorie :</b></h1>
+
+                    <form method="POST" action="{{ route('categoryStore') }}" enctype="multipart/form-data" class="w-1/3">
                         @csrf
 
-                        <h1><b>Nouvelle catégorie :</b></h1>
-            
                         <!-- Name -->
                         <div class="mt-4">
                             <x-label for="name" :value="__('Nom')" />
@@ -19,8 +19,8 @@
                             <x-input id="name" class="block mt-1 w-full" type="text" name="name" required autofocus />
                         </div>
             
-                        <div class="flex items-center justify-end mt-4">
-                            <x-button class="ml-4" type="submit">
+                        <div class="flex items-center mt-4">
+                            <x-button type="submit">
                                 {{ __('Create') }}
                             </x-button>
                         </div>

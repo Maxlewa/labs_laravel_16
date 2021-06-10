@@ -7,6 +7,10 @@
                     <!-- Validation Errors -->
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
+                    <div class="my-4">
+                        @include('layouts.flash')
+                    </div>
+
                     <!-- CONTACT -->
                     <form method="POST" action="{{ route('contactUpdate', $contact) }}" enctype="multipart/form-data">
                         @csrf
@@ -56,16 +60,17 @@
                             <x-input id="email" class="block mt-1 w-full" type="email" name="email" value="{{$contact->email}}"  required autofocus />
                         </div>
 
-                        <div class="flex items-center justify-end mt-4">
+                        <div class="flex items-center my-4">
             
-                            <x-button class="ml-4" type="submit">
+                            <x-button type="submit">
                                 {{ __('Update') }}
                             </x-button>
                         </div>
+                        <hr>
                     </form>
 
                     <!-- GOOGLE MAPS -->
-                    <form method="POST" action="{{ route('mapUpdate', $map) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('mapUpdate', $map) }}" enctype="multipart/form-data" class="mt-4">
                         @csrf
                         @method('PUT')
 
@@ -81,9 +86,9 @@
                             <x-input id="location" class="block mt-1 w-full" type="text" name="location" value="{{$map->location}}"  required autofocus />
                         </div>
 
-                        <div class="flex items-center justify-end mt-4">
+                        <div class="flex items-center mt-4">
             
-                            <x-button class="ml-4" type="submit">
+                            <x-button type="submit">
                                 {{ __('Update') }}
                             </x-button>
                         </div>

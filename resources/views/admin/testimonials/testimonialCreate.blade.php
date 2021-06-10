@@ -47,9 +47,9 @@
                             <textarea name="text" id="text" class="block mt-1 w-full border-b border-gray-200 overflow-hidden shadow-sm sm:rounded-lg" rows="5" cols="60"></textarea>
                         </div>
             
-                        <div class="flex items-center justify-end mt-4">
+                        <div class="flex items-center mt-4">
             
-                            <x-button class="ml-4" type="submit">
+                            <x-button type="submit">
                                 {{ __('Create') }}
                             </x-button>
                         </div>

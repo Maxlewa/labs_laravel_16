@@ -39,7 +39,9 @@
                         <div class="mt-4">
                             <x-label for="photo" :value="__('Photo')" />
 
-                            <x-input id="photo" class="block mt-1 w-full" type="file" name="photo" value="{{$user->photo}}"  required autofocus />
+                            {{-- <x-input id="photo" class="block mt-1 w-full" type="file" name="photo" value="{{$user->photo}}" required autofocus /> --}}
+
+                            <x-input id="photo" type='file' class="mt-1 flex flex-col items-center px-2 py-4 bg-white text-purple-900 rounded-lg tracking-wide border border-blue cursor-pointer hover:text-green-500" name="photo" value="{{$user->photo}}" style="width: 310px" required autofocus />
                         </div>
 
                         <!-- Description -->
@@ -102,9 +104,9 @@
                         </div>
                         @endadmin
             
-                        <div class="flex items-center justify-end mt-4">
+                        <div class="flex items-center mt-4">
             
-                            <x-button class="ml-4" type="submit">
+                            <x-button type="submit">
                                 {{ __('Update') }}
                             </x-button>
                         </div>

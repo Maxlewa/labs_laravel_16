@@ -49,12 +49,12 @@ class ServiceController extends Controller
     public function update(Request $request, Service $service) {
 
         request()->validate([
-            "icon" => ["required"],
+            "icon_id" => ["required"],
             "title" => ["required"],
             "text" => ["required"],
         ]);
 
-        $service->icon_id = $request->icon;
+        $service->icon_id = $request->icon_id;
         $service->title = $request->title;
         $service->text = $request->text;
         $service->save();

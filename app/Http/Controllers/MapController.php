@@ -25,6 +25,6 @@ class MapController extends Controller
         $map->location = $request->location;
         $map->save();
 
-        return redirect()->route('dashboard')->with('success', 'Modifications enregistrées');
+        return redirect()->route('adminContact')->with('success', 'Modifications enregistrées');
     }
 }
