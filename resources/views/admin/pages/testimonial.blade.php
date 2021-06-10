@@ -7,6 +7,10 @@
                     <!-- Validation Errors -->
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
+                    <div class="my-4">
+                        @include('layouts.flash')
+                    </div>
+
                     <!-- Title 2 -->
                     <form method="POST" action="{{ route('titleUpdate', $title[1]) }}" enctype="multipart/form-data">
                         @csrf
@@ -31,12 +35,8 @@
                         <hr>
                     </form>
 
-                    <div class="my-4">
-                        @include('layouts.flash')
-                    </div>
-
                     <!-- Testimonials -->
-                    <div>
+                    <div class="mt-4">
                         <h1><b>Testimonials</b></h1>
                         <a href="{{route('testimonialCreate')}}">
                             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Ajouter un témoignage</button>

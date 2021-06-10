@@ -25,6 +25,6 @@ class TitleController extends Controller
         $title->name = $request->name;
         $title->save();
 
-        return redirect()->route('dashboard')->with('success', 'Modifications enregistrées');
+        return redirect()->back()->with('success', 'Modifications enregistrées');
     }
 }
