@@ -112,6 +112,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        $this->authorize('editUser', $post);
         $tags = Tag::all();
         $categories = Category::all();
         $tagposts = TagPost::all()->where('post_id', $post->id);

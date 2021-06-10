@@ -40,8 +40,11 @@
                             <x-label for="category_id" :value="__('Category')" />
 
                             <select id="category_id" class="block mt-1 w-full ml-1 border-b border-gray-200 overflow-hidden shadow-sm sm:rounded-lg" name="category_id" :value="old('category_id')">
+                                <option value="{{$post->category->id}}" selected>{{$post->category->name}}</option>
                                 @foreach ($categories as $category)
-                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @if ($category->id != $post->category_id)
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>

@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             IconSeeder::class,
             VideoSeeder::class,
             ServiceSeeder::class,
+            NewsletterSeeder::class,
             DiscoverSeeder::class,
             FooterSeeder::class,
             SubjectSeeder::class,

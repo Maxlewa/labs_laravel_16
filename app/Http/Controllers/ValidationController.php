@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewPostSender;
 use App\Mail\ValidateUserSender;
 use App\Models\Comment;
+use App\Models\Newsletter;
 use App\Models\Post;
 use App\Models\Role;
 use App\Models\Tag;
@@ -64,6 +66,12 @@ class ValidationController extends Controller
         $post = $id;
         $post->validate = 1;
         $post->save();
+
+        $newsmembers = Newsletter::all();
+        foreach ($newsmembers as $newsmember) {
+            Mail::to($newsmember->email)->send(new NewPostSender($newsmember));
+        }
+
         return redirect()->back()->with('success', 'Article validé');
     }
 

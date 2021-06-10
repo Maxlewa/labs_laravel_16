@@ -18,9 +18,11 @@
                             <x-label for="icon_id" :value="__('Icon')" />
 
                             <select id="icon_id" class="block mt-1 w-full border-b border-gray-200 overflow-hidden shadow-sm sm:rounded-lg" name="icon_id" :value="old('icon_id')">
-                                <option selected>Select an icon</option>
+                                <option value="{{$service->icon->id}}" selected>{{$service->icon->name}}</option>
                                 @foreach ($icons as $icon)
-                                    <option value="{{$icon->id}}">{{$icon->name}}</option>
+                                    @if ($icon->id != $service->icon_id)
+                                        <option value="{{$icon->id}}">{{$icon->name}}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>

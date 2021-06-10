@@ -178,7 +178,7 @@ Route::get('/dashboard/general', function () {
     $logo = Logo::find(1);
     $footer = Footer::find(1);
     return view('admin.pages.general', compact('logo', 'footer'));
-})->middleware(['auth'])->name('adminGeneral');
+})->middleware(['admin'])->name('adminGeneral');
 
 // Dashboard - DISCOVER
 
@@ -187,7 +187,7 @@ Route::get('/dashboard/discover', function () {
     $title = Title::all();
     $discover = Discover::find(1);
     return view('admin.pages.discover', compact('video', 'title', 'discover'));
-})->middleware(['auth'])->name('adminDiscover');
+})->middleware(['admin'])->name('adminDiscover');
 
 // Dashboard - TESTIMONIALS
 
@@ -195,7 +195,7 @@ Route::get('/dashboard/testimonials', function () {
     $testimonials = Testimonial::all();
     $title = Title::all();
     return view('admin.pages.testimonial', compact('testimonials', 'title'));
-})->middleware(['auth'])->name('adminTestimonial');
+})->middleware(['admin'])->name('adminTestimonial');
 
 // Dashboard - CONTACT
 
@@ -203,7 +203,7 @@ Route::get('/dashboard/contact', function () {
     $contact = Contact::find(1);
     $map = Map::find(1);
     return view('admin.pages.contact', compact('contact', 'map'));
-})->middleware(['auth'])->name('adminContact');
+})->middleware(['admin'])->name('adminContact');
 
 // Dashboard - SERVICES
 
@@ -211,7 +211,7 @@ Route::get('/dashboard/services', function () {
     $services = Service::all();
     $title = Title::all();
     return view('admin.pages.services', compact('services', 'title'));
-})->middleware(['auth'])->name('adminServices');
+})->middleware(['admin'])->name('adminServices');
 
 // Dashboard - FEATURES
 
@@ -219,21 +219,21 @@ Route::get('/dashboard/features', function () {
     $features = Feature::all();
     $title = Title::all();
     return view('admin.pages.features', compact('features', 'title'));
-})->middleware(['auth'])->name('adminFeatures');
+})->middleware(['admin'])->name('adminFeatures');
 
 // Dashboard - CAROUSEL
 
 Route::get('/dashboard/carousel', function () {
     $images = Image::all();
     return view('admin.pages.carousel', compact('images'));
-})->middleware(['auth'])->name('adminCarousel');
+})->middleware(['admin'])->name('adminCarousel');
 
 // Dashboard - BLOG
 
 Route::get('/dashboard/blog', function () {
     $posts = Post::all()->where('trash', 0)->where('validate', 1);
     return view('admin.pages.blog', compact('posts'));
-})->middleware(['auth'])->name('adminBlog');
+})->middleware(['writer'])->name('adminBlog');
 
 // Dashboard - TAG/CATEGORY
 
@@ -241,12 +241,12 @@ Route::get('/dashboard/tag-category', function () {
     $tags = Tag::all();
     $categories = Category::where('id', '!=', 5)->get();
     return view('admin.pages.tag-category', compact('tags', 'categories'));
-})->middleware(['auth'])->name('adminTagCategory');
+})->middleware(['admin'])->name('adminTagCategory');
 
 // Dashboard - VALIDATE
 
 // Page validate
-Route::get('/admin/validate', [ValidationController::class, 'index'])->middleware(['auth'])->name('adminValidate');
+Route::get('/admin/validate', [ValidationController::class, 'index'])->middleware(['webmaster'])->name('adminValidate');
 
 // Valider un membre
 Route::put('/admin/validation/member/update/{id}', [ValidationController::class, 'updateUser'])->name('validateUserUpdate');
@@ -269,13 +269,13 @@ Route::delete('/admin/validate/comment/{id}/delete', [ValidationController::clas
 
 // Dashboard - USERS ROLES
 
-Route::get('/admin/user-role', [UserRoleController::class, 'index'])->name('adminUserRole');
+Route::get('/admin/user-role', [UserRoleController::class, 'index'])->middleware(['webmaster'])->name('adminUserRole');
 Route::get('/admin/user-role/{id}/edit', [UserRoleController::class, 'edit'])->name('editRole');
 Route::put('/admin/user-role/{id}/update', [UserRoleController::class, 'update'])->name('updateRole');
 
 // Dashboard - TRASH
 
-Route::get('/admin/trash', [TrashController::class, 'index'])->middleware(['auth'])->name('adminTrash');
+Route::get('/admin/trash', [TrashController::class, 'index'])->middleware(['webmaster'])->name('adminTrash');
 
 // Supprimer un article de la corbeille définitivement
 Route::delete('/admin/trash/article/{id}/delete', [TrashController::class,'deleteArticle'])->name('deleteArticle');
