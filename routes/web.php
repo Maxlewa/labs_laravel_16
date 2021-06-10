@@ -19,6 +19,7 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\TrashController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserRoleController;
 use App\Http\Controllers\ValidationController;
 use App\Http\Controllers\VideoController;
 use App\Models\Category;
@@ -242,7 +243,7 @@ Route::get('/dashboard/carousel', function () {
 
 Route::get('/dashboard/blog', function () {
     // $this->authorize('isWriter');
-    $posts = Post::all()->where('trash', 0);
+    $posts = Post::all()->where('trash', 0)->where('validate', 1);
     return view('admin.pages.blog', compact('posts'));
 })->middleware(['auth'])->name('adminBlog');
 
@@ -256,6 +257,7 @@ Route::get('/dashboard/tag-category', function () {
 
 // Dashboard - VALIDATE
 
+// Page validate
 Route::get('/admin/validate', [ValidationController::class, 'index'])->middleware(['auth'])->name('adminValidate');
 
 // Valider un membre
@@ -276,6 +278,13 @@ Route::delete('/admin/validate/comment/{id}/delete', [ValidationController::clas
 Route::post('/blog/article/{id}/comment', [CommentController::class, "store"])->name('commentStore');
 // Valider un commentaire
 Route::put('/admin/validation/update/{id}', [CommentController::class, 'update'])->name('commentUpdate');
+
+// Dashboard - USERS ROLES
+
+// Page Users Roles
+Route::get('/admin/user-role', [UserRoleController::class, 'index'])->name('adminUserRole');
+Route::get('/admin/user-role/{id}/edit', [UserRoleController::class, 'edit'])->name('editRole');
+Route::put('/admin/user-role/{id}/update', [UserRoleController::class, 'update'])->name('updateRole');
 
 // Dashboard - TRASH
 
