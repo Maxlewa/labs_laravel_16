@@ -38,7 +38,9 @@
                         <div class="mt-4">
                             <x-label for="image" :value="__('Image')" />
 
-                            <x-input id="image" class="block mt-1 w-full" type="file" name="image" value="{{$testimonial->image}}"  required autofocus />
+                            {{-- <x-input id="image" class="block mt-1 w-full" type="file" name="image" value="{{$testimonial->image}}"  required autofocus /> --}}
+
+                            <x-input id="image" type='file' class="mt-1 flex flex-col items-center px-2 py-4 bg-white text-purple-900 rounded-lg tracking-wide border border-blue cursor-pointer hover:text-green-500" name="image" value="{{$testimonial->image}}" style="width: 310px" required autofocus />
                         </div>
 
                         <!-- Text -->

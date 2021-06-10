@@ -30,14 +30,15 @@
                         <div class="mt-4">
                             <x-label for="job" :value="__('Job')" />
             
-                            <x-input id="job" class="block mt-1 w-full" type="job" name="job" required autofocus />
+                            <x-input id="job" class="block mt-1 w-full" type="text" name="job" required autofocus />
                         </div>
                         
                         <!-- Image -->
                         <div class="mt-4">
                             <x-label for="image" :value="__('Image')" />
 
-                            <x-input id="image" class="block mt-1 w-full" type="file" name="image" required autofocus />
+                            {{-- <x-input id="image" class="block mt-1 w-full" type="file" name="image" required autofocus /> --}}
+                            <x-input id="image" type='file' class="mt-1 flex flex-col items-center px-2 py-4 bg-white text-purple-900 rounded-lg tracking-wide border border-blue cursor-pointer hover:text-green-500" name="image" style="width: 310px" required autofocus />
                         </div>
 
                         <!-- Text -->
