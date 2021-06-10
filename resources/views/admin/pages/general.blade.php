@@ -34,6 +34,38 @@
                         <hr>
                     </form>
 
+                    <!-- SLOGAN -->
+                    <form method="POST" action="{{ route('bigtitleUpdate', $footer) }}" enctype="multipart/form-data" class="mb-6">
+                        @csrf
+                        @method('PUT')
+
+                        <h1><b>Modifier le slogan :</b></h1>
+
+                        <!-- Title -->
+                        <div class="mt-4">
+                            <x-label for="title" :value="__('Titre')" />
+            
+                            <x-input id="title" class="block mt-1 w-full" type="text" name="title" value="{{$bigtitle->title}}"  required autofocus />
+                        </div>
+
+                        <!-- Phrase -->
+                        <div class="mt-4">
+                            <x-label for="phrase" :value="__('Design by')" />
+            
+                            <x-input id="phrase" class="block mt-1 w-full" type="text" name="phrase" value="{{$bigtitle->phrase}}"  required autofocus />
+                        </div>
+
+                        
+
+                        <div class="flex items-center my-4">
+            
+                            <x-button type="submit">
+                                {{ __('Update') }}
+                            </x-button>
+                        </div>
+                        <hr>
+                    </form>
+
                     <!-- FOOTER -->
                     <form method="POST" action="{{ route('footerUpdate', $footer) }}" enctype="multipart/form-data">
                         @csrf

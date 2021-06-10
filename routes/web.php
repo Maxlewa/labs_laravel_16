@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BigTitleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
@@ -22,6 +23,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserRoleController;
 use App\Http\Controllers\ValidationController;
 use App\Http\Controllers\VideoController;
+use App\Models\Bigtitle;
 use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Discover;
@@ -115,6 +117,10 @@ Route::put('/admin/discover/{discover}/update', [DiscoverController::class, 'upd
 Route::get('/admin/video/{video}/edit', [VideoController::class, 'edit'])->name('videoEdit');
 Route::put('/admin/video/{video}/update', [VideoController::class, 'update'])->name('videoUpdate');
 
+// Slogan
+
+Route::put('/admin/bigtitle/{bigtitle}/update', [BigTitleController::class, 'update'])->name('bigtitleUpdate');
+
 // Testimonials
 
 Route::get('/admin/testimonial/create', [TestimonialController::class, 'create'])->name('testimonialCreate');
@@ -180,7 +186,8 @@ Route::get('/dashboard', function () {
 Route::get('/dashboard/general', function () {
     $logo = Logo::find(1);
     $footer = Footer::find(1);
-    return view('admin.pages.general', compact('logo', 'footer'));
+    $bigtitle = Bigtitle::find(1);
+    return view('admin.pages.general', compact('logo', 'footer', 'bigtitle'));
 })->middleware(['admin'])->name('adminGeneral');
 
 // Dashboard - DISCOVER

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BigTitle;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Contact;
@@ -13,6 +14,7 @@ use App\Models\Logo;
 use App\Models\Map;
 use App\Models\Post;
 use App\Models\Service;
+use App\Models\StandOut;
 use App\Models\Subject;
 use App\Models\Tag;
 use App\Models\TagPost;
@@ -28,6 +30,7 @@ class FrontController extends Controller
 
     public function home() {
         $video = Video::find(1);
+        $bigTitle = Bigtitle::find(1);
         $services9 = Service::inRandomOrder()->limit(9)->get();
         $services3 = Service::inRandomOrder()->limit(3)->get();
         $discover = Discover::find(1);
@@ -39,13 +42,13 @@ class FrontController extends Controller
         $testimonials = Testimonial::all();
         $subjects = Subject::all();
         $footer = Footer::find(1);
-
+        // $standout = StandOut::find(1);
         $users = User::where('job_id', '>', 1)->where('validate', 1)->get();
         $userRandom = $users->random(2);
         $ceo = User::where('job_id', 1)->where('validate', 1)->get();
         $centre = $ceo->random(1);
         
-        return view('home', compact('video', 'services9', 'services3', 'discover', 'images', 'logo', 'title', 'contact', 'testimonials', 'subjects', 'footer', 'users', 'userRandom', 'ceo', 'centre', 'imactive'));
+        return view('home', compact('video', 'services9', 'services3', 'discover', 'images', 'logo', 'title', 'contact', 'testimonials', 'subjects', 'footer', 'users', 'userRandom', 'ceo', 'centre', 'imactive', 'bigTitle'));
     }
 
     // CONTACT
