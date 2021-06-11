@@ -15,9 +15,9 @@
                     <div class="mb-4">
                         <h1><b>Utilisateurs :</b></h1>
 
-                        <div class="flex">
+                        <div class="flex flex-wrap">
                             @foreach ($users as $user)
-                            <div class="mt-4 mx-2 w-1/3 border border-green-700 rounded py-4 px-4">
+                            <div class="mt-4 mx-2 border border-green-700 rounded py-4 px-4" style="width: 300px">
                                 <td class="px-8 py-4 whitespace-nowrap text-left text-sm font-medium">
                                     <p class="text-gray-900 "><b>Nom :</b> {{$user->name}}</p>
                                     <p class="text-gray-900 "><b>Prénom :</b> {{$user->firstname}}</p>

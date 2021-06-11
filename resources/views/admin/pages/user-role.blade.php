@@ -14,6 +14,7 @@
                     <!-- Membres à valider -->
                     <div class="mb-4">
                         <h1><b>Rôles des membres :</b></h1>
+                        <h1><i>Les rôles "webmaster" et "admin" ne sont pas modifiables</i></h1>
 
                         <div>
                             @foreach ($users as $user)
