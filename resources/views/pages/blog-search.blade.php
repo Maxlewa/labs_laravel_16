@@ -86,26 +86,29 @@
                 <!-- Single widget -->
                 <div class="widget-item">
                     <!-- Searchbar -->
-                    <form action="#" class="search-form">
+                    <form action="{{route('search')}}" class="search-form">
                         <input type="text" placeholder="Search" name="search">
                         <button class="search-btn"><i class="flaticon-026-search"></i></button>
                     </form>
                 </div>
-                <!-- Categories -->
+                <!-- Single widget -->
                 <div class="widget-item">
                     <h2 class="widget-title">Categories</h2>
                     <ul>
                         @foreach ($categories as $category)
-                            <li><a href="#">{{$category->name}}</a></li>
+                            @if ($category->id != 5)
+                                {{-- <li><a href="#">{{$category->name}}</a></li> --}}
+                                <li><a href="{{route('searchCat', $category->id)}}">{{$category->name}}</a></li>
+                            @endif
                         @endforeach
                     </ul>
                 </div>
-                <!-- Tags -->
+                <!-- Single widget -->
                 <div class="widget-item">
                     <h2 class="widget-title">Tags</h2>
                     <ul class="tag">
                         @foreach ($tags as $tag)
-                            <li><a href="">{{$tag->name}}</a></li>
+                            <li><a href="{{route('searchTag', $tag->id)}}">{{$tag->name}}</a></li>
                         @endforeach
                     </ul>
                 </div>

@@ -76,21 +76,21 @@
             <div class="col-md-4 col-sm-5 sidebar">
                 <!-- Search -->
                 <div class="widget-item">
-                    <form action="#" class="search-form">
-                        <input type="text" placeholder="Search">
+                    <form action="{{route('search')}}" class="search-form">
+                        <input type="text" placeholder="Search" name="search">
                         <button class="search-btn"><i class="flaticon-026-search"></i></button>
                     </form>
                 </div>
 
                 <!-- Tags -->
-                <div class="widget-item">
+                {{-- <div class="widget-item">
                     <h2 class="widget-title">Tags</h2>
                     <ul class="tag">
                         @foreach ($tags as $tag)
                             <li><a href="{{route('searchTag', $tag->id)}}">{{$tag->name}}</a></li>
                         @endforeach
                     </ul>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
