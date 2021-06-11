@@ -127,7 +127,12 @@
                 <div class="widget-item">
                     <h2 class="widget-title">Categories</h2>
                     <ul>
-                        <li><a href="#">{{$article->category->name}}</a></li>
+                        @foreach ($categories as $category)
+                            @if ($category->id != 5)
+                                {{-- <li><a href="#">{{$category->name}}</a></li> --}}
+                                <li><a href="{{route('searchCat', $category->id)}}">{{$category->name}}</a></li>
+                            @endif
+                        @endforeach
                     </ul>
                 </div>
                 @endif
@@ -135,8 +140,8 @@
                 <div class="widget-item">
                     <h2 class="widget-title">Tags</h2>
                     <ul class="tag">
-                        @foreach ($article->tag as $tag)
-                            <li><a href="">{{$tag->name}}</a></li>
+                        @foreach ($tags as $tag)
+                            <li><a href="{{route('searchTag', $tag->id)}}">{{$tag->name}}</a></li>
                         @endforeach
                     </ul>
                 </div>

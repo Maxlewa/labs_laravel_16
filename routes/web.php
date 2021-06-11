@@ -56,9 +56,14 @@ Route::get('/services', [FrontController::class, 'services'])->name('services');
 Route::post('/newsletter/store', [NewsletterController::class, 'store'])->name('newsletterStore');
 Route::post('/mail', [ContactMailController::class, 'store'])->name('mail-contact');
 
-// BLOG-SEARCH *
+// BLOG SEARCHBAR *
 
 Route::get('/search', [FrontController::class,'search'])->name('search'); 
+
+// BLOG - Search CATEGORY/TAG
+
+Route::get('/blog/category/{id}', [FrontController::class, 'searchCat'])->name('searchCat'); 
+Route::get('/blog/tag/{id}', [FrontController::class,'searchTag'])->name('searchTag'); 
 
 
 /* _____________________________ BACK _____________________________ */

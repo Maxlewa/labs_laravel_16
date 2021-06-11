@@ -23,6 +23,7 @@ use App\Models\Title;
 use App\Models\User;
 use App\Models\Video;
 use Illuminate\Http\Request;
+use Stringable;
 
 class FrontController extends Controller
 {
@@ -96,6 +97,33 @@ class FrontController extends Controller
         return view('pages.blog', compact('logo', 'articles', 'categories', 'tags', 'footer', 'comments'));
     }
 
+    // BLOG - CLIC SUR CATEGORY
+
+    public function searchCat(Category $id) {
+        $ref = $id;
+        $articles = Post::where('category_id', $ref->id)->where('validate', 1)->where('trash', 0)->get();
+        // $articles = Post::where('validate', 1)->where('trash', 0)->paginate(2)->fragment('blogpaginate');
+
+        $logo = Logo::find(1);
+        $tags = Tag::all();
+        $categories = Category::all();
+        $footer = Footer::find(1);
+        return view('pages.blog-category', compact('ref', 'articles', 'logo', 'tags', 'categories', 'footer'));
+    }
+
+    // BLOG - CLIC SUR TAG
+
+    public function searchTag(Tag $id) {
+        $ref = $id;
+        $articles = Post::where('validate', 1)->where('trash', 0)->paginate(2)->fragment('blogpaginate');
+
+        $logo = Logo::find(1);
+        $tags = Tag::all();
+        $categories = Category::all();
+        $footer = Footer::find(1);
+        return view('pages.blog-tag', compact('ref', 'articles', 'logo', 'tags', 'categories', 'footer'));
+    }
+
     // BLOG-POST - ID
 
     public function showArticle(Post $id) {
@@ -103,7 +131,9 @@ class FrontController extends Controller
         $logo = Logo::find(1);
         $footer = Footer::find(1);
         $comments = Comment::where('post_id', $article->id)->where('validate', 1)->get();
-        return view('pages.blog-post', compact('article', 'footer', 'logo', 'comments'));
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('pages.blog-post', compact('article', 'footer', 'logo', 'comments', 'categories', 'tags'));
     }
 
     // BLOG-SEARCH
