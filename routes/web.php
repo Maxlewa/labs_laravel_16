@@ -186,6 +186,13 @@ Route::get('/dashboard', function () {
     return view('dashboard', compact('users', 'logo'));
 })->middleware(['auth'])->name('dashboard');
 
+// Dashboard - ALL USERS
+
+Route::get('/dashboard/allusers', function () {
+    $users = User::all();
+    return view('admin.pages.allusers', compact('users'));
+})->middleware(['admin'])->name('adminUsers');
+
 // Dashboard - GENERAL
 
 Route::get('/dashboard/general', function () {
